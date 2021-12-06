@@ -1,5 +1,6 @@
 # make nav Continents dropdown as fragment htm
-# library(tidyverse)
+library(tidyverse)
+library(textutils)
 
 # temporary, get EO data from previously assembled dataframe
 # load(file='data/eo.Rda')
@@ -13,12 +14,11 @@ cat('<nav class="continent">', sep='\n', file=out)
 continents <- c('Africa', 'Americas', 'Asia', 'Europe', 'Oceania') 
 
 for (c in seq_along(continents)) {
-  #print(continents[c])
   # begin dropdown for a Continent
-  cat('  <div class="dropdown">', sep='\n', file=out)
-  cat(paste0('  <button class="dropbtn">', continents[c]), sep='\n', file=out)
-  cat('  </button>', sep='\n', file=out)
-  cat('    <div class="dropdown-content">', sep='\n', file=out)
+  cat(paste0(spaces(2), '<div class="dropdown">'), sep='\n', file=out)
+  cat(paste0(spaces(4), '<button class="dropbtn">', continents[c]), sep='\n', file=out)
+  cat(paste0(spaces(4), '</button>'), sep='\n', file=out)
+  cat(paste0(spaces(4), '<div class="dropdown-content">'), sep='\n', file=out)
   
   # loop Countries in that continent
   thisContinent <- eo %>% 
@@ -29,12 +29,11 @@ for (c in seq_along(continents)) {
   for (k in 1:nrow(thisContinent)) {
     iso3c <- thisContinent$iso3c[k]
     Country <- thisContinent$Country[k] 
-    # print(paste0("<a href='", iso3c, ".html'>", Country, "</a>"))
-    cat(paste0("      <a href='", iso3c, ".html'>", Country, "</a>"), sep='\n', file=out)
+    cat(paste0(spaces(6), "<a href='", iso3c, ".html'>", Country, "</a>"), sep='\n', file=out)
   }
   
-  cat('    </div>', sep='\n', file=out)    
-  cat('  </div>', sep='\n', file=out)    
+  cat(paste0(spaces(4), '</div>'), sep='\n', file=out)  # dropdown-content
+  cat(paste0(spaces(2), '</div>'), sep='\n', file=out)  # dropdown
 }
-cat('</nav>', sep='\n', file=out)    
+cat('</nav>', sep='\n', file=out)  
 close(out)
