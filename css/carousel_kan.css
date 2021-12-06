@@ -1,5 +1,5 @@
 /* Adapted from https://www.section.io/engineering-education/how-to-make-an-image-carousel-for-your-website/
-which is similar to W3C */
+which is similar to W3C. moving JS after the HTML of carousel fixed initial no-display problem */
 
 * {box-sizing:border-box}
 
