@@ -7,7 +7,7 @@ which is similar to W3C. moving JS after the HTML of carousel fixed initial no-d
 .slideshow-container {
   max-width: 1000px;
   position: relative;
-  margin: auto;
+  margin-left: 20px;
 }
 
 /* Make the images invisible by default */
@@ -21,7 +21,7 @@ which is similar to W3C. moving JS after the HTML of carousel fixed initial no-d
   position: absolute;
   top: 60px;
   width: auto;
-  margin-top: -23px;
+  margin-top: 0px;
   padding: 17px;
   color: white;
   font-weight: bold;
