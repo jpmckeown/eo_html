@@ -1,4 +1,12 @@
+/* border-box fix from Truong LL*/
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
 
+/* R flexdashboard adjusted */
 .navbar-inverse {
    background-color: #517A00;
 }
@@ -10,8 +18,9 @@
   color: #ffffff;
 }
 
+/* Icons fontawesome */
 .fas {
-  
+
 }
 
 h1, section.comments {
@@ -22,42 +31,7 @@ section.comments > p {
   font-size: 1.1em;
 }
 
-.flex-container {
-  font-family: Georgia, 'Times New Roman', serif; 
-  border: 1px dotted black;
-  margin: 20px 20px;
-  width: 1000px;
-  height: 200px;
-  display: flex;
-  flex-wrap: wrap;
-/*   flex-direction: column; */
-}
 
-/* flex-items */
-section.flex-container > div {
-  text-align: center;
-  border: 1px solid black;
-  margin: 10px;
-  border-radius: 15px;
-
-  /*grow shrink basis*/
-  flex: 1 0 100px; 
-}
-/* Individual flex items */
-section.flex-container > div:nth-of-type(1){
-  background: #dff;
-}
-section.flex-container > div:nth-of-type(2){
-  background: #ffd;
-}
-
-h2 {
-  font-size: 2em;
-}
-h3 {
-  font-size: 1em;
-  color: #222;
-}
 
 .value-box {
   color: #000000;
