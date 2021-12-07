@@ -10,6 +10,9 @@
   color: #ffffff;
 }
 
+.fas {
+  
+}
 
 h1, section.comments {
   margin-left: 20px;
@@ -33,7 +36,10 @@ section.comments > p {
 /* flex-items */
 section.flex-container > div {
   text-align: center;
-  
+  border: 1px solid black;
+  margin: 10px;
+  border-radius: 15px;
+
   /*grow shrink basis*/
   flex: 1 0 100px; 
 }
