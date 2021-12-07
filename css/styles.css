@@ -5,6 +5,15 @@ html {
 *, *:before, *:after {
   box-sizing: inherit;
 }
+html, body {
+  margin: 0;
+  padding: 0;
+}
+header {
+  background-color: #517A00;
+  margin: 0px;
+  padding: 0px;
+}
 
 /* R flexdashboard adjusted */
 .navbar-inverse {
@@ -31,12 +40,12 @@ section.comments > p {
   font-size: 1.1em;
 }
 
-
-
-.value-box {
-  color: #000000;
-  background-color: #fff;
+h2 {
+  font-size: 2em;
+}
+h3 {
   font-size: 1em;
+  color: #222;
 }
 h3 {
   position: relative;

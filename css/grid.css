@@ -1,6 +1,12 @@
+.container * {
+  font-family: Helvetica;
+  color: white;
+  text-align: center;
+}
+
 .container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
 }
 
 .container div:nth-child(1), div:nth-child(6) {
