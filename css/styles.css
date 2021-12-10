@@ -9,23 +9,6 @@ html, body {
   margin: 0;
   padding: 0;
 }
-header {
-  background-color: #517A00;
-  margin: 0px;
-  padding: 0px;
-}
-
-/* R flexdashboard adjusted */
-.navbar-inverse {
-   background-color: #517A00;
-}
-.navbar-logo.pull-left {
-  padding-top:8px;
-  padding-left:2px;
-}
-.dropdown-toggle {
-  color: #ffffff;
-}
 
 /* Icons fontawesome */
 .fas {
@@ -66,11 +49,6 @@ h3.pop2017:hover::after {
   content: 'Population in 2017, from UN DESA World Population Prospects 2019 Revision';
 }
 
-footer {
-  color: white;
-  text-align: center;
-  background-color: #012943;
-}
 footer p {
   font-size: 1.2em;
 }

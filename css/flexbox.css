@@ -1,37 +1,40 @@
 .flex-container > * {
-  padding: 10px;
+  padding: 5px;
 }
 .flex-container {
-  color: white;
-  font-family: helvetica, arial, sans-serif;
   display: flex;
-  flex-wrap: wrap;
-}
-
-.flex-data {
-  color: white;
+  max-width: 1300px;
+  height: 100%;
+  flex-direction: column;
+  /* color: white; */
   font-family: helvetica, arial, sans-serif;
-  display: flex;
   flex-wrap: wrap;
 }
 
 header {
-  background: skyblue;
-  flex: 1 0 100%;
-  order: 1;
+  background-color: #517A00;
+  margin: 0px;
+  padding: 0px;
+  max-width: 1200px;
 }
 nav {
   background: cadetblue;
-  flex: 0 0 100%;
-  order: 2;
-}
-main {
-  background: slategray;
-  flex: 1 1 500px;
-  order: 3;
+  max-width: 1200px;
+  min-height: 30px;
+  max-height: 40px;
+  padding-left: 0;
+  margin-left: 0;
 } 
+.country {
+  background: white;
+}
+section.flag {
+  background: lightgray;
+  max-height: 200px;
+}
 footer {
-  background: darkslateblue;
-  flex: 1 0 100%;
-  order: 5;
+  color: white;
+  text-align: center;
+  background-color: #012943;
+  max-width: 1200px;
 }
