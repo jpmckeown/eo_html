@@ -16,8 +16,8 @@ continents <- c('Africa', 'Americas', 'Asia', 'Europe', 'Oceania')
 for (c in seq_along(continents)) {
   # begin dropdown for a Continent
   cat(paste0(spaces(2), '<div class="dropdown">'), sep='\n', file=out)
-  cat(paste0(spaces(4), '<button class="dropbtn">', continents[c]), sep='\n', file=out)
-  cat(paste0(spaces(4), '</button>'), sep='\n', file=out)
+  cat(paste0(spaces(4), '<button class="dropbtn">', continents[c], '</button>'), sep='\n', file=out)
+  # cat(paste0(spaces(4), '</button>'), sep='\n', file=out)
   cat(paste0(spaces(4), '<div class="dropdown-content">'), sep='\n', file=out)
   
   # loop Countries in that continent

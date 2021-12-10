@@ -19,8 +19,8 @@ for (k in startCountry:endCountry) {
   file.append(page, 'fragment/select_by_continent.htm')
   
   out <- file(page, open='a')
-  cat('<h1>Afghanistan</h1>', sep='\n', file=out)
-  
+  cat('<section class="country">', sep='\n', file=out)
+  cat(paste0('<h1>', country, '</h1></section>'), sep='\n', file=out)
   close(out)
   
   file.append(page, 'fragment/end.htm')
