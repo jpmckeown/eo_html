@@ -53,8 +53,17 @@ h3.pop2017:hover::after {
   content: 'Population in 2017, from UN DESA World Population Prospects 2019 Revision';
 }
 
+h4 {
+  margin: 0;
+}
+.comment p {
+  max-width: 900px;
+  margin: 0;
+}
+
 footer p {
   font-size: 0.9em;
+  max-width: 900px;
 }
 footer p.lowline {
   font-size: 0.7em;

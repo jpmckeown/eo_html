@@ -39,8 +39,12 @@ for (k in startCountry:endCountry) {
   cat('  </section>', sep='\n', file=out)
 
   # Comment
-  cat('  <section class="country">', sep='', file=out)
-  cat(paste0('<p>', country, '</p></section>'), sep='\n', file=out)
+  commentPath <- paste0('comment/', iso2c, '.txt')
+  txtC <- readChar(commentPath, file.info(commentPath)$size)
+  cat('  <section class="comment">', sep='', file=out)
+  cat('<h4>Comment</h4>', sep='/n', file=out)
+  cat(paste0('   <p>', txtC, '</p></section>'), sep='\n', file=out)
+  
   # Photo carousel
   
   

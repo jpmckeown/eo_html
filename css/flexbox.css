@@ -7,7 +7,7 @@
   height: 100%;
   flex-direction: column;
   /* color: white; */
-  background: lightgray;
+  background: #eee;
   font-family: helvetica, arial, sans-serif;
 }
 
@@ -25,14 +25,17 @@ nav {
   margin-left: 0;
 } 
 .country {
-  background: lightgray;
+  background: #eee;
 }
 .grid {
-  background: lightgray;
+  background: #eee;
 }
 section.flag {
-  background: lightgray;
+  background: #eee;
   max-width: 1200px;
+}
+section.comment {
+  line-height: 1.5;
 }
 footer {
   color: white;
