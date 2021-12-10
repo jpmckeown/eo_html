@@ -3,12 +3,12 @@
 }
 .flex-container {
   display: flex;
-  max-width: 1300px;
+  max-width: 1200px;
   height: 100%;
   flex-direction: column;
   /* color: white; */
+  background: lightgray;
   font-family: helvetica, arial, sans-serif;
-  flex-wrap: wrap;
 }
 
 header {
@@ -18,19 +18,21 @@ header {
   max-width: 1200px;
 }
 nav {
-  background: cadetblue;
   max-width: 1200px;
   min-height: 30px;
-  max-height: 40px;
+  /* max-height: 40px; this makes dropdown vanish because it is part of nav */
   padding-left: 0;
   margin-left: 0;
 } 
 .country {
-  background: white;
+  background: lightgray;
+}
+.grid {
+  background: lightgray;
 }
 section.flag {
   background: lightgray;
-  max-height: 200px;
+  max-width: 1200px;
 }
 footer {
   color: white;

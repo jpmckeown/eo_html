@@ -1,4 +1,21 @@
-.container * {
+.grid {
+  flex: 1; /* fills the remaining part of the viewport below header */
+  display: grid;
+  max-width: 1200px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 300px));
+/*   grid-template: 1fr 1fr / 1fr 1fr; */
+  grid-gap: 10px;
+/*   height: 100vh; min-height: 0; */
+}
+
+.cell {
+  padding: 10px;
+  background: linear-gradient(to bottom right, orange, white);
+      height: 150px;
+}
+
+
+/* .container * {
   font-family: Helvetica;
   color: white;
   text-align: center;
@@ -27,4 +44,4 @@
 
 .container div:nth-child(5) {
   background-color: #C490D1;
-}
+} */

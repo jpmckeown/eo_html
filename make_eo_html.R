@@ -20,15 +20,30 @@ for (k in startCountry:endCountry) {
   
   out <- file(page, open='a')
   
-  #Country name
+  # Country name
   cat('  <section class="country">', sep='', file=out)
   cat(paste0('<h1>', country, '</h1></section>'), sep='\n', file=out)
   
   # Flag
-  # cat('  <section class="flag">', sep='', file=out)
-  # cat(paste0('<img src="../flag/', iso2c, '.svg"></section>'), sep='\n', file=out)
+  cat('  <section class="flag">', sep='', file=out)
+  cat(paste0('<img src="../flag/', iso2c, '.svg" height="120"></section>'), sep='\n', file=out)
+  
+  # Data grid
+  cat('  <section class="grid">', sep='\n', file=out)
+  cat('    <div class="cell a">Cell A</div>', sep='\n', file=out)
+  cat('    <div class="cell a">Cell A</div>', sep='\n', file=out)
+  cat('    <div class="cell a">Cell A</div>', sep='\n', file=out)
+  cat('    <div class="cell a">Cell A</div>', sep='\n', file=out)
+  cat('    <div class="cell a">Cell A</div>', sep='\n', file=out)
+  cat('    <div class="cell a">Cell F</div>', sep='\n', file=out)
+  cat('  </section>', sep='\n', file=out)
+
+  # Comment
+  cat('  <section class="country">', sep='', file=out)
+  cat(paste0('<p>', country, '</p></section>'), sep='\n', file=out)
+  # Photo carousel
+  
   
   close(out)
-  
   file.append(page, 'fragment/end.htm')
 }

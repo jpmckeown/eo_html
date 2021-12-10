@@ -15,7 +15,11 @@ html, body {
 
 }
 
-h1, section.comments {
+h1 {
+  font-size: 1.5em;
+  margin: 3px 0px 5px 20px;
+}
+section.comments {
   margin-left: 20px;
 }
 section.comments > p {
@@ -50,10 +54,10 @@ h3.pop2017:hover::after {
 }
 
 footer p {
-  font-size: 1.2em;
+  font-size: 0.9em;
 }
 footer p.lowline {
-  font-size: 0.8em;
+  font-size: 0.7em;
 }
 footer p a {
   color: white;
