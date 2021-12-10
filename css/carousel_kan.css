@@ -5,10 +5,11 @@ which is similar to W3C. moving JS after the HTML of carousel fixed initial no-d
 
 /* Slideshow container */
 .slideshow-container {
-  max-width: 900px;
+  /* max-width: 900px; */
+  /* height: 500px;  */
   position: relative;
-  margin-left: 20px;
-  height: 500px; 
+  margin-left: 10px;
+
 }
 
 /* Make the images invisible by default */
@@ -47,10 +48,10 @@ which is similar to W3C. moving JS after the HTML of carousel fixed initial no-d
 .caption {
   color: black;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 1.1em;
+  font-size: 1em;
   padding: 5px 10px;
   position: relative;
-  text-align: center;
+  text-align: left;
   top: 0;
 }
 

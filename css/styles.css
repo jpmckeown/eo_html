@@ -9,6 +9,9 @@ html, body {
   margin: 0;
   padding: 0;
 }
+header img {
+  margin-left: 8px;
+}
 
 /* Icons fontawesome */
 .fas {
@@ -17,7 +20,7 @@ html, body {
 
 h1 {
   font-size: 1.5em;
-  margin: 3px 0px 5px 20px;
+  margin: 3px 0px 5px 12px;
 }
 section.comments {
   margin-left: 20px;

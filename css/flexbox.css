@@ -33,9 +33,11 @@ nav {
 section.flag {
   background: #eee;
   max-width: 1200px;
+  margin-left: 10px;
 }
 section.comment {
   line-height: 1.5;
+  margin-left: 12px;
 }
 footer {
   color: white;

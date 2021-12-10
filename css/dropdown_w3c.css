@@ -18,6 +18,7 @@
 
 /* The dropdown container */
 .dropdown {
+  margin-left: 3px;
   float: left;
   overflow: hidden;
 }

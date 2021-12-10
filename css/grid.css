@@ -6,6 +6,7 @@
 /*   grid-template: 1fr 1fr / 1fr 1fr; */
   grid-gap: 10px;
 /*   height: 100vh; min-height: 0; */
+margin-left: 10px;
 }
 
 .cell {
