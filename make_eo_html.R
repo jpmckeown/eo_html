@@ -4,6 +4,7 @@
 # so fragments after last line need extra newline.
 library(dplyr)
 #load('data/eo.Rda') 
+#load('data/imgdata.Rda') 
 startCountry <- 1 #nrow(eo) -10
 endCountry <- 10 #nrow(eo)
 
@@ -46,8 +47,43 @@ for (k in startCountry:endCountry) {
   cat(paste0('   <p>', txtC, '</p></section>'), sep='\n', file=out)
   
   # Photo carousel
+  cat('  <section class="slideshow-container fade">', sep='/n', file=out)
+    
+  # identify number of images for each country
+  numPhotos <- eo$Freq[k]
+  print(paste(k, iso2c, numPhotos, country))
   
+  captions <- imgdata[imgdata$iso2c == iso2c,]$Caption
+  attributions <- imgdata[imgdata$iso2c == iso2c,]$Attribution
   
+  if (numPhotos>0) {
+    IDs <- imgdata[imgdata$iso2c == eo$iso2c[k],]$ID
+    strIDs <- toString(IDs)
+    print(paste(iso2c, numPhotos, country, strIDs))
+    
+    for (ph in seq_along(IDs)) {
+      # filename
+      img <- paste0('"../img/', eo[k,1], '_', IDs[ph], '.jpg"')
+      #imgpath <- paste0('../img/', eo[k,1], '_', IDs[ph], '.jpg')
+      if (!file.exists(imgpath)) {
+        img <- paste0('"../img/', eo[k,1], '_', IDs[ph], '.png"')
+        #imgpath <- paste0('../img/', eo[k,1], '_', IDs[ph], '.png')
+      }
+      
+      #p <- image_read(imgpath)
+      #height <- image_info(p)$height
+      
+      cat('<div class="Containers">', sep='/n', file=out)
+      cat(paste0('<div class="caption">', captions[ph], '</div>'), sep='/n', file=out)
+      cat(paste0('<img src="', img, '" style="width:100%">'), sep='/n', file=out)
+      cat(paste0('<div class="attribution">', attributions[ph], '</div>'), sep='/n', file=out)
+      cat('</div>', sep='/n', file=out)
+      numPhotos <- 0
+    } 
+  } else { # if no photos available
+    print(paste(iso2c, numPhotos, country))
+  }
+
   close(out)
   file.append(page, 'fragment/end.htm')
 }
