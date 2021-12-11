@@ -5,8 +5,8 @@
 library(dplyr)
 #load('data/eo.Rda') 
 #load('data/imgdata.Rda') 
-startCountry <- 1 #nrow(eo) -10
-endCountry <- 10 #nrow(eo)
+startCountry <- 1 # nrow(eo) -10
+endCountry <- nrow(eo)
 
 for (k in startCountry:endCountry) {
   
@@ -63,13 +63,14 @@ for (k in startCountry:endCountry) {
     
     for (ph in seq_along(IDs)) {
       # filename
-      img <- paste0('"../img/', eo[k,1], '_', IDs[ph], '.jpg"')
-      #imgpath <- paste0('../img/', eo[k,1], '_', IDs[ph], '.jpg')
+      img <- paste0('../photo/', eo[k,1], '_', IDs[ph], '.jpg')
+      imgpath <- paste0('photo/', eo[k,1], '_', IDs[ph], '.jpg')
+      print(imgpath)
       if (!file.exists(imgpath)) {
-        img <- paste0('"../img/', eo[k,1], '_', IDs[ph], '.png"')
-        #imgpath <- paste0('../img/', eo[k,1], '_', IDs[ph], '.png')
+        img <- paste0('../photo/', eo[k,1], '_', IDs[ph], '.png')
+        imgpath <- paste0('photo/', eo[k,1], '_', IDs[ph], '.png')
       }
-      
+
       #p <- image_read(imgpath)
       #height <- image_info(p)$height
       
