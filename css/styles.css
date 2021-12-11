@@ -31,11 +31,12 @@ section.comment {
 section.comment p {
   font-family: Helvetica, sans-serif;
   font-size: 1em;
-  margin-top: 4px;
+  margin-top: 0px;
+  padding-top: 0px;
 }
 section.comment h4 {
   font-size: 1em;
-  bottom: 0px;
+  margin-bottom: 0px;
 }
 
 h4 {
@@ -44,9 +45,12 @@ h4 {
 .gallery h4 {
   font-size: 1em;
   margin-left: 0px;
+  margin-bottom: 5px;
 }
 
-
+section.gallery {
+  margin-bottom: 18px;
+}
 footer p {
   font-size: 0.9em;
   max-width: 900px;

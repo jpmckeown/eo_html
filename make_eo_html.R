@@ -5,7 +5,7 @@
 library(tidyverse)
 
 startCountry <- 1 
-endCountry <- nrow(eo)
+endCountry <- 20 # nrow(eo)
 
 for (k in startCountry:endCountry) {
   
@@ -47,20 +47,19 @@ for (k in startCountry:endCountry) {
   # Comment
   commentPath <- paste0('comment/', iso2c, '.txt')
   txtC <- readChar(commentPath, file.info(commentPath)$size)
+  txtD <- paste0('<p>', gsub("[\r\n]+", "</p><p>", txtC), '</p>')
+  txtE <- gsub("</p><p></p>", "</p>", txtD)
+  txtF <- gsub(" </p>", "</p>", txtE)
+  
   cat('  <section class="comment">', sep='', file=out)
   cat('<h4>Comments on this country</h4>', sep='/n', file=out)
-  cat(paste0('   <p>', txtC, '</p></section>'), sep='\n', file=out)
+  cat(paste0('   <p>', txtF, '</p></section>'), sep='\n', file=out)
   
   # Photo gallery: title, caption, and carousel
   # identify number of images for each country
   numPhotos <- eo$Freq[k]
 
   if (numPhotos>0) {
-    cat('<section class="gallery">', sep='/n', file=out)
-    cat(paste0('  <h4>Photo gallery for ', country, '</h4>'), sep='/n', file=out)
-    cat(paste0('  <div class="caption">', captions[ph], '</div>'), sep='/n', file=out)
-    cat('  <div class="slideshow-container fade">', sep='/n', file=out)
-    
     captions <- imgdata[imgdata$iso2c == iso2c,]$Caption
     attributions <- imgdata[imgdata$iso2c == iso2c,]$Attribution
     
@@ -68,6 +67,11 @@ for (k in startCountry:endCountry) {
     strIDs <- toString(IDs)
     print(paste(iso2c, numPhotos, country, strIDs))
     
+    cat('<section class="gallery">', sep='/n', file=out)
+    cat(paste0('  <h4>Photo gallery for ', country, '</h4>'), sep='/n', file=out)
+    
+    cat('  <div class="slideshow-container fade">', sep='/n', file=out)
+  
     for (ph in seq_along(IDs)) {
       # filename
       img <- paste0('../photo/', eo[k,1], '_', IDs[ph], '.jpg')
@@ -78,10 +82,8 @@ for (k in startCountry:endCountry) {
         imgpath <- paste0('photo/', eo[k,1], '_', IDs[ph], '.png')
       }
 
-      #p <- image_read(imgpath)
-      #height <- image_info(p)$height
-      
       cat('<div class="Containers">', sep='/n', file=out)
+      cat(paste0('<div class="caption">', captions[ph], '</div>'), sep='/n', file=out)
       cat(paste0('<img src="', img, '" style="width:100%">'), sep='/n', file=out)
       cat(paste0('<div class="attribution">', attributions[ph], '</div>'), sep='/n', file=out)
       cat('</div>', sep='/n', file=out)
