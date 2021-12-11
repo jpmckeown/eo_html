@@ -21,10 +21,11 @@ which is similar to W3C. moving JS after the HTML of carousel fixed initial no-d
 .Back, .forward {
   cursor: pointer;
   position: absolute;
-  top: 60px;
+  top: 30px;
   width: auto;
   margin-top: 0px;
   padding: 17px;
+  padding-right: 20px;
   color: white;
   font-weight: bold;
   font-size: 19px;
@@ -60,20 +61,22 @@ which is similar to W3C. moving JS after the HTML of carousel fixed initial no-d
   color: black;
   font-size: 0.9em;
   font-family: Arial, Helvetica, sans-serif;
-  padding: 10px 14px;
+  padding: 3px 14px;
   position: relative;
-  bottom: 10px;
+  bottom: 7px;
   width: 100%;
   text-align: center;
 }
 
 /* The circles or bullets and indicators */
 .dots {
+  padding-top: 1px;
+  margin-bottom: 12px;
   cursor: pointer;
   height: 16px;
   width: 16px;
   margin: 0 3px;
-  background-color: #acc;
+  background-color: plum; /* #acc; */
   border-radius: 50%;
   display: inline-block;
   transition: background-color 0.5s ease;

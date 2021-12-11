@@ -2,11 +2,13 @@
 # menu will be made from country list
 # file.append doesnt add newline between files 
 # so fragments after last line need extra newline.
-library(dplyr)
+library(tidyverse)
 #load('data/eo.Rda') 
 #load('data/imgdata.Rda') 
-startCountry <- 1 # nrow(eo) -10
-endCountry <- nrow(eo)
+indicators <- read_csv("data/indicators.csv")
+
+startCountry <- 1 
+endCountry <- 10 #nrow(eo)
 
 for (k in startCountry:endCountry) {
   
@@ -31,12 +33,11 @@ for (k in startCountry:endCountry) {
   
   # Data grid
   cat('  <section class="grid">', sep='\n', file=out)
-  cat('    <div class="cell a">Cell A</div>', sep='\n', file=out)
-  cat('    <div class="cell a">Cell A</div>', sep='\n', file=out)
-  cat('    <div class="cell a">Cell A</div>', sep='\n', file=out)
-  cat('    <div class="cell a">Cell A</div>', sep='\n', file=out)
-  cat('    <div class="cell a">Cell A</div>', sep='\n', file=out)
-  cat('    <div class="cell a">Cell F</div>', sep='\n', file=out)
+  for (i in 1:6) {
+    value <- eo[k, i+2]
+    label <- as.character(indicators[i, 2])
+    cat(paste0('    <div class="cell a"><h3>', value, '</h3>\n<h2>', label, '</h2></div>'), sep='\n', file=out)
+  }
   cat('  </section>', sep='\n', file=out)
 
   # Comment
@@ -59,13 +60,13 @@ for (k in startCountry:endCountry) {
   if (numPhotos>0) {
     IDs <- imgdata[imgdata$iso2c == eo$iso2c[k],]$ID
     strIDs <- toString(IDs)
-    print(paste(iso2c, numPhotos, country, strIDs))
+    #print(paste(iso2c, numPhotos, country, strIDs))
     
     for (ph in seq_along(IDs)) {
       # filename
       img <- paste0('../photo/', eo[k,1], '_', IDs[ph], '.jpg')
       imgpath <- paste0('photo/', eo[k,1], '_', IDs[ph], '.jpg')
-      print(imgpath)
+      #print(imgpath)
       if (!file.exists(imgpath)) {
         img <- paste0('../photo/', eo[k,1], '_', IDs[ph], '.png')
         imgpath <- paste0('photo/', eo[k,1], '_', IDs[ph], '.png')

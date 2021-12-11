@@ -11,8 +11,9 @@ margin-left: 10px;
 
 .cell {
   padding: 10px;
+  border-radius: 20px;
   background: linear-gradient(to bottom right, orange, white);
-      height: 150px;
+  height: 150px;
 }
 
 

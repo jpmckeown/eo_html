@@ -30,12 +30,15 @@ section.comments > p {
   font-size: 1.1em;
 }
 
-h2 {
-  font-size: 2em;
+.cell h2,h3 {
+  margin-left: 12px;
 }
-h3 {
+.cell h2 {
   font-size: 1em;
   color: #222;
+}
+.cell h3 {
+  font-size: 2em;
 }
 h3 {
   position: relative;
