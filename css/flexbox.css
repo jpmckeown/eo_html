@@ -39,6 +39,11 @@ section.comment {
   line-height: 1.5;
   margin-left: 12px;
 }
+section.gallery {
+  line-height: 1.3;
+  margin-left: 12px;
+  bottom: 10px;
+}
 footer {
   color: white;
   text-align: center;

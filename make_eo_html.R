@@ -5,7 +5,7 @@
 library(tidyverse)
 
 startCountry <- 1 
-endCountry <- 10 #nrow(eo)
+endCountry <- nrow(eo)
 
 for (k in startCountry:endCountry) {
   
@@ -48,21 +48,22 @@ for (k in startCountry:endCountry) {
   commentPath <- paste0('comment/', iso2c, '.txt')
   txtC <- readChar(commentPath, file.info(commentPath)$size)
   cat('  <section class="comment">', sep='', file=out)
-  cat('<h4>Comment</h4>', sep='/n', file=out)
+  cat('<h4>Comments on this country</h4>', sep='/n', file=out)
   cat(paste0('   <p>', txtC, '</p></section>'), sep='\n', file=out)
   
-  # Photo carousel
-  cat('  <section class="slideshow-container fade">', sep='/n', file=out)
-  cat(paste0('<h4>Photo gallery for ', country, '</h4>'), sep='/n', file=out)
-  
+  # Photo gallery: title, caption, and carousel
   # identify number of images for each country
   numPhotos <- eo$Freq[k]
-  #print(paste(k, iso2c, numPhotos, country))
-  
-  captions <- imgdata[imgdata$iso2c == iso2c,]$Caption
-  attributions <- imgdata[imgdata$iso2c == iso2c,]$Attribution
-  
+
   if (numPhotos>0) {
+    cat('<section class="gallery">', sep='/n', file=out)
+    cat(paste0('  <h4>Photo gallery for ', country, '</h4>'), sep='/n', file=out)
+    cat(paste0('  <div class="caption">', captions[ph], '</div>'), sep='/n', file=out)
+    cat('  <div class="slideshow-container fade">', sep='/n', file=out)
+    
+    captions <- imgdata[imgdata$iso2c == iso2c,]$Caption
+    attributions <- imgdata[imgdata$iso2c == iso2c,]$Attribution
+    
     IDs <- imgdata[imgdata$iso2c == eo$iso2c[k],]$ID
     strIDs <- toString(IDs)
     print(paste(iso2c, numPhotos, country, strIDs))
@@ -81,7 +82,6 @@ for (k in startCountry:endCountry) {
       #height <- image_info(p)$height
       
       cat('<div class="Containers">', sep='/n', file=out)
-      cat(paste0('<div class="caption">', captions[ph], '</div>'), sep='/n', file=out)
       cat(paste0('<img src="', img, '" style="width:100%">'), sep='/n', file=out)
       cat(paste0('<div class="attribution">', attributions[ph], '</div>'), sep='/n', file=out)
       cat('</div>', sep='/n', file=out)
