@@ -3,9 +3,10 @@
 # file.append doesnt add newline between files 
 # so fragments after last line need extra newline.
 library(tidyverse)
+library(stringi)
 
 startCountry <- 1 
-endCountry <- 20 # nrow(eo)
+endCountry <- nrow(eo)
 
 for (k in startCountry:endCountry) {
   
@@ -47,10 +48,12 @@ for (k in startCountry:endCountry) {
   # Comment
   commentPath <- paste0('comment/', iso2c, '.txt')
   txtC <- readChar(commentPath, file.info(commentPath)$size)
+  # txtC <- stri_enc_toutf8(txtC)
+  txtC <- stri_encode(txtC, '', 'UTF-8')
   txtD <- paste0('<p>', gsub("[\r\n]+", "</p><p>", txtC), '</p>')
   txtE <- gsub("</p><p></p>", "</p>", txtD)
   txtF <- gsub(" </p>", "</p>", txtE)
-  
+
   cat('  <section class="comment">', sep='', file=out)
   cat('<h4>Comments on this country</h4>', sep='/n', file=out)
   cat(paste0('   <p>', txtF, '</p></section>'), sep='\n', file=out)
