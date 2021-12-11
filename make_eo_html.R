@@ -37,27 +37,27 @@ for (k in startCountry:endCountry) {
     if (i == 3 || i == 4) {
       value <- paste(value, '%')
     }
-    label <- indicators[i, 1]
-    longLabel <- indicators[i, 2]
-    popup <-  indicators[i, 3]
-    cat(paste0('    <div class="cell ', label, '"><h3>', value, '</h3>'), sep='\n', file=out)
-    cat(paste0('<h2><a href="#" data-tooltip data-tooltip-label="', popup, '">', longLabel, '</a></h2></div>'), sep='\n', file=out)
+    codeLabel <- as.character(indicators[i, 1])
+    longLabel <- as.character(indicators[i, 2])
+    popup <-  as.character(indicators[i, 3])
+print(codeLabel)
     
-    <i class="fas fa-plus-circle"></i>
+    cat(paste0('    <div class="cell ', codeLabel, '"><h3>', value, '</h3>'), sep='\n', file=out)
+    cat(paste0('<h2><a id="', codeLabel, '_" href="#" data-tooltip data-tooltip-label="', popup, '">', longLabel, '</a></h2>'), sep='\n', file=out)
+    cat(paste0('<div class="icon" id="', codeLabel, '"><i class="fas fa-plus-circle"></i></div></div>'), sep='\n', file=out)
   }
   cat('  </section>', sep='\n', file=out)
 
   # Comment
   commentPath <- paste0('comment/', iso2c, '.txt')
   txtC <- readChar(commentPath, file.info(commentPath)$size)
-  # txtC <- stri_enc_toutf8(txtC)
   txtC <- stri_encode(txtC, '', 'UTF-8')
   txtD <- paste0('<p>', gsub("[\r\n]+", "</p><p>", txtC), '</p>')
   txtE <- gsub("</p><p></p>", "</p>", txtD)
   txtF <- gsub(" </p>", "</p>", txtE)
 
   cat('  <section class="comment">', sep='', file=out)
-  cat('<h4>Comments on this country</h4>', sep='/n', file=out)
+  cat('<h4>Comments on country</h4>', sep='/n', file=out)
   cat(paste0('   <p>', txtF, '</p></section>'), sep='\n', file=out)
   
   # Photo gallery: title, caption, and carousel
@@ -87,8 +87,11 @@ for (k in startCountry:endCountry) {
         imgpath <- paste0('photo/', eo[k,1], '_', IDs[ph], '.png')
       }
 
+      # fix caption encoding
+      caption <- stri_encode(captions[ph], '', 'UTF-8')
+      
       cat('<div class="Containers">', sep='/n', file=out)
-      cat(paste0('<div class="caption">', captions[ph], '</div>'), sep='/n', file=out)
+      cat(paste0('<div class="caption">', caption, '</div>'), sep='/n', file=out)
       cat(paste0('<img src="', img, '" style="width:100%">'), sep='/n', file=out)
       cat(paste0('<div class="attribution">', attributions[ph], '</div>'), sep='/n', file=out)
       cat('</div>', sep='/n', file=out)
