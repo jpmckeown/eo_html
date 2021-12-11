@@ -1,0 +1,313 @@
+<!-- https://stackoverflow.com/questions/42919381/world-map-that-links-to-url-when-click-on-country-specific-layer -->
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.34.0/mapbox-gl.js'></script>
+  <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.34.0/mapbox-gl.css' rel='stylesheet' />
+
+  <link rel="stylesheet" href="../css/normalize.css">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/flexbox.css">
+  <link rel="stylesheet" href="../css/dropdown_w3c.css">
+  <style>
+    body { margin:0; padding:0; }
+    #map { position:absolute; top:0; bottom:0; width:100%; }
+</style>
+</head>
+<body>
+<!-- <main class="flex-container">
+  <header><img src='../img/EarthOvershoot-Logo.png' alt='Logo'>
+  </header> -->
+
+  <!-- <nav class="continent">
+    <div class="dropdown">
+    <button class="dropbtn">Africa</button>
+      <div class="dropdown-content">
+        <a href='DZA.html'>Algeria</a>
+        <a href='AGO.html'>Angola</a>
+        <a href='BEN.html'>Benin</a>
+        <a href='BWA.html'>Botswana</a>
+        <a href='BFA.html'>Burkina Faso</a>
+        <a href='BDI.html'>Burundi</a>
+        <a href='CPV.html'>Cabo Verde</a>
+        <a href='CMR.html'>Cameroon</a>
+        <a href='CAF.html'>Central African Republic</a>
+        <a href='TCD.html'>Chad</a>
+        <a href='COM.html'>Comoros</a>
+        <a href='COD.html'>Democratic Republic of The Congo</a>
+        <a href='DJI.html'>Djibouti</a>
+        <a href='EGY.html'>Egypt</a>
+        <a href='GNQ.html'>Equatorial Guinea</a>
+        <a href='ERI.html'>Eritrea</a>
+        <a href='SWZ.html'>Eswatini</a>
+        <a href='ETH.html'>Ethiopia</a>
+        <a href='GAB.html'>Gabon</a>
+        <a href='GMB.html'>Gambia</a>
+        <a href='GHA.html'>Ghana</a>
+        <a href='GIN.html'>Guinea</a>
+        <a href='GNB.html'>Guinea Bissau</a>
+        <a href='CIV.html'>Ivory Coast</a>
+        <a href='KEN.html'>Kenya</a>
+        <a href='LSO.html'>Lesotho</a>
+        <a href='LBR.html'>Liberia</a>
+        <a href='LBY.html'>Libya</a>
+        <a href='MDG.html'>Madagascar</a>
+        <a href='MWI.html'>Malawi</a>
+        <a href='MLI.html'>Mali</a>
+        <a href='MRT.html'>Mauritania</a>
+        <a href='MUS.html'>Mauritius</a>
+        <a href='MAR.html'>Morocco</a>
+        <a href='MOZ.html'>Mozambique</a>
+        <a href='NAM.html'>Namibia</a>
+        <a href='NER.html'>Niger</a>
+        <a href='NGA.html'>Nigeria</a>
+        <a href='COG.html'>Republic of the Congo</a>
+        <a href='RWA.html'>Rwanda</a>
+        <a href='STP.html'>Sao Tome and Principe</a>
+        <a href='SEN.html'>Senegal</a>
+        <a href='SYC.html'>Seychelles</a>
+        <a href='SLE.html'>Sierra Leone</a>
+        <a href='SOM.html'>Somalia</a>
+        <a href='ZAF.html'>South Africa</a>
+        <a href='SSD.html'>South Sudan</a>
+        <a href='SDN.html'>Sudan</a>
+        <a href='TZA.html'>Tanzania</a>
+        <a href='TGO.html'>Togo</a>
+        <a href='TUN.html'>Tunisia</a>
+        <a href='UGA.html'>Uganda</a>
+        <a href='ESH.html'>Western Sahara</a>
+        <a href='ZMB.html'>Zambia</a>
+        <a href='ZWE.html'>Zimbabwe</a>
+      </div>
+    </div>
+    <div class="dropdown">
+    <button class="dropbtn">Americas</button>
+      <div class="dropdown-content">
+        <a href='ATG.html'>Antigua & Barbuda</a>
+        <a href='ARG.html'>Argentina</a>
+        <a href='BHS.html'>Bahamas</a>
+        <a href='BRB.html'>Barbados</a>
+        <a href='BLZ.html'>Belize</a>
+        <a href='BOL.html'>Bolivia</a>
+        <a href='BRA.html'>Brazil</a>
+        <a href='CAN.html'>Canada</a>
+        <a href='CHL.html'>Chile</a>
+        <a href='COL.html'>Colombia</a>
+        <a href='CRI.html'>Costa Rica</a>
+        <a href='CUB.html'>Cuba</a>
+        <a href='CUW.html'>Curacao</a>
+        <a href='DMA.html'>Dominica</a>
+        <a href='DOM.html'>Dominican Republic</a>
+        <a href='ECU.html'>Ecuador</a>
+        <a href='SLV.html'>El Salvador</a>
+        <a href='GUF.html'>French Guiana</a>
+        <a href='GRD.html'>Grenada</a>
+        <a href='GLP.html'>Guadeloupe</a>
+        <a href='GTM.html'>Guatemala</a>
+        <a href='GUY.html'>Guyana</a>
+        <a href='HTI.html'>Haiti</a>
+        <a href='HND.html'>Honduras</a>
+        <a href='JAM.html'>Jamaica</a>
+        <a href='MEX.html'>Mexico</a>
+        <a href='NIC.html'>Nicaragua</a>
+        <a href='PAN.html'>Panama</a>
+        <a href='PRY.html'>Paraguay</a>
+        <a href='PER.html'>Peru</a>
+        <a href='VCT.html'>St Vincent and the Grenadines</a>
+        <a href='KNA.html'>St. Kitts and Nevis</a>
+        <a href='LCA.html'>St. Lucia</a>
+        <a href='SUR.html'>Suriname</a>
+        <a href='TTO.html'>Trinidad & Tobago</a>
+        <a href='URY.html'>Uruguay</a>
+        <a href='USA.html'>USA</a>
+        <a href='VEN.html'>Venezuela</a>
+      </div>
+    </div>
+    <div class="dropdown">
+    <button class="dropbtn">Asia</button>
+      <div class="dropdown-content">
+        <a href='AFG.html'>Afghanistan</a>
+        <a href='ARM.html'>Armenia</a>
+        <a href='AZE.html'>Azerbaijan</a>
+        <a href='BHR.html'>Bahrain</a>
+        <a href='BGD.html'>Bangladesh</a>
+        <a href='BTN.html'>Bhutan</a>
+        <a href='BRN.html'>Brunei</a>
+        <a href='KHM.html'>Cambodia</a>
+        <a href='CHN.html'>China</a>
+        <a href='CYP.html'>Cyprus</a>
+        <a href='TLS.html'>East Timor</a>
+        <a href='GEO.html'>Georgia</a>
+        <a href='IND.html'>India</a>
+        <a href='IDN.html'>Indonesia</a>
+        <a href='IRN.html'>Iran</a>
+        <a href='IRQ.html'>Iraq</a>
+        <a href='ISR.html'>Israel</a>
+        <a href='JPN.html'>Japan</a>
+        <a href='JOR.html'>Jordan</a>
+        <a href='KAZ.html'>Kazakhstan</a>
+        <a href='KWT.html'>Kuwait</a>
+        <a href='KGZ.html'>Kyrgyzstan</a>
+        <a href='LAO.html'>Laos</a>
+        <a href='LBN.html'>Lebanon</a>
+        <a href='MYS.html'>Malaysia</a>
+        <a href='MDV.html'>Maldives</a>
+        <a href='MNG.html'>Mongolia</a>
+        <a href='MMR.html'>Myanmar</a>
+        <a href='NPL.html'>Nepal</a>
+        <a href='PRK.html'>North Korea</a>
+        <a href='OMN.html'>Oman</a>
+        <a href='PAK.html'>Pakistan</a>
+        <a href='PHL.html'>Philippines</a>
+        <a href='QAT.html'>Qatar</a>
+        <a href='SAU.html'>Saudi Arabia</a>
+        <a href='SGP.html'>Singapore</a>
+        <a href='KOR.html'>South Korea</a>
+        <a href='LKA.html'>Sri Lanka</a>
+        <a href='SYR.html'>Syria</a>
+        <a href='TWN.html'>Taiwan</a>
+        <a href='TJK.html'>Tajikistan</a>
+        <a href='THA.html'>Thailand</a>
+        <a href='TUR.html'>Turkey</a>
+        <a href='TKM.html'>Turkmenistan</a>
+        <a href='ARE.html'>United Arab Emirates</a>
+        <a href='UZB.html'>Uzbekistan</a>
+        <a href='VNM.html'>Vietnam</a>
+        <a href='YEM.html'>Yemen</a>
+      </div>
+    </div>
+    <div class="dropdown">
+    <button class="dropbtn">Europe</button>
+      <div class="dropdown-content">
+        <a href='ALB.html'>Albania</a>
+        <a href='AUT.html'>Austria</a>
+        <a href='BLR.html'>Belarus</a>
+        <a href='BEL.html'>Belgium</a>
+        <a href='BIH.html'>Bosnia & Herzegovina</a>
+        <a href='BGR.html'>Bulgaria</a>
+        <a href='HRV.html'>Croatia</a>
+        <a href='CZE.html'>Czech Republic / Czechia</a>
+        <a href='DNK.html'>Denmark</a>
+        <a href='EST.html'>Estonia</a>
+        <a href='FIN.html'>Finland</a>
+        <a href='FRA.html'>France</a>
+        <a href='DEU.html'>Germany</a>
+        <a href='GRC.html'>Greece</a>
+        <a href='HUN.html'>Hungary</a>
+        <a href='ISL.html'>Iceland</a>
+        <a href='IRL.html'>Ireland</a>
+        <a href='ITA.html'>Italy</a>
+        <a href='LVA.html'>Latvia</a>
+        <a href='LIE.html'>Liechtenstein</a>
+        <a href='LTU.html'>Lithuania</a>
+        <a href='LUX.html'>Luxemborg</a>
+        <a href='MLT.html'>Malta</a>
+        <a href='MDA.html'>Moldova</a>
+        <a href='MCO.html'>Monaco</a>
+        <a href='MNE.html'>Montenegro</a>
+        <a href='NLD.html'>Netherlands</a>
+        <a href='MKD.html'>North Macedonia</a>
+        <a href='NOR.html'>Norway</a>
+        <a href='POL.html'>Poland</a>
+        <a href='PRT.html'>Portugal</a>
+        <a href='ROU.html'>Romania</a>
+        <a href='RUS.html'>Russia</a>
+        <a href='SRB.html'>Serbia</a>
+        <a href='SVK.html'>Slovakia</a>
+        <a href='SVN.html'>Slovenia</a>
+        <a href='ESP.html'>Spain</a>
+        <a href='SWE.html'>Sweden</a>
+        <a href='CHE.html'>Switzerland</a>
+        <a href='UKR.html'>Ukraine</a>
+        <a href='GBR.html'>United Kingdom</a>
+      </div>
+    </div>
+    <div class="dropdown">
+    <button class="dropbtn">Oceania</button>
+      <div class="dropdown-content">
+        <a href='AUS.html'>Australia</a>
+        <a href='FJI.html'>Fiji</a>
+        <a href='NZL.html'>New Zealand</a>
+        <a href='PNG.html'>Papua New Guinea</a>
+        <a href='SLB.html'>Solomon Islands</a>
+      </div>
+    </div>
+  </nav> -->
+
+<div id='map'></div>
+<!-- </main> -->
+
+<script>
+mapboxgl.accessToken = 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw';
+var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/outdoors-v9',
+    center: [9, 25],
+    zoom: 1.8
+});
+
+map.on('load', function () {
+    map.addSource("states", {
+        "type": "geojson",
+        "data": "data/ne_custom_geo.json"
+    });
+
+    map.addLayer({
+        "id": "state-fills",
+        "type": "fill",
+        "source": "states",
+        "layout": {},
+        "paint": {
+            "fill-color": "#627BC1",
+            "fill-opacity": 0
+        }
+    });
+
+    map.addLayer({
+        "id": "state-fills-hover",
+        "type": "fill",
+        "source": "states",
+        "layout": {},
+        "paint": {
+            // "fill-color": "#627BC1",
+            "fill-color": "#fff",
+            "fill-opacity": 1
+        },
+        "filter": ["==", "name", ""]
+    });
+
+    // When the user moves their mouse over the page, we look for features
+    // at the mouse position (e.point) and within the states layer (states-fill).
+    // If a feature is found, then we'll update the filter in the state-fills-hover
+    // layer to only show that state, thus making a hover effect.
+    map.on("mousemove", function(e) {
+        var features = map.queryRenderedFeatures(e.point, { layers: ["state-fills"] });
+        if (features.length) {
+            map.getCanvas().style.cursor = 'pointer';
+            map.setFilter("state-fills-hover", ["==", "name", features[0].properties.name]);
+        } else {
+            map.setFilter("state-fills-hover", ["==", "name", ""]);
+            map.getCanvas().style.cursor = '';
+        }
+    });
+
+    // Reset the state-fills-hover layer's filter when the mouse leaves the map
+    map.on("mouseout", function() {
+        map.getCanvas().style.cursor = 'auto';
+        map.setFilter("state-fills-hover", ["==", "name", ""]);
+    });
+  
+    map.on("click", function(e) {
+        var features = map.queryRenderedFeatures(e.point, { layers: ["state-fills"] });
+        console.log(features[0].properties.wb_a3);
+        if (features.length) {
+            window.location = 'country/' + features[0].properties.wb_a3 + '.html'
+        }
+    });
+});
+</script>
+<!-- window.location = 'https://mckeown.me/eo/knit_footer_menu.html#' + features[0].properties.name -->
+</body>
+</html>

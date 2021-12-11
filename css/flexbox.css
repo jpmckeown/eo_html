@@ -16,6 +16,7 @@ header {
   margin: 0px;
   padding: 0px;
   max-width: 1200px;
+  order: 1;
 }
 nav {
   max-width: 1200px;
@@ -23,29 +24,40 @@ nav {
   /* max-height: 40px; this makes dropdown vanish because it is part of nav */
   padding-left: 0;
   margin-left: 0;
+  order: 2;
 } 
 .country {
   background: #eee;
+  order: 4;
 }
 .grid {
   background: #eee;
+  order: 5;
 }
 section.flag {
-  background: #eee;
+  background: #bbb;
   max-width: 1200px;
+  margin-left: 0px;
+  padding-top: 8px;
+  order: 3;
+}
+section.flag img {
   margin-left: 16px;
 }
 section.comment {
   line-height: 1.5;
   margin-left: 12px;
+  order: 6;
 }
 section.gallery {
   margin-left: 12px;
   margin-top: 5px;
+  order: 7;
 }
 footer {
   color: white;
   text-align: center;
   background-color: #012943;
   max-width: 1200px;
+  order: 8;
 }
