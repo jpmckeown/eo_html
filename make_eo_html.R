@@ -6,7 +6,7 @@ library(tidyverse)
 library(stringi)
 
 startCountry <- 1 
-endCountry <- nrow(eo)
+endCountry <- 20 # nrow(eo)
 
 for (k in startCountry:endCountry) {
   
@@ -42,6 +42,8 @@ for (k in startCountry:endCountry) {
     popup <-  indicators[i, 3]
     cat(paste0('    <div class="cell ', label, '"><h3>', value, '</h3>'), sep='\n', file=out)
     cat(paste0('<h2><a href="#" data-tooltip data-tooltip-label="', popup, '">', longLabel, '</a></h2></div>'), sep='\n', file=out)
+    
+    <i class="fas fa-plus-circle"></i>
   }
   cat('  </section>', sep='\n', file=out)
 

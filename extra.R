@@ -1,6 +1,9 @@
 iso2c = 'BR'
 commentPath <- paste0('comment/', iso2c, '.txt')
 txtC <- readChar(commentPath, file.info(commentPath)$size)
+txtD <- paste0('<p>', gsub("[\r\n]+", "</p><p>", txtC), '</p>')
+txtE <- gsub("</p><p></p>", "</p>", txtD)
+txtF <- gsub(" </p>", "</p>", txtE)
 
 #load('data/eo.Rda') 
 #load('data/imgdata.Rda') 
