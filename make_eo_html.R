@@ -35,8 +35,13 @@ for (k in startCountry:endCountry) {
   cat('  <section class="grid">', sep='\n', file=out)
   for (i in 1:6) {
     value <- eo[k, i+2]
-    label <- as.character(indicators[i, 2])
-    cat(paste0('    <div class="cell a"><h3>', value, '</h3>\n<h2>', label, '</h2></div>'), sep='\n', file=out)
+    value <- prettyNum(value, big.mark = ",", scientific = FALSE)
+    if (i == 3 || i == 4) {
+      value <- paste(value, '%')
+    }
+    label <- as.character(indicators[i, 1])
+    longLabel <- as.character(indicators[i, 2])
+    cat(paste0('    <div class="cell ', label, '"><h3>', value, '</h3>\n<h2>', longLabel, '</h2></div>'), sep='\n', file=out)
   }
   cat('  </section>', sep='\n', file=out)
 
@@ -52,7 +57,7 @@ for (k in startCountry:endCountry) {
     
   # identify number of images for each country
   numPhotos <- eo$Freq[k]
-  print(paste(k, iso2c, numPhotos, country))
+  #print(paste(k, iso2c, numPhotos, country))
   
   captions <- imgdata[imgdata$iso2c == iso2c,]$Caption
   attributions <- imgdata[imgdata$iso2c == iso2c,]$Attribution
