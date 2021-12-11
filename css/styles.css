@@ -31,8 +31,9 @@ section.comment {
 section.comment p {
   font-family: Helvetica, sans-serif;
   font-size: 1em;
-  margin-top: 0px;
-  padding-top: 0px;
+  margin-top: 4px;
+  margin-bottom: 10px;
+  padding: 0px;
 }
 section.comment h4 {
   font-size: 1em;
@@ -45,7 +46,7 @@ h4 {
 .gallery h4 {
   font-size: 1em;
   margin-left: 0px;
-  margin-bottom: 5px;
+  margin-bottom: 12px;
 }
 
 section.gallery {

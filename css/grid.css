@@ -4,13 +4,14 @@
   max-width: 1200px;
   grid-template-columns: repeat(auto-fit, minmax(300px, 300px));
 /*   grid-template: 1fr 1fr / 1fr 1fr; */
-  grid-gap: 10px;
+  grid-gap: 20px;
 /*   height: 100vh; min-height: 0; */
 margin-left: 10px;
+margin-top: 10px;
 }
 
 .cell {
-  padding: 10px;
+  padding: 16px;
   border-radius: 20px;
   background: linear-gradient(to bottom right, orange, white);
   height: 140px;

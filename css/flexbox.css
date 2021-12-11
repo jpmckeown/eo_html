@@ -8,7 +8,7 @@
   flex-direction: column;
   /* color: white; */
   background: #eee;
-  font-family: helvetica, arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
 }
 
 header {
@@ -40,9 +40,8 @@ section.comment {
   margin-left: 12px;
 }
 section.gallery {
-  line-height: 1.3;
   margin-left: 12px;
-  bottom: 10px;
+  margin-top: 5px;
 }
 footer {
   color: white;
