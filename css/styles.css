@@ -75,6 +75,7 @@ footer p a {
   text-decoration: none;
 }
 
-/* .Containers img {
-  height: 500px;
-} */
+.Containers img {
+  width: 100%;
+  height: auto;
+}
