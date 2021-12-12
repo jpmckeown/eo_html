@@ -62,15 +62,24 @@ for (k in startCountry:endCountry) {
   commentPath <- paste0('comment/', iso2c, '.txt')
   txtC <- readChar(commentPath, file.info(commentPath)$size)
   txtC <- stri_encode(txtC, '', 'UTF-8')
-  txtD <- paste0('<p>', gsub("[\r\n]+", "</p><p>", txtC), '</p>')
-  txtD <- gsub("<p><p>", "<p>", txtD)
-  txtD <- gsub(" </p>", "</p>", txtD)
-  txtD <- gsub("</p><p></p>", "</p>", txtD)
-  txtD <- gsub("</p></p>", "</p>", txtD)
+  
+  # blank lines turn into paragraphs
+  txtD <- gsub("[\r\n]+", "</p><p>", txtC)
+  
+  # remove <p> after final </p>
+  txtD <- gsub("<p>$", "", txtD)
+  
+  # newline between paragraph tags
+  txtD <- gsub("</p><p>", "</p>\n<p>", txtD)
+  
+  # txtD <- gsub("[<p>]{2,}", "<p>", txtD)
+  # txtD <- gsub("[</p>]{2,}", "</p>", txtD)
+  # txtD <- gsub(" </p>", "</p>", txtD)
+  #txtD <- gsub("</p><p></p>", "</p>", txtD)
 
   cat('<section class="comment">', sep='\n', file=out)
   cat('<h4>Comments on country</h4>', sep='\n', file=out)
-  cat(paste0('<p>', txtD, '</p></section>\n'), sep='\n', file=out)
+  cat(paste0(txtD, '\n</section> <!-- Comment ends -->\n'), sep='\n', file=out)
   
   # Photo gallery: title, caption, and carousel
   # identify number of images for each country
