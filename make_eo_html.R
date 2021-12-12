@@ -91,6 +91,9 @@ for (k in startCountry:endCountry) {
         img <- paste0('../photo/', eo[k,1], '_', IDs[ph], '.png')
         imgpath <- paste0('photo/', eo[k,1], '_', IDs[ph], '.png')
       }
+      if (!file.exists(imgpath)) {
+        img <- paste0('../photo/', eo[k,1], '_', IDs[ph], '.svg')
+      }
 
       # fix caption encoding
       caption <- stri_encode(captions[ph], '', 'UTF-8')
@@ -102,9 +105,10 @@ for (k in startCountry:endCountry) {
       cat('</div>', sep='\n', file=out)
     }
     
-    cat('<a class="Back" onclick="plusSlides(-1)">&#10094;</a>', sep='\n', file=out)
-    cat('<a class="forward" onclick="plusSlides(1)">&#10095;</a>', sep='\n', file=out)
-
+    if(numPhotos > 1) {
+      cat('<a class="Back" onclick="plusSlides(-1)">&#10094;</a>', sep='\n', file=out)
+      cat('<a class="forward" onclick="plusSlides(1)">&#10095;</a>', sep='\n', file=out)
+    }
     cat('<div style="text-align:center">', sep='\n', file=out)
     for (ph in seq_along(IDs)) {
       cat(paste0('<span class="dots" onclick="currentSlide(', ph, ')"></span>'), sep='\n', file=out)
