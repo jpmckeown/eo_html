@@ -3,11 +3,11 @@
 }
 .flex-container {
   display: flex;
-  max-width: 1200px;
+  max-width: 1000px;
   height: 100%;
   flex-direction: column;
   /* color: white; */
-  background: #eee;
+  background: white;
   font-family: Helvetica, Arial, sans-serif;
 }
 
@@ -27,11 +27,9 @@ nav {
   order: 2;
 } 
 .country {
-  background: #eee;
   order: 4;
 }
 .grid {
-  background: #eee;
   order: 5;
 }
 section.flag {
@@ -55,9 +53,9 @@ section.gallery {
   order: 7;
 }
 footer {
+  background-color: #012943;
   color: white;
   text-align: center;
-  background-color: #012943;
   max-width: 1200px;
   order: 8;
 }

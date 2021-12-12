@@ -6,7 +6,7 @@ library(tidyverse)
 library(stringi)
 
 startCountry <- 1 
-endCountry <- 12 # nrow(eo)
+endCountry <- nrow(eo)
 
 for (k in startCountry:endCountry) {
   
@@ -53,10 +53,11 @@ for (k in startCountry:endCountry) {
     cat(paste0('  <h2><a id="', codeLabel, '_" href="#" data-tooltip data-tooltip-label="', popup, '">', longLabel, '</a></h2>'), sep='\n', file=out)
     
     cat(paste0('  <div class="icon" id="', codeLabel, '"><i class="fas fa-plus-circle"></i></div>'), sep='\n', file=out)
-    cat('</div>  <-- cell ends -->\n', sep='\n', file=out)
+    cat('</div>  <!-- cell ends -->\n', sep='\n', file=out)
+    
   } # end of 6 data items 
   
-  cat('</section>\n', sep='\n', file=out)
+  cat('</section> <!-- grid for data ends -->\n', sep='\n', file=out)
 
   # Comment
   commentPath <- paste0('comment/', iso2c, '.txt')
@@ -66,16 +67,21 @@ for (k in startCountry:endCountry) {
   # blank lines turn into paragraphs
   txtD <- gsub("[\r\n]+", "</p><p>", txtC)
   
+  # first paragraph
+  txtD <- gsub("^</p><p>", "", txtD)
+  txtD <- paste0('<p>', txtD)
+  
   # remove <p> after final </p>
   txtD <- gsub("<p>$", "", txtD)
+  
+  # stray space at end of paragraph, delete
+  txtD <- gsub(" </p>", "</p>", txtD)
   
   # newline between paragraph tags
   txtD <- gsub("</p><p>", "</p>\n<p>", txtD)
   
-  # txtD <- gsub("[<p>]{2,}", "<p>", txtD)
+  # txtD <- gsub("[<p>]{2,}", "<p>", txtD) # likely redundant
   # txtD <- gsub("[</p>]{2,}", "</p>", txtD)
-  # txtD <- gsub(" </p>", "</p>", txtD)
-  #txtD <- gsub("</p><p></p>", "</p>", txtD)
 
   cat('<section class="comment">', sep='\n', file=out)
   cat('<h4>Comments on country</h4>', sep='\n', file=out)
@@ -114,11 +120,12 @@ for (k in startCountry:endCountry) {
       # fix caption encoding
       caption <- stri_encode(captions[ph], '', 'UTF-8')
       
-      cat('<div class="photo-container">', sep='\n', file=out)
+      # cat('<div class="photo-container">', sep='\n', file=out)
+      cat('<div class="Containers">', sep='\n', file=out)
       cat(paste0('<div class="caption">', caption, '</div>'), sep='\n', file=out)
       cat(paste0('<img src="', img, '">'), sep='\n', file=out)
       cat(paste0('<div class="attribution">', attributions[ph], '</div>'), sep='\n', file=out)
-      cat('</div> <!-- photo-container -->\n', sep='\n', file=out)
+      cat('</div> <!-- photo -->\n', sep='\n', file=out)
     }
     
     if(numPhotos > 1) {
@@ -127,9 +134,10 @@ for (k in startCountry:endCountry) {
     }
     cat('<div style="text-align:center">', sep='\n', file=out)
     for (ph in seq_along(IDs)) {
-      cat(paste0('<span class="dots" onclick="currentSlide(', ph, ')"></span>'), sep='\n', file=out)
+      cat(paste0('  <span class="dots" onclick="currentSlide(', ph, ')"></span>'), sep='\n', file=out)
     }
-    cat('</div></div>', sep='\n', file=out)
+    cat('</div> <!-- dots -->\n', sep='\n', file=out)
+    cat('</div> <!-- slide-show -->', sep='\n', file=out)
     cat('</section>', sep='\n', file=out)
     numPhotos <- 0
     
