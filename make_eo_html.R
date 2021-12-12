@@ -62,7 +62,7 @@ for (k in startCountry:endCountry) {
   txtF <- gsub(" </p>", "</p>", txtE)
 
   cat('  <section class="comment">', sep='', file=out)
-  cat('<h4>Comments on country</h4>', sep='/n', file=out)
+  cat('<h4>Comments on country</h4>', sep='\n', file=out)
   cat(paste0('   <p>', txtF, '</p></section>'), sep='\n', file=out)
   
   # Photo gallery: title, caption, and carousel
@@ -77,10 +77,10 @@ for (k in startCountry:endCountry) {
     strIDs <- toString(IDs)
     print(paste(iso2c, numPhotos, country, strIDs))
     
-    cat('<section class="gallery">', sep='/n', file=out)
-    cat(paste0('  <h4>Photo gallery for ', country, '</h4>'), sep='/n', file=out)
+    cat('<section class="gallery">', sep='\n', file=out)
+    cat(paste0('  <h4>Photo gallery for ', country, '</h4>'), sep='\n', file=out)
     
-    cat('  <div class="slideshow-container fade">', sep='/n', file=out)
+    cat('  <div class="slideshow-container fade">', sep='\n', file=out)
   
     for (ph in seq_along(IDs)) {
       # filename
@@ -95,21 +95,22 @@ for (k in startCountry:endCountry) {
       # fix caption encoding
       caption <- stri_encode(captions[ph], '', 'UTF-8')
       
-      cat('<div class="Containers">', sep='/n', file=out)
-      cat(paste0('<div class="caption">', caption, '</div>'), sep='/n', file=out)
-      cat(paste0('<img src="', img, '" style="width:100%">'), sep='/n', file=out)
-      cat(paste0('<div class="attribution">', attributions[ph], '</div>'), sep='/n', file=out)
-      cat('</div>', sep='/n', file=out)
+      cat('<div class="Containers">', sep='\n', file=out)
+      cat(paste0('<div class="caption">', caption, '</div>'), sep='\n', file=out)
+      cat(paste0('<img src="', img, '" style="width:100%">'), sep='\n', file=out)
+      cat(paste0('<div class="attribution">', attributions[ph], '</div>'), sep='\n', file=out)
+      cat('</div>', sep='\n', file=out)
     }
     
-    cat('<a class="Back" onclick="plusSlides(-1)">&#10094;</a>', sep='/n', file=out)
-    cat('<a class="forward" onclick="plusSlides(1)">&#10095;</a>', sep='/n', file=out)
-    cat('<div style="text-align:center">', sep='/n', file=out)
-    cat('<span class="dots" onclick="currentSlide(1)"></span>', sep='/n', file=out)
-    cat('<span class="dots" onclick="currentSlide(2)"></span>', sep='/n', file=out)
-    cat('<span class="dots" onclick="currentSlide(3)"></span>', sep='/n', file=out)
-    cat('</div></div>', sep='/n', file=out)
-    cat('</section>', sep='/n', file=out)
+    cat('<a class="Back" onclick="plusSlides(-1)">&#10094;</a>', sep='\n', file=out)
+    cat('<a class="forward" onclick="plusSlides(1)">&#10095;</a>', sep='\n', file=out)
+
+    cat('<div style="text-align:center">', sep='\n', file=out)
+    for (ph in seq_along(IDs)) {
+      cat(paste0('<span class="dots" onclick="currentSlide(', ph, ')"></span>'), sep='\n', file=out)
+    }
+    cat('</div></div>', sep='\n', file=out)
+    cat('</section>', sep='\n', file=out)
     numPhotos <- 0
     
   } else { # if no photos available

@@ -11,8 +11,19 @@ html, body {
 }
 header img {
   margin-left: 8px;
+  float: left;
 }
-
+header p {
+  margin-top: 8px;
+  color: white;
+  font-size: 1em;
+  position: relative;
+  left: 40px;
+}
+header p a {
+  color: white;
+  text-decoration: none;
+}
 /* Icons fontawesome */
 .icon {
   text-align: right;

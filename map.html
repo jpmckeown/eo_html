@@ -301,9 +301,13 @@ map.on('load', function () {
   
     map.on("click", function(e) {
         var features = map.queryRenderedFeatures(e.point, { layers: ["state-fills"] });
-        console.log(features[0].properties.wb_a3);
+        
         if (features.length) {
-            window.location = 'country/' + features[0].properties.wb_a3 + '.html'
+          iso3c = features[0].properties.adm0_a3_is;
+          if (iso3c == 'GRL') {
+           iso3c = 'DNK';
+          }
+          window.location = 'country/' + iso3c + '.html'
         }
     });
 });
