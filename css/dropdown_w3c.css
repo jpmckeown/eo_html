@@ -53,7 +53,7 @@
 .dropdown-content a {
   float: none;
   color: black;
-  padding: 4px 8px 4px 12px;
+  padding: 4px 8px 2px 12px;
   margin: 4px 0px 4px 0px;
   text-decoration: none;
   display: block;
@@ -62,7 +62,7 @@
 
 /* Add a grey background color to dropdown links on hover */
 .dropdown-content a:hover {
-  background-color: #ddd;
+  background-color: pink;
   z-index: 9999;
 }
 
