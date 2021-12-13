@@ -1,7 +1,8 @@
-/* border-box fix from Truong LL*/
+/* fix from Truong, Peterson LL */
 html {
   box-sizing: border-box;
 }
+/* so child inherits box sizing */
 *, *:before, *:after {
   box-sizing: inherit;
 }
@@ -76,6 +77,6 @@ footer p a {
 }
 
 .Containers img {
-  /* width: 100%;
-  height: auto; */
+  max-width: 100%;
+  /* height: auto; */
 }

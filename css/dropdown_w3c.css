@@ -1,6 +1,5 @@
 /* Navbar container */
 .continent {
-  
   overflow: hidden;
   background-color: #517A00;
     font-family: Arial, sans-serif;
@@ -54,7 +53,8 @@
 .dropdown-content a {
   float: none;
   color: black;
-  padding: 8px 7px 8px 7px;
+  padding: 4px 8px 4px 12px;
+  margin: 4px 0px 4px 0px;
   text-decoration: none;
   display: block;
   text-align: left;

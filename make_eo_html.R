@@ -105,17 +105,19 @@ for (k in startCountry:endCountry) {
     cat('<div class="slideshow-container fade">\n', sep='\n', file=out)
   
     for (ph in seq_along(IDs)) {
-      # filename
+
+      # when format unknown, get extension experimentally
+      
       img <- paste0('../photo/', eo[k,1], '_', IDs[ph], '.jpg')
       imgpath <- paste0('photo/', eo[k,1], '_', IDs[ph], '.jpg')
-      #print(imgpath)
+
       if (!file.exists(imgpath)) {
         img <- paste0('../photo/', eo[k,1], '_', IDs[ph], '.png')
         imgpath <- paste0('photo/', eo[k,1], '_', IDs[ph], '.png')
       }
-      # if (!file.exists(imgpath)) {
-      #   img <- paste0('../photo/', eo[k,1], '_', IDs[ph], '.svg')
-      # }
+      if (!file.exists(imgpath)) {
+        img <- paste0('../photo/', eo[k,1], '_', IDs[ph], '.svg')
+      }
 
       # fix caption encoding
       caption <- stri_encode(captions[ph], '', 'UTF-8')
