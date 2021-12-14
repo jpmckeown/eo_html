@@ -5,41 +5,47 @@
 library(tidyverse)
 library(stringi)
 
-symbol_to_HTML <- function(txtC) {
-  if (grepl("’", txtC)) {
-    txtC <- gsub("’", "&rsquo;", txtC)        
+symbol_to_HTML <- function(txt) {
+  if (grepl("’", txt)) {
+    txt <- gsub("’", "&rsquo;", txt)        
   }
-  if (grepl('“', txtC)) {
-    txtC <- gsub("“", "&ldquo;", txtC)        
+  if (grepl('“', txt)) {
+    txt <- gsub("“", "&ldquo;", txt)        
   }
-  if (grepl('”', txtC)) {
-    txtC <- gsub("”", "&rdquo;", txtC)        
+  if (grepl('”', txt)) {
+    txt <- gsub("”", "&rdquo;", txt)        
   }
-  if (grepl('½', txtC)) {
-    txtC <- gsub("½", "&frac12;", txtC)        
+  if (grepl('½', txt)) {
+    txt <- gsub("½", "&frac12;", txt)        
   }
-  if (grepl('–', txtC)) {
-    txtC <- gsub("–", "&ndash;", txtC)        
+  if (grepl('–', txt)) {
+    txt <- gsub("–", "&ndash;", txt)        
   }
-  if (grepl('—', txtC)) {
-    txtC <- gsub("—", "&mdash;", txtC)        
+  if (grepl('—', txt)) {
+    txt <- gsub("—", "&mdash;", txt)        
   }
-  if (grepl('‘', txtC)) {
-    txtC <- gsub("‘", "&lsquo;", txtC)        
+  if (grepl('‘', txt)) {
+    txt <- gsub("‘", "&lsquo;", txt)        
   }
-  if (grepl('ô', txtC)) {
-    txtC <- gsub("ô", "&ocirc;", txtC)        
+  if (grepl('ô', txt)) {
+    txt <- gsub("ô", "&ocirc;", txt)        
   }
-  if (grepl('ê', txtC)) {
-    txtC <- gsub("ê", "&ecirc;", txtC)        
+  if (grepl('ê', txt)) {
+    txt <- gsub("ê", "&ecirc;", txt)        
   }
-  if (grepl('é', txtC)) {
-    txtC <- gsub("é", "&eacute;", txtC)        
+  if (grepl('é', txt)) {
+    txt <- gsub("é", "&eacute;", txt)        
   }
-  if (grepl('è', txtC)) {
-    txtC <- gsub("è", "&egrave;", txtC)        
+  if (grepl('è', txt)) {
+    txt <- gsub("è", "&egrave;", txt)        
   }
-  return(txtC)
+  if (grepl('í', txt)) {
+    txt <- gsub("í", "&iacute;", txt)        
+  }
+  if (grepl('ã', txt)) {
+    txt <- gsub("ã", "&atilde;", txt)        
+  }
+  return(txt)
 }
 
 # not here, was cleaned earlier when making imgdata
