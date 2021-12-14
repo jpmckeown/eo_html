@@ -2,7 +2,7 @@
   flex: 1; /* fills the remaining part of the viewport below header */
   display: grid;
   max-width: 950px;
-  grid-template-columns: repeat(auto-fit, minmax(290px, 290px));
+  grid-template-columns: repeat(auto-fit, minmax(270px, 270px));
 /*   grid-template: 1fr 1fr / 1fr 1fr; */
   grid-gap: 15px;
 /*   height: 100vh; min-height: 0; */

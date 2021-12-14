@@ -5,6 +5,56 @@
 library(tidyverse)
 library(stringi)
 
+symbol_to_HTML <- function(txtC) {
+  if (grepl("’", txtC)) {
+    txtC <- gsub("’", "&rsquo;", txtC)        
+  }
+  if (grepl('“', txtC)) {
+    txtC <- gsub("“", "&ldquo;", txtC)        
+  }
+  if (grepl('”', txtC)) {
+    txtC <- gsub("”", "&rdquo;", txtC)        
+  }
+  if (grepl('½', txtC)) {
+    txtC <- gsub("½", "&frac12;", txtC)        
+  }
+  if (grepl('–', txtC)) {
+    txtC <- gsub("–", "&ndash;", txtC)        
+  }
+  if (grepl('—', txtC)) {
+    txtC <- gsub("—", "&mdash;", txtC)        
+  }
+  if (grepl('‘', txtC)) {
+    txtC <- gsub("‘", "&lsquo;", txtC)        
+  }
+  if (grepl('ô', txtC)) {
+    txtC <- gsub("ô", "&ocirc;", txtC)        
+  }
+  if (grepl('ê', txtC)) {
+    txtC <- gsub("ê", "&ecirc;", txtC)        
+  }
+  if (grepl('é', txtC)) {
+    txtC <- gsub("é", "&eacute;", txtC)        
+  }
+  if (grepl('è', txtC)) {
+    txtC <- gsub("è", "&egrave;", txtC)        
+  }
+  return(txtC)
+}
+
+# not here, was cleaned earlier when making imgdata
+# cleanCaption <- function(line) {
+#   caption <- sub('#', '', line)
+#   caption <- capitalize(caption)
+#   # remove trailing spaces
+#   caption <- trimws(caption, which = "right", whitespace = "[ \t\r\n]")
+#   # add final period if missing
+#   if (!str_sub(caption, -1) == '.') {
+#     caption <- paste0(caption, '.')
+#   }
+#   return(caption)
+# }
+
 startCountry <- 1 
 endCountry <- nrow(eo)
 
@@ -61,9 +111,11 @@ for (k in startCountry:endCountry) {
 
   # Comment
   commentPath <- paste0('comment/', iso2c, '.txt')
-  txtC <- readChar(commentPath, file.info(commentPath)$size)
-  txtC <- stri_encode(txtC, '', 'UTF-8')
-  
+  # txtC <- readChar(commentPath, file.info(commentPath)$size)
+  txtC <- as.character(eo_comment[eo_comment$iso2c == iso2c, "Comments"])
+  # txtC <- stri_encode(txtC, '', 'UTF-8')
+  txtC <- symbol_to_HTML(txtC)
+
   # blank lines turn into paragraphs
   txtD <- gsub("[\r\n]+", "</p><p>", txtC)
   
@@ -81,7 +133,6 @@ for (k in startCountry:endCountry) {
   txtD <- gsub("</p><p>", "</p>\n<p>", txtD)
   
   # txtD <- gsub("[<p>]{2,}", "<p>", txtD) # likely redundant
-  # txtD <- gsub("[</p>]{2,}", "</p>", txtD)
 
   cat('<section class="comment">', sep='\n', file=out)
   cat('<h4>Comments on country</h4>', sep='\n', file=out)
@@ -97,7 +148,7 @@ for (k in startCountry:endCountry) {
     
     IDs <- imgdata[imgdata$iso2c == eo$iso2c[k],]$ID
     strIDs <- toString(IDs)
-    print(paste(iso2c, numPhotos, country, strIDs))
+    #print(paste(iso2c, numPhotos, country, strIDs))
     
     cat('<section class="gallery">', sep='\n', file=out)
     cat(paste0('<h4>Photo gallery for ', country, '</h4>'), sep='\n', file=out)
@@ -121,6 +172,7 @@ for (k in startCountry:endCountry) {
 
       # fix caption encoding
       caption <- stri_encode(captions[ph], '', 'UTF-8')
+      caption <- symbol_to_HTML(caption)
       
       # cat('<div class="photo-container">', sep='\n', file=out)
       cat('<div class="Containers">', sep='\n', file=out)
@@ -144,7 +196,7 @@ for (k in startCountry:endCountry) {
     numPhotos <- 0
     
   } else { # if no photos available
-    print(paste('ZERO', iso2c, numPhotos, country))
+    #print(paste('ZERO', iso2c, numPhotos, country))
   }
 
   close(out)
