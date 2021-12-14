@@ -23,6 +23,7 @@ margin-top: 5px;
   margin-top: 0px;
   font-size: 1em;
   color: #222;
+  float: left;
 }
 .cell h3 {
   margin-left: 12px;
@@ -31,16 +32,18 @@ margin-top: 5px;
   font-size: 1.8em;
   position: relative;
 }
-
+.cell div {
+  margin-left: 12px;
+}
+.icon {
+  float: right;
+  text-align: right;
+  padding-right: 8px;
+}
 .cell h2 a {
   margin-left: 12px;
   color: #222;
   text-decoration: none;
-}
-
-/* Icons fontawesome */
-.icon {
-  text-align: right;
 }
 
 /* .cell.Pop_2017:hover::after {
