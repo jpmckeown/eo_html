@@ -80,6 +80,7 @@ for (k in startCountry:endCountry) {
   
   # Country name
   cat('<section class="country">', sep='', file=out)
+  country <- symbol_to_HTML(country)
   cat(paste0('<h1>', country, '</h1></section>\n'), sep='\n', file=out)
   
   # Flag
@@ -106,11 +107,8 @@ for (k in startCountry:endCountry) {
     cat(paste0('<div class="cell ', codeLabel, '">'), sep='\n', file=out)
     cat(paste0('  <h3>', value, '</h3>'), sep='\n', file=out)
  
-    #<div data-tooltip data-tooltip-label="Population size in 2018, from United Nations DESA World Population Prospects 2019 Revision."><h2><a id="Pop_2017_" href="#">Population in 2017</a></h2><span class="icon" id="Pop_2017"><i class="fas fa-plus-circle"></i></span></div>   
     cat(paste0('<div data-tooltip data-tooltip-label="', popup, '"><h2<a id="', codeLabel, '_" href="#">', longLabel, '</a></h2><span class="icon" id="', codeLabel, '"><i class="fas fa-plus-circle"></i></h2></div>'), sep='\n', file=out)
-#    cat(paste0('  <h2><a id="', codeLabel, '_" href="#" data-tooltip data-tooltip-label="', popup, '">', longLabel, '</a><span class="icon" id="', codeLabel, '"><i class="fas fa-plus-circle"></i></h2>'), sep='\n', file=out)
-    
-    # cat(paste0('  <div class="icon" id="', codeLabel, '"><i class="fas fa-plus-circle"></i></div>'), sep='\n', file=out)
+
     cat('</div>  <!-- cell ends -->\n', sep='\n', file=out)
     
   } # end of 6 data items 
@@ -186,7 +184,8 @@ for (k in startCountry:endCountry) {
       cat('<div class="Containers">', sep='\n', file=out)
       cat(paste0('<div class="caption">', caption, '</div>'), sep='\n', file=out)
       cat(paste0('<img src="', img, '">'), sep='\n', file=out)
-      cat(paste0('<div class="attribution">', attributions[ph], '</div>'), sep='\n', file=out)
+      attribution <- symbol_to_HTML(attributions[ph])
+      cat(paste0('<div class="attribution">', attribution, '</div>'), sep='\n', file=out)
       cat('</div> <!-- photo -->\n', sep='\n', file=out)
     }
     
