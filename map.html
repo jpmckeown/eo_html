@@ -1,4 +1,3 @@
-<!-- https://stackoverflow.com/questions/42919381/world-map-that-links-to-url-when-click-on-country-specific-layer -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,21 +6,22 @@
   <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.34.0/mapbox-gl.js'></script>
   <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.34.0/mapbox-gl.css' rel='stylesheet' />
 
-  <link rel="stylesheet" href="../css/normalize.css">
-  <link rel="stylesheet" href="../css/styles.css">
-  <link rel="stylesheet" href="../css/flexbox.css">
-  <link rel="stylesheet" href="../css/dropdown_w3c.css">
+  <link rel="stylesheet" href="css/normalize.css">
+  <!-- <link rel="stylesheet" href="css/styles.css"> -->
+  <link rel="stylesheet" href="css/mapflexbox.css">
+  <link rel="stylesheet" href="css/dropdown_w3c.css">
   <style>
-    body { margin:0; padding:0; }
-    #map { position:absolute; top:0; bottom:0; width:100%; }
+    html, body, main { height: 100%; width: 100%; margin:0; padding:0; position: relative; }
+    #map { position: relative; height: 100%; order: 8; margin: 0; padding: 0; }
 </style>
+<!-- Adapted from https://stackoverflow.com/questions/42919381/world-map-that-links-to-url-when-click-on-country-specific-layer -->
 </head>
 <body>
-<!-- <main class="flex-container">
+<main class="flex-container world">
   <header><img src='../img/EarthOvershoot-Logo.png' alt='Logo'>
-  </header> -->
+  </header>
 
-  <!-- <nav class="continent">
+ <nav class="continent">
     <div class="dropdown">
     <button class="dropbtn">Africa</button>
       <div class="dropdown-content">
@@ -234,10 +234,23 @@
         <a href='SLB.html'>Solomon Islands</a>
       </div>
     </div>
-  </nav> -->
+  </nav>
 
 <div id='map'></div>
-<!-- </main> -->
+</main>
+
+<footer>
+  <p>Earth Overshoot<br />
+  P.O. Box 202<br />
+  Ardmore, PA 19003<br />
+  (610) 420-5989  Phone<br />
+  <a href="mailto:info@earthovershoot.org">Contact</a></p>
+  <p class="lowline">&copy; EarthOvershoot 2021
+  &nbsp;&nbsp;
+  <a href="https://www.earthovershoot.org/#privacy-policy">Privacy Policy</a>
+  &nbsp;&nbsp;
+  <a href="https://www.earthovershoot.org/#terms-conditions">Terms &amp; Conditions</a></p>
+</footer>
 
 <script>
 mapboxgl.accessToken = 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw';
@@ -245,7 +258,9 @@ var map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/outdoors-v9',
     center: [9, 25],
-    zoom: 1.8
+    zoom: 1.8, 
+    minZoom: 1.8,
+    maxZoom: 5
 });
 
 map.on('load', function () {
