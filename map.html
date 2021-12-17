@@ -332,22 +332,39 @@ map.on('load', function () {
         if (features.length) {
           // iso3c = features[0].properties.adm0_a3_is;
           iso3c = features[0].properties.ISO_A3;
-          if (iso3c == 'GRL') {
+          if (iso3c == 'GRL' || iso3c == 'FRO') {
            iso3c = 'DNK';
           }
-          if (iso3c == 'HRD' || iso3c == 'AIO') {
+          // Australian Indian Ocean Territories lack official iso3c code? AIO
+          if (iso3c == 'HRD' || iso3c == 'NFK' || iso3c == 'AIO') {
             iso3c = 'AUS';
           }
-          if (iso3c == 'PRI') {
+          if (iso3c == 'GUM' || iso3c == 'MNP'  || iso3c == 'PRI' || iso3c == 'ASM' || iso3c == 'UMI' || iso3c == 'VIR') {
             iso3c = 'USA';
           }
-          if (iso3c == 'ATF') {
+          if (iso3c == 'HKG' || iso3c == 'MAC') {
+            iso3c = 'CHN';
+          }
+          if (iso3c == 'ABW' || iso3c == 'SXM') {
+            iso3c = 'NLD';
+          }
+          if (iso3c == 'ATF' || iso3c == 'BLM' || iso3c == 'MAF' || iso3c == 'NCL' || iso3c == 'PYF' || iso3c == 'SPM' || iso3c == 'WLF') {
             iso3c = 'FRA';
           }
-          if (iso3c == 'FLK' || iso3c == 'IOT') {
+          if (iso3c == 'ALA') {
+            iso3c = 'FIN';
+          }
+          if (iso3c == 'GGY' || iso3c == 'IOM' || iso3c == 'AIA' || iso3c == 'GIB' || iso3c == 'CYM'  || iso3c == 'FLK' || iso3c == 'SGS' || iso3c == 'IOT' || iso3c == 'MSR' || iso3c == 'PCN' || iso3c == 'SHN' || iso3c == 'TCA' || iso3c == 'VGB') {
             iso3c = 'GBR';
           }
-          if (iso3c != 'ATA' && iso3c != 'SPR') {
+          if (iso3c == 'COK' || iso3c == 'NIU') {
+            iso3c = 'NZL';
+          }
+          // Kosovo doesnt have an official iso3c code
+          if (iso3c == 'KSV') {  
+            iso3c = 'SRB';
+          }
+          if (iso3c != 'PSE' && iso3c != 'VUT' && iso3c != 'WSM' && iso3c != 'FSM' && iso3c != 'KIR'  && iso3c != 'TON' && iso3c != 'MHL' && iso3c != 'NRU' && iso3c != 'TUV' && iso3c != 'PLW' && iso3c != 'ATA' && iso3c != 'SPR' && iso3c != 'AND' && iso3c != 'SMR' && iso3c != 'VAT') {
             window.location = 'country/' + iso3c + '.html'          
           }
         }
