@@ -3,10 +3,11 @@ html, body, main { height: 100%; width: 100%; margin:0; padding:0; position: rel
 #map { 
   position: relative; 
   height: 100%; 
-  order: 8; }
+  order: 8; 
+}
 
 .flex-container > * {
-  padding: 5px;
+  padding: 0px;
 }
 .flex-container {
   display: flex;
@@ -62,4 +63,5 @@ footer {
   text-align: center;
   max-width: 100%;
   order: 9;
+  margin: 8px;
 }
