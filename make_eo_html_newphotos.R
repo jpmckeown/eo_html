@@ -1,4 +1,9 @@
-# must run read_comments.R and extra.R (for indicators)
+# need make new eo with updated Freq column
+# also need to freshen Comments from googlesheet
+# script fails at row 13 BGD
+# must run extra.R (for indicators)
+# read_comments.R is incomplete
+# folder Comments with text files exists
 
 # HTML country page construction
 # menu will be made from country list
@@ -122,9 +127,10 @@ for (k in startCountry:endCountry) {
 
   # Comment
   commentPath <- paste0('comment/', iso2c, '.txt')
-  # txtC <- readChar(commentPath, file.info(commentPath)$size)
-  txtC <- as.character(eo_comment[eo_comment$iso2c == iso2c, "Comments"])
-  # txtC <- stri_encode(txtC, '', 'UTF-8')
+  print(paste(k, iso2c, iso3c))
+  txtC <- readChar(commentPath, file.info(commentPath)$size)
+  # txtC <- as.character(eo_comment[eo_comment$iso2c == iso2c, "Comments"])
+  txtC <- stri_encode(txtC, '', 'UTF-8')
   txtC <- symbol_to_HTML(txtC)
 
   # blank lines turn into paragraphs
@@ -155,7 +161,7 @@ for (k in startCountry:endCountry) {
 
   if (numPhotos>0) {
     captions <- df9[df9$iso2c == iso2c,]$Caption
-    attributions <- df9[df9$iso2c == iso2c,]$Attribution
+    attributions <- df9[df9$iso2c == iso2c,]$CreditHTML
     
     IDs <- df9[df9$iso2c == eo$iso2c[k],]$ID
     strIDs <- toString(IDs)
@@ -170,15 +176,15 @@ for (k in startCountry:endCountry) {
 
       # when format unknown, get extension experimentally
       
-      img <- paste0('../photo/', eo[k,1], '_', IDs[ph], '.jpg')
-      imgpath <- paste0('photo/', eo[k,1], '_', IDs[ph], '.jpg')
+      img <- paste0('../w640/', eo[k, 'iso3c'], '_', IDs[ph], '.jpg')
+      imgpath <- paste0('w640/', eo[k, 'iso3c'], '_', IDs[ph], '.jpg')
 
       if (!file.exists(imgpath)) {
-        img <- paste0('../photo/', eo[k,1], '_', IDs[ph], '.png')
-        imgpath <- paste0('photo/', eo[k,1], '_', IDs[ph], '.png')
+        img <- paste0('../w640/', eo[k, 'iso3c'], '_', IDs[ph], '.png')
+        imgpath <- paste0('w640/', eo[k, 'iso3c'], '_', IDs[ph], '.png')
       }
       if (!file.exists(imgpath)) {
-        img <- paste0('../photo/', eo[k,1], '_', IDs[ph], '.svg')
+        img <- paste0('../w640/', eo[k, 'iso3c'], '_', IDs[ph], '.svg')
       }
 
       # fix caption encoding

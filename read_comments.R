@@ -46,4 +46,4 @@ Encoding(eoComment)
 
 if (grepl("’", caption)) {
   #print(paste(country, caption))
-  caption <- gsub("’", "&rsquo;", caption)        
+  caption <- gsub("’", "&rsquo;", caption)
