@@ -5,7 +5,11 @@
 comment/
 img/
 photo/
+photo_bad/
+w640/
+w1024/
 result/
 country/
+country_good_oldphoto/
 flag/
 map_.html
