@@ -1,9 +1,8 @@
-# need make new eo with updated Freq column
-# also need to freshen Comments from googlesheet
-# script fails at row 13 BGD
+# need make new eo with updated Freq column, from df9
+# freshen Comments from googlesheet works with read_comments.R
 # must run extra.R (for indicators)
-# read_comments.R is incomplete
-# folder Comments with text files exists
+
+# folder Comments with text files exists, but not relevant
 
 # HTML country page construction
 # menu will be made from country list
@@ -126,10 +125,11 @@ for (k in startCountry:endCountry) {
   cat('</section> <!-- grid for data ends -->\n', sep='\n', file=out)
 
   # Comment
-  commentPath <- paste0('comment/', iso2c, '.txt')
-  print(paste(k, iso2c, iso3c))
-  txtC <- readChar(commentPath, file.info(commentPath)$size)
-  # txtC <- as.character(eo_comment[eo_comment$iso2c == iso2c, "Comments"])
+  print(paste(k, iso2c, iso3c))  
+  # not using stored Comment, now fresh via readcomment.r
+  # commentPath <- paste0('comment/', iso2c, '.txt')
+  # txtC <- readChar(commentPath, file.info(commentPath)$size)
+  txtC <- as.character(eo_comment[eo_comment$iso2c == iso2c, "Comments"])
   txtC <- stri_encode(txtC, '', 'UTF-8')
   txtC <- symbol_to_HTML(txtC)
 
@@ -177,11 +177,11 @@ for (k in startCountry:endCountry) {
       # when format unknown, get extension experimentally
       
       img <- paste0('../w640/', eo[k, 'iso3c'], '_', IDs[ph], '.jpg')
-      imgpath <- paste0('w640/', eo[k, 'iso3c'], '_', IDs[ph], '.jpg')
+      imgpath <- paste0('../w640/', eo[k, 'iso3c'], '_', IDs[ph], '.jpg')
 
       if (!file.exists(imgpath)) {
         img <- paste0('../w640/', eo[k, 'iso3c'], '_', IDs[ph], '.png')
-        imgpath <- paste0('w640/', eo[k, 'iso3c'], '_', IDs[ph], '.png')
+        imgpath <- paste0('../w640/', eo[k, 'iso3c'], '_', IDs[ph], '.png')
       }
       if (!file.exists(imgpath)) {
         img <- paste0('../w640/', eo[k, 'iso3c'], '_', IDs[ph], '.svg')

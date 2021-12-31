@@ -15,12 +15,12 @@ eoData <- eoData %>%
 
 # column names make shorter
 # finding by old name rather than colnum
-names(eoData)[grepl('2017 Population', names(eoData))] <- 'Population_2017'
-names(eoData)[grepl('2017 Maximum Population', names(eoData))] <- 'SustainPop_2017'
-names(eoData)[grepl('2020 Rank', names(eoData))] <- 'Rank_sustain_2020'
-names(eoData)[grepl('Table 5, accessed Sept 2021', names(eoData))] <- 'Species_threat_2021.2'
-names(eoData)[grepl('SP.POP.GROW', names(eoData))] <- 'Growth_rate_pop_2020'
-names(eoData)[grepl('SP.DYN.CONM.ZS', names(eoData))] <- 'Modern_contraception_2020'
+# names(eoData)[grepl('2017 Population', names(eoData))] <- 'Population_2017'
+# names(eoData)[grepl('2017 Maximum Population', names(eoData))] <- 'SustainPop_2017'
+# names(eoData)[grepl('2020 Rank', names(eoData))] <- 'Rank_sustain_2020'
+# names(eoData)[grepl('Table 5, accessed Sept 2021', names(eoData))] <- 'Species_threat_2021.2'
+# names(eoData)[grepl('SP.POP.GROW', names(eoData))] <- 'Growth_rate_pop_2020'
+# names(eoData)[grepl('SP.DYN.CONM.ZS', names(eoData))] <- 'Modern_contraception_2020'
 names(eoData)[grepl('Actual Comment', names(eoData))] <- 'Comments'
 
 # check country names
@@ -35,11 +35,11 @@ eo_comment <- eoData %>%
 Encoding(eo_comment$Comments) # reveals some unknown, some UTF-8
 
 # testing Madagascar, its UTF-8
-comment <- eo_comment %>% 
-  filter(iso2c == 'MG') %>% 
-  select(Comments)
-
-Encoding(as.character(comment))
+# comment <- eo_comment %>% 
+#   filter(iso2c == 'MG') %>% 
+#   select(Comments)
+# 
+# Encoding(as.character(comment))
 
 eoComment <- stri_encode(eoData$Comments, '', 'UTF-8')
 Encoding(eoComment)
@@ -47,3 +47,4 @@ Encoding(eoComment)
 if (grepl("’", caption)) {
   #print(paste(country, caption))
   caption <- gsub("’", "&rsquo;", caption)
+}
