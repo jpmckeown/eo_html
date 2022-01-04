@@ -20,3 +20,21 @@ description <- c(
 # indicators <- cbind(indicators, description)
 indicators$description <- description
 
+setwd('w640/')
+ff <- list.files(pattern='*.jpeg')
+# ff <- list.files(path='w640/', pattern='*.jpeg')
+nf <- gsub('.jpeg$', '.jpg', ff)
+file.rename(ff, nf)
+
+ff <- list.files(pattern='*.JPG')
+nf <- gsub('.JPG$', '.jpg', ff)
+file.rename(ff, nf)
+
+ff <- list.files(pattern='*.JPEG')
+nf <- gsub('.JPEG$', '.jpg', ff)
+file.rename(ff, nf)
+
+ff <- list.files(pattern='*.PNG')
+
+ff <- list.files(pattern='*.SVG')
+
