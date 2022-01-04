@@ -48,3 +48,5 @@ if (grepl("’", caption)) {
   #print(paste(country, caption))
   caption <- gsub("’", "&rsquo;", caption)
 }
+
+saveRDS(eo_comment, 'data/eo_comment.rds')
