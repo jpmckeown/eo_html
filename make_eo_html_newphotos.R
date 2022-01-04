@@ -11,7 +11,7 @@
 library(tidyverse)
 library(stringi)
 
-df9 <- readRDS('../eo_photo/data/df9.rds')
+df9 <- readRDS('../eo_photo/data/df8.rds')
 eo <- readRDS('../eo_data/data/eo_new.rds')
 eo_comment <- readRDS('data/eo_comment.rds')
 
@@ -83,8 +83,8 @@ symbol_to_HTML <- function(txt) {
 #   return(caption)
 # }
 
-startCountry <- 81 
-endCountry <- 90 #nrow(eo)
+startCountry <- 1 
+endCountry <- nrow(eo)
 
 for (k in startCountry:endCountry) {
   
@@ -112,10 +112,10 @@ for (k in startCountry:endCountry) {
   # Data grid
   cat('<section class="grid">  <!-- data items are 1 row of FlexBox -->\n', sep='\n', file=out)
   for (i in 1:6) {
-    if (i == 6 && is.na(eo[k, i+2])) {
+    if (i == 6 && is.na(eo[k, i+3])) {
       value <- 'N/A'
     } else {
-      value <- eo[k, i+2]
+      value <- eo[k, i+3]
       value <- prettyNum(value, big.mark = ",", scientific = FALSE)
       if (i == 3 || i == 4) {
         value <- paste(value, '%')
@@ -171,15 +171,14 @@ for (k in startCountry:endCountry) {
   # Photo gallery: title, caption, and carousel
   # identify number of images for each country
   numPhotos <- eo$Freq[k]
-  print(paste(k, iso3c, numPhotos)) 
  
   if (numPhotos>0) {
-    captions <- df9[df9$iso2c == iso2c,]$Caption
-    attributions <- df9[df9$iso2c == iso2c,]$CreditHTML
+    captions <- df9[df9$iso3c == iso3c,]$Caption
+    attributions <- df9[df9$iso3c == iso3c,]$CreditHTML
     
     IDs <- df9[df9$iso3c == eo$iso3c[k],]$ID
     strIDs <- toString(IDs)
-    print(paste(iso2c, numPhotos, country, strIDs))
+    print(paste(iso3c, numPhotos, country, strIDs))
     
     cat('<section class="gallery">', sep='\n', file=out)
     cat(paste0('<h4>Photo gallery for ', country, '</h4>'), sep='\n', file=out)
@@ -189,26 +188,29 @@ for (k in startCountry:endCountry) {
     for (ph in seq_along(IDs)) {
 
       # when format unknown, get extension experimentally
+      # harmonised now, lowercase
+      # scropt runs in cwd above country/ folder
       
-      img <- paste0('../w640/', eo[k, 'iso3c'], '_', IDs[ph], '.jpg')
-      imgpath <- paste0('../w640/', eo[k, 'iso3c'], '_', IDs[ph], '.jpg')
+      imgFromScript <- paste0('w640/', eo[k, 'iso3c'], '_', IDs[ph], '.jpg')
+      imgFromHTML <- paste0('../w640/', eo[k, 'iso3c'], '_', IDs[ph], '.jpg')
 
-      if (!file.exists(imgpath)) {
-        img <- paste0('../w640/', eo[k, 'iso3c'], '_', IDs[ph], '.png')
-        imgpath <- paste0('../w640/', eo[k, 'iso3c'], '_', IDs[ph], '.png')
+      if (!file.exists(imgFromScript)) {
+        imgFromScript <- paste0('w640/', eo[k, 'iso3c'], '_', IDs[ph], '.png')
+        imgFromHTML <- paste0('../w640/', eo[k, 'iso3c'], '_', IDs[ph], '.png')
       }
-      if (!file.exists(imgpath)) {
-        img <- paste0('../w640/', eo[k, 'iso3c'], '_', IDs[ph], '.svg')
+      if (!file.exists(imgFromScript)) {
+        imgFromHTML <- paste0('../w640/', eo[k, 'iso3c'], '_', IDs[ph], '.svg')
       }
 
       # fix caption encoding
       caption <- stri_encode(captions[ph], '', 'UTF-8')
       caption <- symbol_to_HTML(caption)
+      print(paste(ph, caption))
       
       # cat('<div class="photo-container">', sep='\n', file=out)
       cat('<div class="Containers">', sep='\n', file=out)
       cat(paste0('<div class="caption">', caption, '</div>'), sep='\n', file=out)
-      cat(paste0('<img src="', img, '">'), sep='\n', file=out)
+      cat(paste0('<img src="', imgFromHTML, '">'), sep='\n', file=out)
       attribution <- symbol_to_HTML(attributions[ph])
       cat(paste0('<div class="attribution">', attribution, '</div>'), sep='\n', file=out)
       cat('</div> <!-- photo -->\n', sep='\n', file=out)
