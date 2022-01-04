@@ -83,8 +83,8 @@ symbol_to_HTML <- function(txt) {
 #   return(caption)
 # }
 
-startCountry <- 1 
-endCountry <- nrow(eo)
+startCountry <- 81 
+endCountry <- 90 #nrow(eo)
 
 for (k in startCountry:endCountry) {
   
@@ -138,7 +138,7 @@ for (k in startCountry:endCountry) {
   cat('</section> <!-- grid for data ends -->\n', sep='\n', file=out)
 
   # Comment
-  print(paste(k, iso2c, iso3c))  
+ 
   # not using stored Comment, now fresh via readcomment.r
   # commentPath <- paste0('comment/', iso2c, '.txt')
   # txtC <- readChar(commentPath, file.info(commentPath)$size)
@@ -171,14 +171,15 @@ for (k in startCountry:endCountry) {
   # Photo gallery: title, caption, and carousel
   # identify number of images for each country
   numPhotos <- eo$Freq[k]
-
+  print(paste(k, iso3c, numPhotos)) 
+ 
   if (numPhotos>0) {
     captions <- df9[df9$iso2c == iso2c,]$Caption
     attributions <- df9[df9$iso2c == iso2c,]$CreditHTML
     
-    IDs <- df9[df9$iso2c == eo$iso2c[k],]$ID
+    IDs <- df9[df9$iso3c == eo$iso3c[k],]$ID
     strIDs <- toString(IDs)
-    #print(paste(iso2c, numPhotos, country, strIDs))
+    print(paste(iso2c, numPhotos, country, strIDs))
     
     cat('<section class="gallery">', sep='\n', file=out)
     cat(paste0('<h4>Photo gallery for ', country, '</h4>'), sep='\n', file=out)
