@@ -17,10 +17,10 @@ header img {
 }
 header p {
   margin-top: 8px;
+  margin-left: 30px;
   color: white;
   font-size: 1em;
   position: relative;
-  left: 40px;
 }
 header p a {
   color: white;
