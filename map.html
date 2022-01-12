@@ -7,8 +7,8 @@
   <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.34.0/mapbox-gl.css' rel='stylesheet' />
 
   <link rel="stylesheet" href="css/normalize.css">
-  <link rel="stylesheet" href="css/styles.css">
-  <link rel="stylesheet" href="css/mapflexbox.css">
+  <link rel="stylesheet" href="css/styles.css?version=2">
+  <link rel="stylesheet" href="css/mapflexbox.css?version=2">
   <link rel="stylesheet" href="css/dropdown_w3c.css">
   <style>
     html, body, main { height: 100%; width: 100%; margin:0; padding:0; position: relative; }
@@ -17,13 +17,21 @@
     footer p { max-width: 100%; }
     .lowline {padding-bottom: 8px; } 
     header img { padding-top: 7px; padding-bottom: 4px; }
+    header p { padding-top: 7px; }
 </style>
 <!-- Adapted from https://stackoverflow.com/questions/42919381/world-map-that-links-to-url-when-click-on-country-specific-layer -->
 </head>
 <body>
 <main class="flex-container world">
-  <header><img src='img/EarthOvershoot-Logo.png' alt='Logo'>
+
+  <header>
+    <a href='https://earthovershoot.org'><img src='img/EarthOvershoot-Logo.png' alt='Logo'></a>
+    <p><a href='https://earthovershoot.org'>Home</a></p>
+    <p>Back to Map</p>
+    <p><a id='mapLink' href='about.html'>About the Map</a></p>
   </header>
+  <!-- <header><img src='img/EarthOvershoot-Logo.png' alt='Logo'>
+  </header> -->
 
  <nav class="continent">
     <div class="dropdown">

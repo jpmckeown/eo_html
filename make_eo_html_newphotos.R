@@ -116,10 +116,22 @@ for (k in startCountry:endCountry) {
       value <- 'N/A'
     } else {
       value <- eo[k, i+3]
-      value <- prettyNum(value, big.mark = ",", scientific = FALSE)
-      if (i == 3 || i == 4) {
-        value <- paste(value, '%')
-      }      
+      if(is.na(value)) {
+        value <- 'N/A'
+      } else {
+
+        if (i == 3 || i == 4) {
+          if (i==3) {
+            value = format(round(value, 3), nsmall = 3)
+          }
+          if (i==4) {
+            value = format(round(value, 1), nsmall = 1)
+          }
+          value <- paste(as.character(value), '%')
+        } else {
+          value <- prettyNum(value, big.mark = ",", scientific = FALSE)
+        }           
+      }
     }
 
     codeLabel <- as.character(indicators[i, 1])
@@ -236,3 +248,5 @@ for (k in startCountry:endCountry) {
   close(out)
   file.append(page, 'fragment/end.htm')
 }
+
+saveRDS(df9, 'data/df9.rds')
