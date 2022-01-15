@@ -113,32 +113,51 @@ for (k in startCountry:endCountry) {
   cat('<section class="grid">  <!-- data items are 1 row of FlexBox -->\n', sep='\n', file=out)
   
   fields <- indicators$name[1:6]
-  for (i in fields) { 
-    if (i == 6 && is.na(eo[k, i+3])) {
+  
+  for (f in fields) {
+    print(eo[k, f])
+    
+    value <- eo[k, f]
+    if (is.na(value)) {
       value <- 'N/A'
     } else {
-      value <- eo[k, i+3]
-      if(is.na(value)) {
-        value <- 'N/A'
+      if (f == 'Growth_rate_pop_2020') {
+        value = format(round(value, 1), nsmall = 2)
+        value <- paste(as.character(value), '%')
+      } 
+      else if (f == 'Modern_contraception_2020') {        
+        value = format(round(value, 3), nsmall = 1)
+        value <- paste(as.character(value), '%')
       } else {
-
-        if (i == 3 || i == 4) {
-          if (i==3) {
-            value = format(round(value, 3), nsmall = 2)
-          }
-          if (i==4) {
-            value = format(round(value, 1), nsmall = 1)
-          }
-          value <- paste(as.character(value), '%')
-        } else {
-          value <- prettyNum(value, big.mark = ",", scientific = FALSE)
-        }           
+        value <- prettyNum(value, big.mark = ",", scientific = FALSE)
       }
     }
+      
+    # if (i == 6 && is.na(eo[k, i+3])) {
+    #   value <- 'N/A'
+    # } else {
+    #   value <- eo[k, i+3]
+    #   if(is.na(value)) {
+    #     value <- 'N/A'
+    #   } else {
+    # 
+    #     if (i == 3 || i == 4) {
+    #       if (i==3) {
+    #         value = format(round(value, 3), nsmall = 2)
+    #       }
+    #       if (i==4) {
+    #         value = format(round(value, 1), nsmall = 1)
+    #       }
+    #       value <- paste(as.character(value), '%')
+    #     } else {
+    #       value <- prettyNum(value, big.mark = ",", scientific = FALSE)
+    #     }           
+    #   }
+    }
 
-    codeLabel <- as.character(indicators[i, 1])
-    longLabel <- as.character(indicators[i, 2])
-    popup <-  as.character(indicators[i, 3])
+    codeLabel <- as.character(indicators[f, 1])
+    longLabel <- as.character(indicators[f, 2])
+    popup <-  as.character(indicators[f, 3])
 
     cat(paste0('<div class="cell ', codeLabel, '">'), sep='\n', file=out)
     cat(paste0('  <h3>', value, '</h3>'), sep='\n', file=out)
