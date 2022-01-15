@@ -89,7 +89,6 @@
         <a href='country/TGO.html'>Togo</a>
         <a href='country/TUN.html'>Tunisia</a>
         <a href='country/UGA.html'>Uganda</a>
-        <a href='country/ESH.html'>Western Sahara</a>
         <a href='country/ZMB.html'>Zambia</a>
         <a href='country/ZWE.html'>Zimbabwe</a>
       </div>
@@ -340,6 +339,7 @@ map.on('load', function () {
         if (features.length) {
           // iso3c = features[0].properties.adm0_a3_is;
           iso3c = features[0].properties.ISO_A3;
+
           if (iso3c == 'GRL' || iso3c == 'FRO') {
            iso3c = 'DNK';
           }
@@ -372,7 +372,7 @@ map.on('load', function () {
           if (iso3c == 'KSV') {  
             iso3c = 'SRB';
           }
-          if (iso3c != 'PSE' && iso3c != 'VUT' && iso3c != 'WSM' && iso3c != 'FSM' && iso3c != 'KIR'  && iso3c != 'TON' && iso3c != 'MHL' && iso3c != 'NRU' && iso3c != 'TUV' && iso3c != 'PLW' && iso3c != 'ATA' && iso3c != 'SPR' && iso3c != 'AND' && iso3c != 'SMR' && iso3c != 'VAT') {
+          if (iso3c != 'PSE' && iso3c != 'VUT' && iso3c != 'WSM' && iso3c != 'FSM' && iso3c != 'KIR'  && iso3c != 'TON' && iso3c != 'MHL' && iso3c != 'NRU' && iso3c != 'TUV' && iso3c != 'PLW' && iso3c != 'ATA' && iso3c != 'SPR' && iso3c != 'AND' && iso3c != 'SMR' && iso3c != 'VAT' && iso3c != 'ESH') {
             window.location = 'country/' + iso3c + '.html'          
           }
         }
