@@ -18,10 +18,10 @@ eo_comment <- readRDS('data/eo_comment.rds')
 indicators <- read_csv("data/indicators.csv")
 description <- c(
   "Population in 2017, Global Footprint Network.", 
-  "Maximum sustainable population based on the country's 2017 natural resource availability and economic activity.", 
-  "A positive % means population is increasing; negative means population is decreasing.", 
   "Estimated modern contraceptive use among women 15-49 years old.\nPoor 0-20%\nBelow Average 20-40%\nAverage 40-60%\nAbove Average 60-80%\nExcellent 80-100%", 
   "Number of species critically endangered, endangered, or vulnerable. IUCN Red List of Threatened Species.", 
+  "Maximum sustainable population based on the country's 2017 natural resource availability and economic activity.", 
+  "A positive % means population is increasing; negative means population is decreasing.", 
   "A = Excellent\nB = Above Average\nC = Average\nD = Below Average\nF = Poor", 
   "Comments by Earth Overshoot"
 )
@@ -112,10 +112,11 @@ for (k in startCountry:endCountry) {
   # Data grid
   cat('<section class="grid">  <!-- data items are 1 row of FlexBox -->\n', sep='\n', file=out)
   
-  fields <- indicators$name[1:6]
-  
-  for (f in fields) {
-    print(eo[k, f])
+  #fields <- indicators$name[1:6]
+  seq_data <- c(1,5,3,4,2,6)
+  for (i in seq_data) {
+    #print(eo[k, f])
+    f <- indicators$name[i]
     
     value <- eo[k, f]
     if (is.na(value)) {
@@ -132,32 +133,11 @@ for (k in startCountry:endCountry) {
         value <- prettyNum(value, big.mark = ",", scientific = FALSE)
       }
     }
-      
-    # if (i == 6 && is.na(eo[k, i+3])) {
-    #   value <- 'N/A'
-    # } else {
-    #   value <- eo[k, i+3]
-    #   if(is.na(value)) {
-    #     value <- 'N/A'
-    #   } else {
-    # 
-    #     if (i == 3 || i == 4) {
-    #       if (i==3) {
-    #         value = format(round(value, 3), nsmall = 2)
-    #       }
-    #       if (i==4) {
-    #         value = format(round(value, 1), nsmall = 1)
-    #       }
-    #       value <- paste(as.character(value), '%')
-    #     } else {
-    #       value <- prettyNum(value, big.mark = ",", scientific = FALSE)
-    #     }           
-    #   }
-    }
 
-    codeLabel <- as.character(indicators[f, 1])
-    longLabel <- as.character(indicators[f, 2])
-    popup <-  as.character(indicators[f, 3])
+    codeLabel <- f #as.character(indicators[f, 1])
+    longLabel <- as.character(indicators[i, 2])
+    popup <-  as.character(indicators[i, 3])
+print(paste(codeLabel, longLabel, popup))
 
     cat(paste0('<div class="cell ', codeLabel, '">'), sep='\n', file=out)
     cat(paste0('  <h3>', value, '</h3>'), sep='\n', file=out)
