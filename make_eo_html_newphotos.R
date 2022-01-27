@@ -11,9 +11,12 @@
 library(tidyverse)
 library(stringi)
 
-df9 <- readRDS('../eo_photo/data/df8.rds')
-eo <- readRDS('../eo_data/data/eo_new.rds')
-eo_comment <- readRDS('data/eo_comment.rds')
+#saveRDS(df9, 'data/df9.rds')
+#saveRDS(eo, '../eo_data/data/eo_Jan2022.rds')
+#saveRDS(eo_comment, 'data/eoComment.rds')
+#df9 <- readRDS('../eo_photo/data/df8.rds')
+#eo <- readRDS('../eo_data/data/eo_Jan2022.rds')
+eo_comment <- readRDS('data/eoComment.rds')
 
 indicators <- read_csv("data/indicators.csv")
 description <- c(
@@ -67,6 +70,18 @@ symbol_to_HTML <- function(txt) {
   if (grepl('ã', txt)) {
     txt <- gsub("ã", "&atilde;", txt)        
   }
+  if (grepl('ç', txt)) {
+    txt <- gsub("ç", "&ccedil;", txt)      
+  }
+  if (grepl('á', txt)) {
+    txt <- gsub("á", "&aacute;", txt)        
+  }
+  if (grepl('à', txt)) {
+    txt <- gsub("à", "&agrave;", txt)        
+  }
+  if (grepl('©', txt)) {
+    txt <- gsub("©", "&copy;", txt)        
+  }
   return(txt)
 }
 
@@ -113,7 +128,8 @@ for (k in startCountry:endCountry) {
   cat('<section class="grid">  <!-- data items are 1 row of FlexBox -->\n', sep='\n', file=out)
   
   #fields <- indicators$name[1:6]
-  seq_data <- c(1,5,3,4,2,6)
+  #seq_data <- c(1,5,3,4,2,6)
+  seq_data <- c(1,2,3,4,5,6)
   for (i in seq_data) {
     #print(eo[k, f])
     f <- indicators$name[i]
