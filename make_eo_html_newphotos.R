@@ -194,7 +194,7 @@ print(paste(codeLabel, longLabel, popup))
   # txtD <- gsub("[<p>]{2,}", "<p>", txtD) # likely redundant
 
   cat('<section class="comment">', sep='\n', file=out)
-  cat('<h4>Comments on country</h4>', sep='\n', file=out)
+  cat('<h4>Country Comments</h4>', sep='\n', file=out)
   cat(paste0(txtD, '\n</section> <!-- Comment ends -->\n'), sep='\n', file=out)
   
   # Photo gallery: title, caption, and carousel
@@ -210,7 +210,7 @@ print(paste(codeLabel, longLabel, popup))
     print(paste(iso3c, numPhotos, country, strIDs))
     
     cat('<section class="gallery">', sep='\n', file=out)
-    cat(paste0('<h4>Photo gallery for ', country, '</h4>'), sep='\n', file=out)
+    cat('<h4>Photo Gallery</h4>', sep='\n', file=out)
     
     cat('<div class="slideshow-container fade">\n', sep='\n', file=out)
   

@@ -13,19 +13,20 @@
 }
 
 header {
-  background-color: #517A00;
+  background-color: #012943;
   margin: 0px;
   padding: 0px;
   order: 1;
-  display: flex;
-  flex-direction: row;
+  /* border: 1px solid red; */
 }
 nav {
+  background-color: #012943;
   min-height: 30px;
   /* max-height: 40px; this makes dropdown vanish because it is part of nav */
   padding-left: 0;
   margin-left: 0;
   order: 2;
+  /* border: 1px solid red; */
 } 
 .country {
   order: 4;

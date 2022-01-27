@@ -12,10 +12,7 @@ html, body {
   background: #ddd;
 }
 
-header img {
-  margin-left: 8px;
-  float: left;
-}
+
 header p {
   margin-top: 8px;
   margin-left: 30px;
@@ -68,9 +65,17 @@ h4 {
 section.gallery {
   margin-bottom: 18px;
 }
+
+footer img {
+  margin-top: 3px;
+  /* border: 1px solid red; */
+}
 footer p {
   font-size: 0.9em;
   max-width: 900px;
+  /* border: 1px solid red; */
+  margin-top: 0.1em;
+  margin-bottom: 1em;
 }
 footer p.lowline {
   font-size: 0.7em;
