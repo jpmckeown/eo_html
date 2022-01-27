@@ -11,14 +11,14 @@ margin-top: 5px;
 }
 
 .cell {
-  padding: 16px;
-  border-radius: 20px;
-  background: linear-gradient(to bottom right, orange, white);
-  height: 125px;
+  padding: 12px;
+  border-radius: 16px;
+  color: white;
+  background: #012943;
+  /* background: linear-gradient(to bottom right, orange, white); */
+  height: 115px;
 }
-/* .cell h2,h3 {
-  margin-left: 15px;
-} */
+
 .cell h2 {
   margin-top: 0px;
   font-size: 1em;
