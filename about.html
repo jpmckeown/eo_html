@@ -4,23 +4,30 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css/normalize.css">
-  <link rel="stylesheet" href="css/styles.css?version=2">
-  <link rel="stylesheet" href="css/flexbox.css?version=2">
-  <link rel="stylesheet" href="css/grid.css?version=3">
-  <link rel="stylesheet" href="css/dropdown_w3c.css?version=2">
+  <link rel="stylesheet" href="css/styles.css?version=4">
+  <link rel="stylesheet" href="css/flexbox.css?version=4">
+  <link rel="stylesheet" href="css/grid.css?version=4">
+  <link rel="stylesheet" href="css/dropdown_w3c.css?version=3">
   <link rel="stylesheet" href="css/carousel_kan.css?version=2">
-  <link rel="stylesheet" href="css/tooltip.css?version=2">
+  <link rel="stylesheet" href="css/tooltip.css?version=3">
+  <link rel="stylesheet" href="css/header.css">
   <script src="https://kit.fontawesome.com/59089560fc.js" crossorigin="anonymous"></script>
 </head>
 <body>
 <main class="flex-container">
 
 <header>
-  <a href='https://earthovershoot.org'><img src='img/EarthOvershoot-Logo.png' alt='Logo'></a>
-  <p><a href='https://earthovershoot.org'>Home</a></p>
-  <p><a id='mapLink' href='map.html'>Back to Map</a></p>
-  <!-- <p><a id='mapLink' href='about.html'>About the Map</a></p> -->
+  <figure>
+    <img src='img/EarthOvershoot-Logo.png' alt='Logo'>
+    <figcaption>Sustainable Country Map</figcaption>
+  </figure>
+  <ul>
+    <li>About the Map</li>
+    <li><a id='mapLink' href='map.html'>Back to Map</a></li>
+    <li><a href='https://earthovershoot.org'>Home</a></li>
+</ul>
 </header>
+
 
 <nav class="continent">
   <div class="dropdown">
@@ -263,19 +270,20 @@
 <p>Country comments highlight additional  details about a country’s environmental challenges,standard of living, human development indicators, and population trends affected by fertility and migration. The comments share insight on whether a country has or is working toward certain fundamental practices and policies that improve human health and protect the natural environment, and place the country on a secure and stable path toward long-term sustainability.</p> 
 </section>
   
-  <footer>
-    <p>Earth Overshoot<br />
-    P.O. Box 202<br />
-    Ardmore, PA 19003<br />
-    (610) 420-5989  Phone<br />
-    <a href="mailto:info@earthovershoot.org">Contact</a></p>
-    <p class="lowline">&copy; EarthOvershoot 2021
-    &nbsp;&nbsp;
-    <a href="https://www.earthovershoot.org/#privacy-policy">Privacy Policy</a>
-    &nbsp;&nbsp;
-    <a href="https://www.earthovershoot.org/#terms-conditions">Terms &amp; Conditions</a></p>
-  </footer>
-  
+<footer>
+  <a href='https://earthovershoot.org'><img src='img/EarthOvershoot-Logo.png' alt='Logo'></a>
+  <p>P.O. Box 202<br />
+  Ardmore, PA 19003<br />
+  (610) 420-5989  Phone<br />
+  <a href="mailto:info@earthovershoot.org">Contact</a></p>
+  <p class="lowline">&copy; EarthOvershoot 2021
+  &nbsp;&nbsp;
+  <a href="https://www.earthovershoot.org/#privacy-policy">Privacy Policy</a>
+  &nbsp;&nbsp;
+  <a href="https://www.earthovershoot.org/#terms-conditions">Terms &amp; Conditions</a></p>
+</footer>
+
+<script src="js/carousel_kan.js"></script>
 </main>
 </body>
 </html>

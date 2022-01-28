@@ -11,7 +11,8 @@ margin-top: 5px;
 }
 
 .cell {
-  padding: 12px;
+  padding: 10px;
+  padding-left: 10px;
   border-radius: 16px;
   color: white;
   background: #012943;
@@ -22,7 +23,8 @@ margin-top: 5px;
 .cell h2 {
   margin-top: 0px;
   font-size: 1em;
-  color: #222;
+  /* color: #222; */
+  color: white;
   float: left;
 }
 .cell h3 {

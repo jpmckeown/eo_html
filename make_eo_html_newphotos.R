@@ -139,11 +139,11 @@ for (k in startCountry:endCountry) {
       value <- 'N/A'
     } else {
       if (f == 'Growth_rate_pop_2020') {
-        value = format(round(value, 1), nsmall = 2)
+        value = format(round(value, 2), nsmall = 2)
         value <- paste(as.character(value), '%')
       } 
       else if (f == 'Modern_contraception_2020') {        
-        value = format(round(value, 3), nsmall = 1)
+        value = format(round(value, 1), nsmall = 1)
         value <- paste(as.character(value), '%')
       } else {
         value <- prettyNum(value, big.mark = ",", scientific = FALSE)
@@ -158,7 +158,7 @@ print(paste(codeLabel, longLabel, popup))
     cat(paste0('<div class="cell ', codeLabel, '">'), sep='\n', file=out)
     cat(paste0('  <h3>', value, '</h3>'), sep='\n', file=out)
  
-    cat(paste0('<div data-tooltip data-tooltip-label="', popup, '"><h2<a id="', codeLabel, '_" href="#">', longLabel, '</a></h2><span class="icon" id="', codeLabel, '"><i class="fas fa-plus-circle"></i></h2></div>'), sep='\n', file=out)
+    cat(paste0('<div data-tooltip data-tooltip-label="', popup, '"><h2>', longLabel, '</h2><span class="icon" id="', codeLabel, '"><i class="fas fa-plus-circle"></i></h2></div>'), sep='\n', file=out)
 
     cat('</div>  <!-- cell ends -->\n', sep='\n', file=out)
     

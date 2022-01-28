@@ -10,12 +10,14 @@
   <link rel="stylesheet" href="css/styles.css?version=2">
   <link rel="stylesheet" href="css/mapflexbox.css?version=2">
   <link rel="stylesheet" href="css/dropdown_w3c.css">
+  <link rel="stylesheet" href="css/header.css">
   <style>
     html, body, main { height: 100%; width: 100%; margin:0; padding:0; position: relative; }
     #map { position: relative; height: 100%; order: 8; margin: 0; padding: 0; }
     footer { margin: 0px;  position: relative; top: -40px; }
     footer p { max-width: 100%; }
     .lowline {padding-bottom: 8px; } 
+    header { background-color: #012943;}
     header img { padding-top: 7px; padding-bottom: 4px; }
     header p { padding-top: 7px; }
 </style>
@@ -24,14 +26,17 @@
 <body>
 <main class="flex-container world">
 
-  <header>
-    <a href='https://earthovershoot.org'><img src='img/EarthOvershoot-Logo.png' alt='Logo'></a>
-    <p><a href='https://earthovershoot.org'>Home</a></p>
-    <p>Back to Map</p>
-    <p><a id='mapLink' href='about.html'>About the Map</a></p>
-  </header>
-  <!-- <header><img src='img/EarthOvershoot-Logo.png' alt='Logo'>
-  </header> -->
+<header>
+  <figure>
+    <img src='img/EarthOvershoot-Logo.png' alt='Logo'>
+    <figcaption>Sustainable Country Map</figcaption>
+  </figure>
+  <ul>
+    <li><a id='mapLink' href='about.html'>About the Map</a></li>
+    <li>Back to Map</li>
+    <li><a href='https://earthovershoot.org'>Home</a></li>
+</ul>
+</header>
 
  <nav class="continent">
     <div class="dropdown">
@@ -251,8 +256,8 @@
 </main>
 
 <footer>
-  <p>Earth Overshoot<br />
-  P.O. Box 202<br />
+  <a href='https://earthovershoot.org'><img src='img/EarthOvershoot-Logo.png' alt='Logo'></a>
+  <p>P.O. Box 202<br />
   Ardmore, PA 19003<br />
   (610) 420-5989  Phone<br />
   <a href="mailto:info@earthovershoot.org">Contact</a></p>
@@ -262,6 +267,8 @@
   &nbsp;&nbsp;
   <a href="https://www.earthovershoot.org/#terms-conditions">Terms &amp; Conditions</a></p>
 </footer>
+
+<script src="../js/carousel_kan.js"></script>
 
 <script>
 mapboxgl.accessToken = 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw';
