@@ -1,8 +1,9 @@
 name, label
-Population_2017, Population in 2017
+Population_2017, Population
 Modern_contraception_2020, Contraception Use
 Species_threat_2021_2, Species Threatened
 SustainPop_2017, Sustainable Population
-Growth_rate_pop_2020, Annual Population Growth
+Growth_rate_pop_2020, Population Growth
+GDP_pp_2020, GDP Per Capita
 Rank_sustain_2020, Ranking for Sustainability
 Comments, Country Comments
