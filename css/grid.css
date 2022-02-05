@@ -1,7 +1,7 @@
 .grid {
   flex: 1; /* fills the remaining part of the viewport below header */
   display: grid;
-  max-width: 950px;
+  max-width: 960px;
   grid-template-columns: repeat(auto-fit, minmax(270px, 270px));
 /*   grid-template: 1fr 1fr / 1fr 1fr; */
   grid-gap: 15px;
@@ -22,7 +22,7 @@ margin-top: 5px;
 
 .cell h2 {
   margin-top: 0px;
-  font-size: 1em;
+  font-size: 1.15em;
   /* color: #222; */
   color: white;
   float: left;
@@ -41,6 +41,7 @@ margin-top: 5px;
   float: right;
   text-align: right;
   padding-right: 8px;
+  padding-left: 4px;
 }
 .cell h2 a {
   margin-left: 12px;

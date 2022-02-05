@@ -16,12 +16,12 @@ library(stringi)
 #saveRDS(eo_comment, 'data/eoComment.rds')
 #df9 <- readRDS('../eo_photo/data/df8.rds')
 eo <- readRDS('../eo_data/data/eo_Feb2022.rds')
-eo_comment <- readRDS('data/eoComment_Feb2022.rds')
+eo_comment <- readRDS('data/eo_comment_Feb2022.rds')
 
 indicators <- read_csv("data/indicators.csv")
 description <- c(
   "Population total in 2017, Global Footprint Network.", 
-  "Modern methods of contraception estimated prevalence among women 15-49 years old.\nPoor 0-20%\nBelow Average 20-40%\nAverage 40-60%\nAbove Average 60-80%\nExcellent 80-100%", 
+  "Estimated prevalence of contraception (modern methods) among women 15-49 years old.\nPoor 0-20%\nBelow Average 20-40%\nAverage 40-60%\nAbove Average 60-80%\nExcellent 80-100%", 
   "Number of species critically endangered, endangered, or vulnerable. IUCN Red List of Threatened Species.", 
   "Maximum sustainable population based on the country's 2017 natural resource availability and economic activity.", 
   "Annual rate: a positive % means population is increasing; negative means population is decreasing.", 
@@ -30,74 +30,6 @@ description <- c(
   "Comments by Earth Overshoot"
 )
 indicators$description <- description
-
-symbol_to_HTML <- function(txt) {
-  if (grepl("’", txt)) {
-    txt <- gsub("’", "&rsquo;", txt)        
-  }
-  if (grepl('“', txt)) {
-    txt <- gsub("“", "&ldquo;", txt)        
-  }
-  if (grepl('”', txt)) {
-    txt <- gsub("”", "&rdquo;", txt)        
-  }
-  if (grepl('½', txt)) {
-    txt <- gsub("½", "&frac12;", txt)        
-  }
-  if (grepl('–', txt)) {
-    txt <- gsub("–", "&ndash;", txt)        
-  }
-  if (grepl('—', txt)) {
-    txt <- gsub("—", "&mdash;", txt)        
-  }
-  if (grepl('‘', txt)) {
-    txt <- gsub("‘", "&lsquo;", txt)        
-  }
-  if (grepl('ô', txt)) {
-    txt <- gsub("ô", "&ocirc;", txt)        
-  }
-  if (grepl('ê', txt)) {
-    txt <- gsub("ê", "&ecirc;", txt)        
-  }
-  if (grepl('é', txt)) {
-    txt <- gsub("é", "&eacute;", txt)        
-  }
-  if (grepl('è', txt)) {
-    txt <- gsub("è", "&egrave;", txt)        
-  }
-  if (grepl('í', txt)) {
-    txt <- gsub("í", "&iacute;", txt)        
-  }
-  if (grepl('ã', txt)) {
-    txt <- gsub("ã", "&atilde;", txt)        
-  }
-  if (grepl('ç', txt)) {
-    txt <- gsub("ç", "&ccedil;", txt)      
-  }
-  if (grepl('á', txt)) {
-    txt <- gsub("á", "&aacute;", txt)        
-  }
-  if (grepl('à', txt)) {
-    txt <- gsub("à", "&agrave;", txt)        
-  }
-  if (grepl('©', txt)) {
-    txt <- gsub("©", "&copy;", txt)        
-  }
-  return(txt)
-}
-
-# not here, was cleaned earlier when making imgdata
-# cleanCaption <- function(line) {
-#   caption <- sub('#', '', line)
-#   caption <- capitalize(caption)
-#   # remove trailing spaces
-#   caption <- trimws(caption, which = "right", whitespace = "[ \t\r\n]")
-#   # add final period if missing
-#   if (!str_sub(caption, -1) == '.') {
-#     caption <- paste0(caption, '.')
-#   }
-#   return(caption)
-# }
 
 startCountry <- 1 
 endCountry <- nrow(eo)
@@ -125,10 +57,14 @@ for (k in startCountry:endCountry) {
   cat('<section class="flag">', sep='', file=out)
   cat(paste0('<img src="../flag/', lowiso2c, '.svg" height="120">'), sep='\n', file=out)
   
-  rank <- eo[1, 'Rank_sustain_2020']
+  rank <- eo[k, 'Rank_sustain_2020']
   cat(paste0('<div class="rating-', rank, '">'), sep='\n', file=out)
   cat(paste0('<h3>', rank, '</h3>'), sep='\n', file=out)
-  cat('<h2>Ranking for Sustainability</h2>', sep='\n', file=out)
+  cat('<h2 data-tooltip data-tooltip-label="A = Excellent', sep='\n', file=out)
+cat('B = Above Average', sep='\n', file=out)
+cat('C = Average', sep='\n', file=out)
+cat('D = Below Average', sep='\n', file=out)
+cat('F = Poor">Ranking for Sustainability</h2>', sep='\n', file=out)
   cat('<i class="fas fa-plus-circle"></i>', sep='\n', file=out)
   cat('</div></section>\n', sep='\n', file=out)
   
@@ -280,5 +216,73 @@ print(paste(codeLabel, longLabel, popup))
   close(out)
   file.append(page, 'fragment/end.htm')
 }
+
+symbol_to_HTML <- function(txt) {
+  if (grepl("’", txt)) {
+    txt <- gsub("’", "&rsquo;", txt)        
+  }
+  if (grepl('“', txt)) {
+    txt <- gsub("“", "&ldquo;", txt)        
+  }
+  if (grepl('”', txt)) {
+    txt <- gsub("”", "&rdquo;", txt)        
+  }
+  if (grepl('½', txt)) {
+    txt <- gsub("½", "&frac12;", txt)        
+  }
+  if (grepl('–', txt)) {
+    txt <- gsub("–", "&ndash;", txt)        
+  }
+  if (grepl('—', txt)) {
+    txt <- gsub("—", "&mdash;", txt)        
+  }
+  if (grepl('‘', txt)) {
+    txt <- gsub("‘", "&lsquo;", txt)        
+  }
+  if (grepl('ô', txt)) {
+    txt <- gsub("ô", "&ocirc;", txt)        
+  }
+  if (grepl('ê', txt)) {
+    txt <- gsub("ê", "&ecirc;", txt)        
+  }
+  if (grepl('é', txt)) {
+    txt <- gsub("é", "&eacute;", txt)        
+  }
+  if (grepl('è', txt)) {
+    txt <- gsub("è", "&egrave;", txt)        
+  }
+  if (grepl('í', txt)) {
+    txt <- gsub("í", "&iacute;", txt)        
+  }
+  if (grepl('ã', txt)) {
+    txt <- gsub("ã", "&atilde;", txt)        
+  }
+  if (grepl('ç', txt)) {
+    txt <- gsub("ç", "&ccedil;", txt)      
+  }
+  if (grepl('á', txt)) {
+    txt <- gsub("á", "&aacute;", txt)        
+  }
+  if (grepl('à', txt)) {
+    txt <- gsub("à", "&agrave;", txt)        
+  }
+  if (grepl('©', txt)) {
+    txt <- gsub("©", "&copy;", txt)        
+  }
+  return(txt)
+}
+
+# not here, was cleaned earlier when making imgdata
+# cleanCaption <- function(line) {
+#   caption <- sub('#', '', line)
+#   caption <- capitalize(caption)
+#   # remove trailing spaces
+#   caption <- trimws(caption, which = "right", whitespace = "[ \t\r\n]")
+#   # add final period if missing
+#   if (!str_sub(caption, -1) == '.') {
+#     caption <- paste0(caption, '.')
+#   }
+#   return(caption)
+# }
 
 #saveRDS(df9, 'data/df9.rds')
