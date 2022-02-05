@@ -123,10 +123,18 @@ for (k in startCountry:endCountry) {
   
   # Flag
   cat('<section class="flag">', sep='', file=out)
-  cat(paste0('<img src="../flag/', lowiso2c, '.svg" height="120"></section>\n'), sep='\n', file=out)
+  cat(paste0('<img src="../flag/', lowiso2c, '.svg" height="120">'), sep='\n', file=out)
+  
+  rank <- eo[1, 'Rank_sustain_2020']
+  cat(paste0('<div class="rating-', rank, '">'), sep='\n', file=out)
+  cat(paste0('<h3>', rank, '</h3>'), sep='\n', file=out)
+  cat('<h2>Ranking for Sustainability</h2>', sep='\n', file=out)
+  cat('<i class="fas fa-plus-circle"></i>', sep='\n', file=out)
+  cat('</div></section>\n', sep='\n', file=out)
   
   # Data grid
-  cat('<section class="grid">  <!-- data items are 1 row of FlexBox -->\n', sep='\n', file=out)
+  cat('<!-- data items are 1 row of FlexBox -->\n', sep='\n', file=out)
+  cat('<section class="grid">', sep='\n', file=out)
   
   #fields <- indicators$name[1:6]
   #seq_data <- c(1,5,3,4,2,6)
@@ -164,7 +172,8 @@ print(paste(codeLabel, longLabel, popup))
     cat(paste0('<div class="cell ', codeLabel, '">'), sep='\n', file=out)
     cat(paste0('  <h3>', value, '</h3>'), sep='\n', file=out)
  
-    cat(paste0('<div data-tooltip data-tooltip-label="', popup, '"><h2>', longLabel, '</h2><span class="icon" id="', codeLabel, '"><i class="fas fa-plus-circle"></i></h2></div>'), sep='\n', file=out)
+    cat(paste0('<div data-tooltip data-tooltip-label="', popup, '">'),  sep='\n', file=out)
+    cat(paste0('<h2>', longLabel, '</h2><i class="fas fa-plus-circle"></i></div>'), sep='\n', file=out)
 
     cat('</div>  <!-- cell ends -->\n', sep='\n', file=out)
     
