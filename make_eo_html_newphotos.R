@@ -15,17 +15,17 @@ library(stringi)
 #saveRDS(eo, '../eo_data/data/eo_Jan2022.rds')
 #saveRDS(eo_comment, 'data/eoComment.rds')
 #df9 <- readRDS('../eo_photo/data/df8.rds')
-#eo <- readRDS('../eo_data/data/eo_Jan2022.rds')
-eo_comment <- readRDS('data/eoComment.rds')
+eo <- readRDS('../eo_data/data/eo_Feb2022.rds')
+eo_comment <- readRDS('data/eoComment_Feb2022.rds')
 
 indicators <- read_csv("data/indicators.csv")
 description <- c(
-  "Population in 2017, Global Footprint Network.", 
-  "Estimated modern contraceptive use among women 15-49 years old.\nPoor 0-20%\nBelow Average 20-40%\nAverage 40-60%\nAbove Average 60-80%\nExcellent 80-100%", 
+  "Population total in 2017, Global Footprint Network.", 
+  "Modern methods of contraception estimated prevalence among women 15-49 years old.\nPoor 0-20%\nBelow Average 20-40%\nAverage 40-60%\nAbove Average 60-80%\nExcellent 80-100%", 
   "Number of species critically endangered, endangered, or vulnerable. IUCN Red List of Threatened Species.", 
   "Maximum sustainable population based on the country's 2017 natural resource availability and economic activity.", 
   "Annual rate: a positive % means population is increasing; negative means population is decreasing.", 
-  "Per Capita GDP in U.S. Dollars. A high figure indicates high consumption of resources per person. A low figure indicates low consumption of resources per person.", 
+  "Annual Per Capita GDP in U.S. Dollars. A high figure indicates high consumption of resources per person. A low figure indicates low consumption of resources per person.", 
   "A = Excellent\nB = Above Average\nC = Average\nD = Below Average\nF = Poor", 
   "Comments by Earth Overshoot"
 )
@@ -146,7 +146,12 @@ for (k in startCountry:endCountry) {
       else if (f == 'Modern_contraception_2020') {        
         value = format(round(value, 1), nsmall = 1)
         value <- paste(as.character(value), '%')
-      } else {
+      } 
+      else if (f == 'GDP_pp_2020') {        
+        value = format(round(value, 0), nsmall = 0)
+        value <- paste('$', as.character(value))
+      } 
+      else {
         value <- prettyNum(value, big.mark = ",", scientific = FALSE)
       }
     }
