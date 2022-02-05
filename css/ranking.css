@@ -1,0 +1,55 @@
+section.flag {
+  display: flex;
+  flex-direction: row;
+  /* justify-content: space-between; */
+  align-content: flex-start;
+  align-items: flex-start;
+}
+section.flag div {
+  margin-left: 4em;
+  margin-top: 0.4em;
+  border-radius: 16px;
+}
+section.flag div i.fas {
+  margin-right: 12px;
+}
+
+section.flag div.rating-A {
+  background-color: green;
+  color: white;
+}
+section.flag div.rating-B {
+  background-color: #b0d334;
+  color: black;
+}
+section.flag div.rating-C {
+  background-color: yellow;
+  color: #444;
+}
+section.flag div.rating-D {
+  background-color: #fab733;
+  color: black;
+}
+section.flag div.rating-E {
+  background-color: #ff6e11;
+  color: black;
+}
+section.flag div.rating-F {
+  background-color: red;
+  color: black;
+}
+section.flag div h2 {
+  margin-top: 0px;
+  margin-left: 16px;
+  margin-right: 12px;
+  margin-bottom: 1.5em;
+  font-size: 1.15em;
+  float: left;
+}
+section.flag div h3 {
+  margin-left: 14px;
+  margin-top: 18px;
+  margin-bottom: 9px;
+  font-size: 2em;
+  position: relative;
+}
