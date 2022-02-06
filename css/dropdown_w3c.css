@@ -1,14 +1,15 @@
 /* Navbar container */
 .continent {
   overflow: hidden;
-  background-color: #012943;
-    font-family: Arial, sans-serif;
+  /* background-color: #012943; */
+  font-family: Arial, sans-serif;
+  /* border: 1px solid green; */
 }
 
 /* Links inside the navbar */
 .continent a {
   float: left;
-  font-size: 16px;
+  font-size: 1em;
   color: white;
   text-align: center;
   padding: 2px 2px;
@@ -20,11 +21,12 @@
   margin-left: 3px;
   float: left;
   overflow: hidden;
+  /* border: 1px solid red; */
 }
 
 /* Dropdown button */
 .dropdown .dropbtn {
-  font-size: 16px;
+  font-size: 1em;
   border: none;
   outline: none;
   color: white;

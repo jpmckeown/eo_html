@@ -11,10 +11,6 @@
 library(tidyverse)
 library(stringi)
 
-#saveRDS(df9, 'data/df9.rds')
-#saveRDS(eo, '../eo_data/data/eo_Jan2022.rds')
-#saveRDS(eo_comment, 'data/eoComment.rds')
-#df9 <- readRDS('../eo_photo/data/df8.rds')
 eo <- readRDS('../eo_data/data/eo_Feb2022.rds')
 eo_comment <- readRDS('data/eo_comment_Feb2022.rds')
 
@@ -286,3 +282,8 @@ symbol_to_HTML <- function(txt) {
 # }
 
 #saveRDS(df9, 'data/df9.rds')
+
+#saveRDS(df9, 'data/df9.rds')
+#saveRDS(eo, '../eo_data/data/eo_Jan2022.rds')
+#saveRDS(eo_comment, 'data/eoComment.rds')
+#df9 <- readRDS('../eo_photo/data/df8.rds')

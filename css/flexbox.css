@@ -22,10 +22,16 @@ header {
 nav {
   background-color: #012943;
   min-height: 30px;
-  /* max-height: 40px; this makes dropdown vanish because it is part of nav */
+  /* max-height: 40px would make dropdown vanish because its part of nav */
   padding-left: 0;
   margin-left: 0;
   order: 2;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap-reverse;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
   /* border: 1px solid red; */
 } 
 .country {
@@ -36,14 +42,16 @@ nav {
 }
 section.flag {
   background: #bbb;
-  margin-left: 0px;
+  padding-bottom: 0.5em;
   padding-top: 8px;
   order: 3;
 }
 
 section.flag img {
-  margin-left: 16px;
+  margin-left: 0.72em;
+  margin-bottom: 0.4em;
 }
+
 section.comment {
   line-height: 1.5;
   margin-left: 12px;
