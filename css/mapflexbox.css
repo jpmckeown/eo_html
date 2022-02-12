@@ -1,4 +1,7 @@
-html, body, main { height: 100%; width: 100%; margin:0; padding:0; position: relative; }
+html, body, main { 
+  height: 100%; width: 100%; 
+  margin:0; padding:0; position: relative; 
+}
 
 #map { 
   position: relative; 
@@ -17,10 +20,11 @@ html, body, main { height: 100%; width: 100%; margin:0; padding:0; position: rel
   /* color: white; */
   background: white;
   font-family: Helvetica, Arial, sans-serif;
+  margin: auto;
 }
 
 header {
-  background-color: #517A00;
+  background-color: #012943;
   margin: 0px;
   padding: 0px;
   order: 1;
@@ -34,36 +38,27 @@ nav {
   margin-left: 0;
   padding-top: 32px;
   order: 2;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap-reverse;
+  justify-content: space-between;
+  align-items: center;
+  /* border: 1px solid red; */
+  background-color: #012943;
 }
+.continent {
+  overflow: hidden;
+  /* background-color: #012943; */
+  font-family: Arial, sans-serif;
+  /* border: 1px solid green; */
+  padding-bottom: 0.7em;
+  /* border: 1px solid green; */
+}
+
 .dropdown {
   padding-top: 7px;
 }
 
-.country {
-  order: 4;
-}
-.grid {
-  order: 5;
-}
-section.flag {
-  background: #bbb;
-  margin-left: 0px;
-  padding-top: 8px;
-  order: 3;
-}
-section.flag img {
-  margin-left: 16px;
-}
-section.comment {
-  line-height: 1.5;
-  margin-left: 12px;
-  order: 6;
-}
-section.gallery {
-  margin-left: 12px;
-  margin-top: 5px;
-  order: 7;
-}
 footer {
   background-color: #012943;
   color: white;

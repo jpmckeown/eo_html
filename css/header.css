@@ -1,24 +1,23 @@
 header {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-content: flex-start;
-  height: 5em;
-}
-header figure {
-  padding: 0;
-  margin-left: 9px;
-  margin-top: 7px;
-  float: left;
+ /* height: 5em; */
   /* border: 1px solid red; */
 }
 header img {
   display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 500px;
-  height: 500px;
+  margin-left: 9px;
+  margin-top: 7px;
 }
+header h2 {
+  /* display: block; */
+  color: white;
+  font-size: 2.2em;
+  line-height: 1;
+  margin-top: 0.2em;
+  margin-left: 0.4em;
+  /* border: 1px solid red; */
+  /* margin-bottom: 0; padding-bottom: 0; */
+}
+
 footer img {
   width: 270px;
 }

@@ -5,30 +5,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="../css/normalize.css">
   <link rel="stylesheet" href="../css/styles.css?version=5">
-  <link rel="stylesheet" href="../css/flexbox.css?version=7">
-  <link rel="stylesheet" href="../css/grid.css?version=6">
-  <link rel="stylesheet" href="../css/dropdown_w3c.css?version=5">
+  <link rel="stylesheet" href="../css/flexbox.css?version=5">
+  <link rel="stylesheet" href="../css/grid.css?version=5">
+  <link rel="stylesheet" href="../css/dropdown_w3c.css?version=3">
   <link rel="stylesheet" href="../css/carousel_kan.css?version=2">
   <link rel="stylesheet" href="../css/tooltip.css?version=3">
-  <link rel="stylesheet" href="../css/header.css?version=4">
-  <link rel="stylesheet" href="../css/nav_links.css">
-  <link rel="stylesheet" href="../css/ranking.css?version=2">
+  <link rel="stylesheet" href="../css/header.css">
+  <link rel="stylesheet" href="../css/ranking.css">
   <script src="https://kit.fontawesome.com/59089560fc.js" crossorigin="anonymous"></script>
 </head>
 <body>
 <main class="flex-container">
 
 <header>
-  <h2>MvP Map</h2>
-  <!-- <figure>
-    <img src='../img/EarthOvershoot-Logo.png' width='340' height='50' alt='Logo'>
-    <figcaption>MvP Map</figcaption>
-  </figure> -->
-  <!-- <img src='../img/MvP_logo.png' alt='MvP logo Earth Overshoot sustainable country map' width='80'> -->
+  <figure>
+    <img src='../img/EarthOvershoot-Logo.png' alt='Logo' width='270'>
+    <figcaption>Sustainable Country Map</figcaption>
+  </figure>
+  <ul>
+    <li><a id='mapLink' href='../about.html'>About data</a></li>
+    <li><a id='mapLink' href='../map.html'>Back to Map</a></li>
+    <li><a href='https://earthovershoot.org'>Home</a></li>
+</ul>
 </header>
-
-<nav>
-<div class="continent">
+<nav class="continent">
   <div class="dropdown">
   <button class="dropbtn">Africa</button>
     <div class="dropdown-content">
@@ -239,44 +239,32 @@
       <a href='SLB.html'>Solomon Islands</a>
     </div>
   </div>
-</div> <!-- continent -->
-
-<div class='menu'>
-  <ul>
-    <li><a id='mapLink' href='../about.html'>About...</a></li>
-    <li><a id='mapLink' href='../map.html'>Back to Map</a></li>
-    <li><a href='https://earthovershoot.org'>Home</a></li>
-  </ul>
-</div>
-
 </nav>  <!-- continents dropdown menu ends -->
 
-<section class="country"><h1>Afghanistan</h1></section>
+<section class="country"><h1>Algeria</h1></section>
 
-<section class="flag">
-<img src="../flag/af.svg" height="120">
-<div class="rating-F">
-<h3>F</h3>
+<section class="flag"><img src="../flag/dz.svg" height="120">
+<div class="rating-D">
+<h3>D</h3>
 <h2 data-tooltip data-tooltip-label="A = Excellent
 B = Above Average
 C = Average
 D = Below Average
 F = Poor">Ranking for Sustainability</h2>
-<i class="fas fa-plus-circle"></i></div>
-<div class="right"></div>
-</section>
+<i class="fas fa-plus-circle"></i>
+</div></section>
 
 <!-- data items are 1 row of FlexBox -->
 
 <section class="grid">
 <div class="cell Population_2017">
-  <h3>35,530,104</h3>
+  <h3>41,318,104</h3>
 <div data-tooltip data-tooltip-label="Population total in 2017, Global Footprint Network.">
 <h2>Population</h2><i class="fas fa-plus-circle"></i></div>
 </div>  <!-- cell ends -->
 
 <div class="cell Modern_contraception_2020">
-  <h3>17.4 %</h3>
+  <h3>49.5 %</h3>
 <div data-tooltip data-tooltip-label="Estimated prevalence of contraception (modern methods) among women 15-49 years old.
 Poor 0-20%
 Below Average 20-40%
@@ -287,25 +275,25 @@ Excellent 80-100%">
 </div>  <!-- cell ends -->
 
 <div class="cell Species_threat_2021_2">
-  <h3>49</h3>
+  <h3>178</h3>
 <div data-tooltip data-tooltip-label="Number of species critically endangered, endangered, or vulnerable. IUCN Red List of Threatened Species.">
 <h2>Species Threatened</h2><i class="fas fa-plus-circle"></i></div>
 </div>  <!-- cell ends -->
 
 <div class="cell SustainPop_2017">
-  <h3>20,302,916</h3>
+  <h3>8,982,197</h3>
 <div data-tooltip data-tooltip-label="Maximum sustainable population based on the country's 2017 natural resource availability and economic activity.">
 <h2>Sustainable Population</h2><i class="fas fa-plus-circle"></i></div>
 </div>  <!-- cell ends -->
 
 <div class="cell Growth_rate_pop_2020">
-  <h3>2.30 %</h3>
+  <h3>1.84 %</h3>
 <div data-tooltip data-tooltip-label="Annual rate: a positive % means population is increasing; negative means population is decreasing.">
 <h2>Population Growth</h2><i class="fas fa-plus-circle"></i></div>
 </div>  <!-- cell ends -->
 
 <div class="cell GDP_pp_2020">
-  <h3>$ 517</h3>
+  <h3>$ 3307</h3>
 <div data-tooltip data-tooltip-label="Annual Per Capita GDP in U.S. Dollars. A high figure indicates high consumption of resources per person. A low figure indicates low consumption of resources per person.">
 <h2>GDP Per Capita</h2><i class="fas fa-plus-circle"></i></div>
 </div>  <!-- cell ends -->
@@ -314,9 +302,7 @@ Excellent 80-100%">
 
 <section class="comment">
 <h4>Country Comments</h4>
-<p>Afghanistanis live very modestly yet have roughly twice as many people than the country can sustain. A United Nations environmental assessment reported widespread land and resource degradation, including lowered water tables, desiccation of wetlands, widespread loss of vegetative cover, erosion and loss of wildlife.(1) In 2019, the fertility rate for Afghanistan was 4.32 children per woman, one of the highest in Asia and the world. Religion and culture impede the education of girls and access to family planning. Due to poor healthcare the leading cause of death in the country is maternal mortality.(2) The Taliban seized control of the country in the Fall of 2021. Its history is replete with human rights abuse especially toward women. The near term does not look promising toward improvement of human and, or environmental health and sustainability.</p>
-<p>(1) https://www.unenvironment.org/explore-topics/disasters-conflicts/where-we-work/afghanistan</p>
-<p>(2) http://www.actfordev.org/an-overview-of-maternal-mortality-rate-in-afghanistan/
+<p>Algeria is a large country by land mass, but 4/5 of that land is desert. Water scarcity and desertification are major challenges. Poor farming practices such as overgrazing have led to soil erosion, and with only 3% of its land arable, the country imports roughly half of all the food it needs for its growing population. Algeria's strong oil and gas industry is powered by its significant oil and gas reserves. The rivers, coastal waters and air of Algeria are considered very poor quality due to lack of pollution controls. The World Bank in a 2016 report declared Algeria one of the most polluted countries in the world. In 2021 after a 19 year campaign by the United Nations Algeria became the last country to finally stop leaded gasoline. The government has recently begun addressing climate change and desertification with various measures like the "green dam" project, a reforestation program. Algeria is greatly overpopulated based on its resource use per citizen. The trends for sustainability look even more bleak with the country's population expanding at a rapid 2% with an average birth rate of 3 children per woman.
 </section> <!-- Comment ends -->
 
 <section class="gallery">
@@ -324,21 +310,21 @@ Excellent 80-100%">
 <div class="slideshow-container fade">
 
 <div class="Containers">
-<div class="caption">Inadequate female education.</div>
-<img src="../w640/AFG_1.jpg">
-<div class="attribution">Photo by <a href="https://pixnio.com/people/children-kids/afghan-girls-receive-food-aid-and-education">USAID</a> on Pixnio <a href="https://pixnio.com/">free images</a> license <a href="https://pixnio.com/creative-commons-license">CC0</a></div>
+<div class="caption">Algeria has large proved reserves of crude oil and natural gas, as well as resources that already are connected to world markets through an extensive natural gas pipeline network.</div>
+<img src="../w640/DZA_1.png">
+<div class="attribution"><a href="https://www.flickr.com/people/124982865@N08">U.S. Energy Information Administration</a>; License <a href="https://en.wikipedia.org/wiki/Public_domain">Public domain</a>; Image <a href="https://commons.wikimedia.org/wiki/File:Oil_and_natural_gas_basins_and_pipeline_infrastructure_in_Algeria_(29079856511).png">https://commons.wikimedia.org/wiki/File:Oil_and_natural_gas_basins_and_pipeline_infrastructure_in_Algeria_(29079856511).png</a> via Wikimedia Commons.</div>
 </div> <!-- photo -->
 
 <div class="Containers">
-<div class="caption">Large Afghan family.</div>
-<img src="../w640/AFG_2.jpg">
-<div class="attribution">DoD photo by: SRA BETHANN HUNT, USAF; License <a href="https://en.wikipedia.org/wiki/Public_domain">Public domain</a>; Image <a href="https://commons.wikimedia.org/wiki/File:Afghan_family_Pashtun_home.JPEG">https://commons.wikimedia.org/wiki/File:Afghan_family_Pashtun_home.JPEG</a> via Wikimedia Commons.</div>
+<div class="caption">4/5 of Algeria is desert.</div>
+<img src="../w640/DZA_2.jpg">
+<div class="attribution">Deep Kadam; License <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>; Image <a href="https://commons.wikimedia.org/wiki/File:Lone_tree_in_the_desert.jpg">https://commons.wikimedia.org/wiki/File:Lone_tree_in_the_desert.jpg</a> via Wikimedia Commons.</div>
 </div> <!-- photo -->
 
 <div class="Containers">
-<div class="caption">Dessicated wetland.</div>
-<img src="../w640/AFG_3.jpg">
-<div class="attribution">Photo by <a href="https://pixnio.com/nature-landscapes/wetlands-and-swamps/dry-wetlands-in-summer-time">USFWS</a> on Pixnio <a href="https://pixnio.com/">free images</a> license <a href="https://pixnio.com/creative-commons-license">CC0</a></div>
+<div class="caption">Algeria imports roughly half of all the food it needs for its growing population.</div>
+<img src="../w640/DZA_3.jpg">
+<div class="attribution"><a href="//commons.wikimedia.org/wiki/User:Bachounda">Bachounda</a>; License <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>; Image <a href="https://commons.wikimedia.org/wiki/File:Wikipedia_Education_Program_Algeria_V2_Ceremony_(53).jpg">https://commons.wikimedia.org/wiki/File:Wikipedia_Education_Program_Algeria_V2_Ceremony_(53).jpg</a> via Wikimedia Commons.</div>
 </div> <!-- photo -->
 
 <a class="Back" onclick="plusSlides(-1)">&#10094;</a>
