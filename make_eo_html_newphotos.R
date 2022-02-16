@@ -60,7 +60,7 @@ for (k in startCountry:endCountry) {
 cat('B = Above Average', sep='\n', file=out)
 cat('C = Average', sep='\n', file=out)
 cat('D = Below Average', sep='\n', file=out)
-cat('F = Poor">Ranking for Sustainability</h2>', sep='\n', file=out)
+cat('F = Poor">Sustainability Grade</h2>', sep='\n', file=out)
   cat('<i class="fas fa-plus-circle"></i>', sep='\n', file=out)
   cat('</div></section>\n', sep='\n', file=out)
   
@@ -90,6 +90,7 @@ cat('F = Poor">Ranking for Sustainability</h2>', sep='\n', file=out)
       else if (f == 'GDP_pp_2020') {        
         value = format(round(value, 0), nsmall = 0)
         value <- paste('$', as.character(value))
+        value <- prettyNum(value, big.mark = ",", scientific = FALSE)
       } 
       else {
         value <- prettyNum(value, big.mark = ",", scientific = FALSE)

@@ -2,6 +2,7 @@
 .Rhistory
 .RData
 .vscode
+country/
 comment/
 img/
 photo/
@@ -19,4 +20,5 @@ country_good/
 css/tooltip2.css
 css/tooltip_mess.css
 css/tooltip_w3c.css
+map_dev.html
 

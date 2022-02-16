@@ -8,20 +8,28 @@
 
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/styles.css?version=5">
-  <link rel="stylesheet" href="css/mapflexbox.css?version=3">
+  <link rel="stylesheet" href="css/mapflexbox.css?version=5">
   <!-- <link rel="stylesheet" href="css/flexbox.css?version=6"> -->
   <link rel="stylesheet" href="css/dropdown_w3c.css?version=5">
   <link rel="stylesheet" href="css/header.css?version=3">
   <link rel="stylesheet" href="css/nav_links.css">
   <style>
-    html, body, main { height: 100%; width: 100%; margin:0; padding:0; position: relative; }
-    #map { position: relative; height: 100%; order: 8; margin: 0; padding: 0; }
-    footer { margin: 0px;  position: relative; top: -40px; }
+    html, body, main { 
+      height: 100%; 
+      width: 100%; 
+      margin:0; padding:0; 
+      position: relative; }
+    #map { position: relative; 
+      height: 100%; 
+      order: 8; 
+      margin: 0; padding: 0; }
+    footer { margin: 0px;  
+      position: relative; 
+      top: -40px; }
     footer p { max-width: 100%; }
     .lowline {padding-bottom: 8px; } 
     header { background-color: #012943;}
-    header img { padding-top: 7px; padding-bottom: 4px; }
-    header p { padding-top: 7px; }
+    header img { padding-top: 1px; padding-bottom: 1px; }
 </style>
 <!-- Adapted from https://stackoverflow.com/questions/42919381/world-map-that-links-to-url-when-click-on-country-specific-layer -->
 </head>
@@ -29,15 +37,8 @@
 <main class="flex-container world">
 
 <header>
-  <figure>
-    <img src='img/EarthOvershoot-Logo.png' alt='Logo'>
-    <figcaption>Sustainable Country Map</figcaption>
-  </figure>
-  <ul>
-    <li><a id='mapLink' href='about.html'>About data</a></li>
-    <li>Back to Map</li>
-    <li><a href='https://earthovershoot.org'>Home</a></li>
-  </ul>
+  <!-- <h2>MvP Map</h2> -->
+  <img src="img/Map_Logo.svg" alt="Logo MVP Sustainability Map" class="center" width="237" height="195">
 </header>
 
 <nav>
@@ -255,28 +256,29 @@
     </div>
   </div> <!-- class = continent -->
 
-  <!-- <div class='menu'>
+  <div class='menu'>
     <ul>
-      <li><a id='mapLink' href='../about.html'>About...</a></li>
-      <li><a id='mapLink' href='../map.html'>Back to Map</a></li>
+      <li><a id='mapLink' href='about.html'>About</a></li>
+      <li>Back to Map</li>
       <li><a href='https://earthovershoot.org'>Home</a></li>
     </ul>
-  </div> -->
+  </div>
 </nav>
 
 <div id='map'></div>
 
 <footer>
-  <a href='https://earthovershoot.org'><img src='img/EarthOvershoot-Logo.png' alt='Logo'></a>
-  <p>P.O. Box 202<br />
+  <a href='https://earthovershoot.org'><img src='img/EarthOvershoot-Logo.png' alt='Logo'></a><br />
+  <!-- <p>P.O. Box 202<br />
   Ardmore, PA 19003<br />
-  (610) 420-5989  Phone<br />
-  <a href="mailto:info@earthovershoot.org">Contact</a></p>
+  (610) 420-5989  Phone -->
   <p class="lowline">&copy; EarthOvershoot 2021
   &nbsp;&nbsp;
   <a href="https://www.earthovershoot.org/#privacy-policy">Privacy Policy</a>
   &nbsp;&nbsp;
-  <a href="https://www.earthovershoot.org/#terms-conditions">Terms &amp; Conditions</a></p>
+  <a href="https://www.earthovershoot.org/#terms-conditions">Terms &amp; Conditions</a>
+  &nbsp;&nbsp;
+  <a href="mailto:info@earthovershoot.org">Contact</a></p>
 </footer>
 
 </main>
