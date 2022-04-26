@@ -6,13 +6,14 @@ section.flag {
   align-content: flex-start;
   align-items: center;
 }
-section.flag div {
+section.flag > div {
   margin-left: 0.7em;
   margin-right: 1.5em;
+margin-top: 0; padding-top: 0;
   border-radius: 16px;
 }
-section.flag div i.fas {
-  margin-right: 8px;
+section.flag i.fas {
+  margin-right: 0.7em;
 }
 
 section.flag div.rating-A {
@@ -28,7 +29,6 @@ section.flag div.rating-C {
   color: #444;
 }
 section.flag div.rating-D {
-  /* background-color: #fab733; */
   background-color: #faa733;
   color: black;
 }
@@ -39,17 +39,17 @@ section.flag div.rating-F {
 
 section.flag div h2 {
   margin-top: 0px;
-  margin-left: 16px;
-  margin-right: 12px;
-  margin-bottom: 1.3em;
+  margin-left: 20px;
+  margin-right: 2em;
+  margin-bottom: 1.5em;
   font-size: 1.15em;
   float: left;
   word-wrap: break-word;
 }
-section.flag div h3 {
-  margin-left: 14px;
-  margin-top: 0.5em;
-  margin-bottom: 9px;
+section.flag h3 {
+  margin-left: 20px;
+  margin-top: 0.6em;
+  margin-bottom: 0.3em;
   font-size: 2em;
   position: relative;
 }

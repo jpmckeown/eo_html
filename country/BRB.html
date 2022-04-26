@@ -4,22 +4,23 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="../css/normalize.css">
-  <link rel="stylesheet" href="../css/styles.css?version=5">
-  <link rel="stylesheet" href="../css/flexbox.css?version=7">
+  <link rel="stylesheet" href="../css/styles.css?version=6">
+  <link rel="stylesheet" href="../css/flexbox.css?version=8">
   <link rel="stylesheet" href="../css/grid.css?version=6">
   <link rel="stylesheet" href="../css/dropdown_w3c.css?version=5">
   <link rel="stylesheet" href="../css/carousel_kan.css?version=2">
   <link rel="stylesheet" href="../css/tooltip.css?version=3">
   <link rel="stylesheet" href="../css/header.css?version=4">
   <link rel="stylesheet" href="../css/nav_links.css">
-  <link rel="stylesheet" href="../css/ranking.css?version=2">
+  <link rel="stylesheet" href="../css/ranking.css?version=3">
   <script src="https://kit.fontawesome.com/59089560fc.js" crossorigin="anonymous"></script>
 </head>
 <body>
 <main class="flex-container">
 
 <header>
-  <img src="../img/Map_Logo.svg" alt="Logo MVP Sustainability Map" class="center" width="237" height="195">
+  <h1>MVP Sustainability Map</h1>
+  <!-- <img src="../img/Map_Logo.svg" alt="Logo MVP Sustainability Map" class="center" width="237" height="195"> -->
 </header>
 <nav>
   <div class="continent">
@@ -248,21 +249,28 @@
 <section class="flag"><img src="../flag/bb.svg" height="120">
 <div class="rating-C">
 <h3>C</h3>
-<h2 data-tooltip data-tooltip-label="A = Excellent
+<div data-tooltip data-tooltip-label="A = Excellent
 B = Above Average
 C = Average
 D = Below Average
-F = Poor">Sustainability Grade</h2>
-<i class="fas fa-plus-circle"></i>
+F = Poor">
+<h2>Sustainability Grade</h2>
+<i class="fas fa-plus-circle"></i></div> <!-- end hover div -->
 </div></section>
 
 <!-- data items are 1 row of FlexBox -->
 
 <section class="grid">
-<div class="cell Population_2017">
-  <h3>285,719</h3>
-<div data-tooltip data-tooltip-label="Population total in 2017, Global Footprint Network.">
+<div class="cell Population_2018">
+  <h3>286,641</h3>
+<div data-tooltip data-tooltip-label="Population total in 2018, Global Footprint Network.">
 <h2>Population</h2><i class="fas fa-plus-circle"></i></div>
+</div>  <!-- cell ends -->
+
+<div class="cell SustainPop_2018">
+  <h3>14,332.05</h3>
+<div data-tooltip data-tooltip-label="Maximum sustainable population based on the country's 2018 natural resource availability and economic activity.">
+<h2>Sustainable Population</h2><i class="fas fa-plus-circle"></i></div>
 </div>  <!-- cell ends -->
 
 <div class="cell Modern_contraception_2020">
@@ -280,12 +288,6 @@ Excellent 80-100%">
   <h3>76</h3>
 <div data-tooltip data-tooltip-label="Number of species critically endangered, endangered, or vulnerable. IUCN Red List of Threatened Species.">
 <h2>Species Threatened</h2><i class="fas fa-plus-circle"></i></div>
-</div>  <!-- cell ends -->
-
-<div class="cell SustainPop_2017">
-  <h3>15,444</h3>
-<div data-tooltip data-tooltip-label="Maximum sustainable population based on the country's 2017 natural resource availability and economic activity.">
-<h2>Sustainable Population</h2><i class="fas fa-plus-circle"></i></div>
 </div>  <!-- cell ends -->
 
 <div class="cell Growth_rate_pop_2020">

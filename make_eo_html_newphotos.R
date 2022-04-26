@@ -11,15 +11,16 @@
 library(tidyverse)
 library(stringi)
 
-eo <- readRDS('../eo_data/data/eo_Feb2022.rds')
+# saveRDS(eo, 'data/eo_before25April2022.rds')
+eo <- readRDS('../eo_data/data/eop_26April2022.rds')
 eo_comment <- readRDS('data/eo_comment_Feb2022.rds')
 
 indicators <- read_csv("data/indicators.csv")
 description <- c(
-  "Population total in 2017, Global Footprint Network.", 
+  "Population total in 2018, Global Footprint Network.", 
   "Estimated prevalence of contraception (modern methods) among women 15-49 years old.\nPoor 0-20%\nBelow Average 20-40%\nAverage 40-60%\nAbove Average 60-80%\nExcellent 80-100%", 
   "Number of species critically endangered, endangered, or vulnerable. IUCN Red List of Threatened Species.", 
-  "Maximum sustainable population based on the country's 2017 natural resource availability and economic activity.", 
+  "Maximum sustainable population based on the country's 2018 natural resource availability and economic activity.", 
   "Annual rate: a positive % means population is increasing; negative means population is decreasing.", 
   "Annual Per Capita GDP in U.S. Dollars. A high figure indicates high consumption of resources per person. A low figure indicates low consumption of resources per person.", 
   "A = Excellent\nB = Above Average\nC = Average\nD = Below Average\nF = Poor", 
@@ -56,12 +57,13 @@ for (k in startCountry:endCountry) {
   rank <- eo[k, 'Rank_sustain_2020']
   cat(paste0('<div class="rating-', rank, '">'), sep='\n', file=out)
   cat(paste0('<h3>', rank, '</h3>'), sep='\n', file=out)
-  cat('<h2 data-tooltip data-tooltip-label="A = Excellent', sep='\n', file=out)
+  cat('<div data-tooltip data-tooltip-label="A = Excellent', sep='\n', file=out)
 cat('B = Above Average', sep='\n', file=out)
 cat('C = Average', sep='\n', file=out)
 cat('D = Below Average', sep='\n', file=out)
-cat('F = Poor">Sustainability Grade</h2>', sep='\n', file=out)
-  cat('<i class="fas fa-plus-circle"></i>', sep='\n', file=out)
+cat('F = Poor">', sep='\n', file=out)
+cat('<h2>Sustainability Grade</h2>', sep='\n', file=out)
+  cat('<i class="fas fa-plus-circle"></i></div> <!-- end hover div -->', sep='\n', file=out)
   cat('</div></section>\n', sep='\n', file=out)
   
   # Data grid
@@ -70,7 +72,7 @@ cat('F = Poor">Sustainability Grade</h2>', sep='\n', file=out)
   
   #fields <- indicators$name[1:6]
   #seq_data <- c(1,5,3,4,2,6)
-  seq_data <- c(1,2,3,4,5,6)
+  seq_data <- c(1,4,2,3,5,6)
   for (i in seq_data) {
     #print(eo[k, f])
     f <- indicators$name[i]
