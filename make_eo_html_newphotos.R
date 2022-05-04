@@ -58,11 +58,11 @@ for (k in startCountry:endCountry) {
   cat(paste0('<div class="rating-', rank, '">'), sep='\n', file=out)
   cat(paste0('<h3>', rank, '</h3>'), sep='\n', file=out)
   cat('<div data-tooltip data-tooltip-label="A = Excellent', sep='\n', file=out)
-cat('B = Above Average', sep='\n', file=out)
-cat('C = Average', sep='\n', file=out)
-cat('D = Below Average', sep='\n', file=out)
-cat('F = Poor">', sep='\n', file=out)
-cat('<h2>Sustainability Grade</h2>', sep='\n', file=out)
+  cat('B = Above Average', sep='\n', file=out)
+  cat('C = Average', sep='\n', file=out)
+  cat('D = Below Average', sep='\n', file=out)
+  cat('F = Poor">', sep='\n', file=out)
+  cat('<h2>Sustainability Grade</h2>', sep='\n', file=out)
   cat('<i class="fas fa-plus-circle"></i></div> <!-- end hover div -->', sep='\n', file=out)
   cat('</div></section>\n', sep='\n', file=out)
   
@@ -92,6 +92,14 @@ cat('<h2>Sustainability Grade</h2>', sep='\n', file=out)
       else if (f == 'GDP_pp_2020') {        
         value = format(round(value, 0), nsmall = 0)
         value <- paste('$', as.character(value))
+        value <- prettyNum(value, big.mark = ",", scientific = FALSE)
+      }
+      else if (f == 'Population_2018') {        
+        value = format(round(value, 0), nsmall = 0)
+        value <- prettyNum(value, big.mark = ",", scientific = FALSE)
+      } 
+      else if (f == 'SustainPop_2018') {        
+        value = format(round(value, 0), nsmall = 0)
         value <- prettyNum(value, big.mark = ",", scientific = FALSE)
       } 
       else {

@@ -1,39 +1,48 @@
 library(tidyverse)
-library(googledrive)
-library(googlesheets4)
+library(readxl)
 library(countrycode)
 library(stringi)
 
-eo_id <- '1MND7qbKQZ3Q-pLS2182un7z6ZkUtY3LzvUf626SLuEw'
-sheet_names(ss = eo_id)
+# library(googledrive)
+# library(googlesheets4)
 
-eoData <- read_sheet(ss = eo_id, sheet ='Main')
+# eo_id <- '1MND7qbKQZ3Q-pLS2182un7z6ZkUtY3LzvUf626SLuEw'
+# sheet_names(ss = eo_id)
+# 
+# eoData <- read_sheet(ss = eo_id, sheet ='Main')
 
-eoData <- eoData %>% 
+original_xls <- "data/Country Data.xlsx"
+
+column_names <- read_excel(original_xls, 
+                           sheet = "Main", 
+                           .name_repair = "minimal") %>% names()
+
+eo_data_import <- read_excel(original_xls, 
+                             sheet = "Main", skip = 0)
+
+eo_data_import[ eo_data_import == "No Data" ] <- NA
+eo_data_import[ eo_data_import == "#VALUE!" ] <- NA
+
+eoData <- eo_data_import %>% 
   filter(!is.na(Country)) %>% 
   filter(Country != 'World')
 
 # column names make shorter
-# finding by old name rather than colnum
-# names(eoData)[grepl('2017 Population', names(eoData))] <- 'Population_2017'
-# names(eoData)[grepl('2017 Maximum Population', names(eoData))] <- 'SustainPop_2017'
-# names(eoData)[grepl('2020 Rank', names(eoData))] <- 'Rank_sustain_2020'
-# names(eoData)[grepl('Table 5, accessed Sept 2021', names(eoData))] <- 'Species_threat_2021.2'
-# names(eoData)[grepl('SP.POP.GROW', names(eoData))] <- 'Growth_rate_pop_2020'
-# names(eoData)[grepl('SP.DYN.CONM.ZS', names(eoData))] <- 'Modern_contraception_2020'
-names(eoData)[grepl('Actual Comment', names(eoData))] <- 'Comments'
+names(eoData)[grepl('Actual Comment for Web Site', names(eoData))] <- 'Comments'
 
-# check country names
+eoData <- eoData %>% 
+  select(iso2c, Country, Comments)
 
-# eo <- eoData %>% 
-#   select(iso2c, Country, Population_2017, SustainPop_2017, Growth_rate_pop_2020, 
-#          Modern_contraception_2020, Species_threat_2021.2, Rank_sustain_2020)
+# check country names alphabetical
+bakeodata <- eoData
+eoData <- eoData %>% 
+  arrange(Country)
+all.equal(eoData, bakeodata)
+# which(eoData[,2] != bakeodata[,2]) # 157 158 159 169 170
+identical(eoData, bakeodata)
 
-eo_comment <- eoData %>% 
-  select(iso2c, Comments)
-
-Encoding(eo_comment$Comments) # reveals some unknown, some UTF-8
-
+Encoding(eo_Data$Comments) # reveals some unknown, some UTF-8
+eoComment <- eoData
 # testing Madagascar, its UTF-8
 # comment <- eo_comment %>% 
 #   filter(iso2c == 'MG') %>% 
@@ -41,7 +50,7 @@ Encoding(eo_comment$Comments) # reveals some unknown, some UTF-8
 # 
 # Encoding(as.character(comment))
 
-eoComment <- stri_encode(eoData$Comments, '', 'UTF-8')
+eoComment <- stri_encode(eoData$Comments, 'unknown', 'UTF-8')
 Encoding(eoComment)
 
 if (grepl("’", caption)) {
