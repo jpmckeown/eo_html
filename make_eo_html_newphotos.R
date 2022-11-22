@@ -11,7 +11,6 @@
 library(tidyverse)
 library(stringi)
 
-# saveRDS(eo, 'data/eo_before25April2022.rds')
 eo <- readRDS('../eo_data/data/eop_26April2022.rds')
 eo_comment <- readRDS('data/eo_comment_Feb2022.rds')
 
