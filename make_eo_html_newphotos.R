@@ -4,6 +4,61 @@
 
 # folder Comments with text files exists, but not relevant
 
+symbol_to_HTML <- function(txt) {
+  if (grepl("’", txt)) {
+    txt <- gsub("’", "&rsquo;", txt)        
+  }
+  if (grepl('“', txt)) {
+    txt <- gsub("“", "&ldquo;", txt)        
+  }
+  if (grepl('”', txt)) {
+    txt <- gsub("”", "&rdquo;", txt)        
+  }
+  if (grepl('½', txt)) {
+    txt <- gsub("½", "&frac12;", txt)        
+  }
+  if (grepl('–', txt)) {
+    txt <- gsub("–", "&ndash;", txt)        
+  }
+  if (grepl('—', txt)) {
+    txt <- gsub("—", "&mdash;", txt)        
+  }
+  if (grepl('‘', txt)) {
+    txt <- gsub("‘", "&lsquo;", txt)        
+  }
+  if (grepl('ô', txt)) {
+    txt <- gsub("ô", "&ocirc;", txt)        
+  }
+  if (grepl('ê', txt)) {
+    txt <- gsub("ê", "&ecirc;", txt)        
+  }
+  if (grepl('é', txt)) {
+    txt <- gsub("é", "&eacute;", txt)        
+  }
+  if (grepl('è', txt)) {
+    txt <- gsub("è", "&egrave;", txt)        
+  }
+  if (grepl('í', txt)) {
+    txt <- gsub("í", "&iacute;", txt)        
+  }
+  if (grepl('ã', txt)) {
+    txt <- gsub("ã", "&atilde;", txt)        
+  }
+  if (grepl('ç', txt)) {
+    txt <- gsub("ç", "&ccedil;", txt)      
+  }
+  if (grepl('á', txt)) {
+    txt <- gsub("á", "&aacute;", txt)        
+  }
+  if (grepl('à', txt)) {
+    txt <- gsub("à", "&agrave;", txt)        
+  }
+  if (grepl('©', txt)) {
+    txt <- gsub("©", "&copy;", txt)        
+  }
+  return(txt)
+}
+
 # HTML country page construction
 # menu will be made from country list
 # file.append doesnt add newline between files 
@@ -12,7 +67,8 @@ library(tidyverse)
 library(stringi)
 
 eo <- readRDS('../eo_data/data/eop_26April2022.rds')
-eo_comment <- readRDS('data/eo_comment_Feb2022.rds')
+eo_comment <- readRDS('data/eo_comment_Nov2022.rds')
+df9 <- readRDS('data/df9.rds')
 
 indicators <- read_csv("data/indicators.csv")
 description <- c(
@@ -47,6 +103,7 @@ for (k in startCountry:endCountry) {
   # Country name
   cat('<section class="country">', sep='', file=out)
   country <- symbol_to_HTML(country)
+  print(country)
   cat(paste0('<h1>', country, '</h1></section>\n'), sep='\n', file=out)
   
   # Flag
@@ -109,7 +166,7 @@ for (k in startCountry:endCountry) {
     codeLabel <- f #as.character(indicators[f, 1])
     longLabel <- as.character(indicators[i, 2])
     popup <-  as.character(indicators[i, 3])
-print(paste(codeLabel, longLabel, popup))
+#print(paste(codeLabel, longLabel, popup))
 
     cat(paste0('<div class="cell ', codeLabel, '">'), sep='\n', file=out)
     cat(paste0('  <h3>', value, '</h3>'), sep='\n', file=out)
@@ -164,7 +221,7 @@ print(paste(codeLabel, longLabel, popup))
     
     IDs <- df9[df9$iso3c == eo$iso3c[k],]$ID
     strIDs <- toString(IDs)
-    print(paste(iso3c, numPhotos, country, strIDs))
+    #print(paste(iso3c, numPhotos, country, strIDs))
     
     cat('<section class="gallery">', sep='\n', file=out)
     cat('<h4>Photo Gallery</h4>', sep='\n', file=out)
@@ -191,7 +248,7 @@ print(paste(codeLabel, longLabel, popup))
       # fix caption encoding
       caption <- stri_encode(captions[ph], '', 'UTF-8')
       caption <- symbol_to_HTML(caption)
-      print(paste(ph, caption))
+      # print(paste(ph, caption))
       
       # cat('<div class="photo-container">', sep='\n', file=out)
       cat('<div class="Containers">', sep='\n', file=out)
@@ -223,60 +280,7 @@ print(paste(codeLabel, longLabel, popup))
   file.append(page, 'fragment/end.htm')
 }
 
-symbol_to_HTML <- function(txt) {
-  if (grepl("’", txt)) {
-    txt <- gsub("’", "&rsquo;", txt)        
-  }
-  if (grepl('“', txt)) {
-    txt <- gsub("“", "&ldquo;", txt)        
-  }
-  if (grepl('”', txt)) {
-    txt <- gsub("”", "&rdquo;", txt)        
-  }
-  if (grepl('½', txt)) {
-    txt <- gsub("½", "&frac12;", txt)        
-  }
-  if (grepl('–', txt)) {
-    txt <- gsub("–", "&ndash;", txt)        
-  }
-  if (grepl('—', txt)) {
-    txt <- gsub("—", "&mdash;", txt)        
-  }
-  if (grepl('‘', txt)) {
-    txt <- gsub("‘", "&lsquo;", txt)        
-  }
-  if (grepl('ô', txt)) {
-    txt <- gsub("ô", "&ocirc;", txt)        
-  }
-  if (grepl('ê', txt)) {
-    txt <- gsub("ê", "&ecirc;", txt)        
-  }
-  if (grepl('é', txt)) {
-    txt <- gsub("é", "&eacute;", txt)        
-  }
-  if (grepl('è', txt)) {
-    txt <- gsub("è", "&egrave;", txt)        
-  }
-  if (grepl('í', txt)) {
-    txt <- gsub("í", "&iacute;", txt)        
-  }
-  if (grepl('ã', txt)) {
-    txt <- gsub("ã", "&atilde;", txt)        
-  }
-  if (grepl('ç', txt)) {
-    txt <- gsub("ç", "&ccedil;", txt)      
-  }
-  if (grepl('á', txt)) {
-    txt <- gsub("á", "&aacute;", txt)        
-  }
-  if (grepl('à', txt)) {
-    txt <- gsub("à", "&agrave;", txt)        
-  }
-  if (grepl('©', txt)) {
-    txt <- gsub("©", "&copy;", txt)        
-  }
-  return(txt)
-}
+
 
 # not here, was cleaned earlier when making imgdata
 # cleanCaption <- function(line) {
@@ -292,8 +296,3 @@ symbol_to_HTML <- function(txt) {
 # }
 
 #saveRDS(df9, 'data/df9.rds')
-
-#saveRDS(df9, 'data/df9.rds')
-#saveRDS(eo, '../eo_data/data/eo_Jan2022.rds')
-#saveRDS(eo_comment, 'data/eoComment.rds')
-#df9 <- readRDS('../eo_photo/data/df8.rds')

@@ -1,4 +1,5 @@
-# do raw import, let make_eo_html fix character encoding problems
+# to update Comments, run this, then load comments in make_eo_html_newphotos.R which already has data eop_26April2022.rds and photos df9.rds 
+# Below does raw import, let make_eo_html fix character encoding problems
 
 library(tidyverse)
 library(readxl)
