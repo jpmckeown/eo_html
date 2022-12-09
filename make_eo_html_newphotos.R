@@ -1,6 +1,7 @@
 # need make new eo with updated Freq column, from df9
 # freshen Comments from googlesheet works with read_comments.R
 # must run extra.R (for indicators)
+# refresh from Country_data xlsx using eo_data/read_data.R
 
 # folder Comments with text files exists, but not relevant
 
