@@ -1,3 +1,7 @@
+# remove column subtitles
+# reduce decinal places on GDP
+
+
 # Photos: if change update Freq/Photos column in eo... from df9
 
 # Comments: freshen from googlesheet using read_comments.R
@@ -25,12 +29,17 @@ df9 <- readRDS('data/df9.rds')
 eo <- eo_import %>% 
   rename("Grade" = "Grade") %>%
   rename("Grow_Rate_Pop" = "PopGrowRate_UN_2021") %>% 
-  rename("Max_Population" = "Sustainable_pop") %>% 
+  rename("Maximum_Pop" = "Sustainable_pop") %>% 
   rename("Population" = "Population_UN_2021") %>% 
   rename("Contraception" = "Contraception") %>% 
   rename("GDP_pp" = "GDP") %>% 
   rename("Species" = "Species_2022_2") %>% 
+  mutate(Grow_Rate_Pop = round(Grow_Rate_Pop, 2)) %>% 
+  mutate(GDP_pp = round(GDP_pp, 0)) %>% 
   select("iso3c", "Country", "Maximum_Pop", "Grow_Rate_Pop", "Population", "Contraception", "Species", "GDP_pp", "iso2c", "Continent")
+
+attr(eo$GDP_pp, "label") <- NULL
+attr(eo$Contraception, "label") <- NULL
 
 startCountry <- 1 
 endCountry <- nrow(eo)
