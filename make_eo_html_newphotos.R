@@ -37,6 +37,9 @@ eo <- eo_import %>%
 attr(eo$GDP_pp, "label") <- NULL
 attr(eo$Contraception, "label") <- NULL
 
+eo$Country[172] = "Turkiye"
+saveRDS(eo, '../eo_data/data/eo_2023_oldGrade_Turkiye.rds')
+
 if(!dir.exists("country")) {
   dir.create("country")
 }
