@@ -16,22 +16,21 @@ library(stringi)
 source("helper.R")
 source("extra.R") # for indicators
 
-eo <- readRDS('../eo_data/data/eo_2023_oldGrade.rds')
+# eo_2022 <- eo
+eo_import <- readRDS('../eo_data/data/eo_2023_oldGrade.rds')
 eo_comment <- readRDS('data/eo_comment_Nov2022.rds')
 df9 <- readRDS('data/df9.rds')
 
-indicators <- read_csv("data/indicators.csv")
-description <- c(
-  "Population total in 2018, Global Footprint Network.", 
-  "Estimated prevalence of contraception (modern methods) among women 15-49 years old.\nPoor 0-20%\nBelow Average 20-40%\nAverage 40-60%\nAbove Average 60-80%\nExcellent 80-100%", 
-  "Number of species critically endangered, endangered, or vulnerable. IUCN Red List of Threatened Species.", 
-  "Maximum sustainable population based on the country's 2018 natural resource availability and economic activity.", 
-  "Annual rate: a positive % means population is increasing; negative means population is decreasing.", 
-  "Annual Per Capita GDP in U.S. Dollars. A high figure indicates high consumption of resources per person. A low figure indicates low consumption of resources per person.", 
-  "A = Excellent\nB = Above Average\nC = Average\nD = Below Average\nF = Poor", 
-  "Comments by Earth Overshoot"
-)
-indicators$description <- description
+# rename columns generically, with a year
+eo <- eo_import %>% 
+  rename("Grade" = "Rank_sustain_2020") %>%
+  rename("Pop_Grow_Rate" = "PopGrowRate_UN_2021") %>% 
+  rename("Max_Population" = "Sustainable_pop") %>% 
+  rename("Population" = "Population_UN_2021") %>% 
+  rename("Contraception" = "Contraception") %>% 
+  rename("GDP_pp" = "GDP") %>% 
+  rename("Species" = "Species_2022_2") %>% 
+  select("iso3c", "Country", "Max_Population", "Pop_Grow_Rate", "Population", "Contraception", "Species", "GDP_pp", "iso2c", "Continent")
 
 startCountry <- 1 
 endCountry <- nrow(eo)
@@ -39,7 +38,8 @@ endCountry <- nrow(eo)
 for (k in startCountry:endCountry) {
   
   country <- eo$Country[k]
-  continent <- as.character(eo %>% filter(iso3c == eo[k,'iso3c']) %>% select(Continent))
+  continent <- eo$Continent[k]
+  # continent <- as.character(eo %>% filter(iso3c == eo[k,'iso3c']) %>% select(Continent))
   iso2c <- eo$iso2c[k]
   iso3c <- eo$iso3c[k]
   lowiso2c <- tolower(iso2c)
@@ -60,7 +60,7 @@ for (k in startCountry:endCountry) {
   cat('<section class="flag">', sep='', file=out)
   cat(paste0('<img src="../flag/', lowiso2c, '.svg" height="120">'), sep='\n', file=out)
   
-  rank <- eo[k, 'Rank_sustain_2020']
+  rank <- eo[k, "Grade"]
   cat(paste0('<div class="rating-', rank, '">'), sep='\n', file=out)
   cat(paste0('<h3>', rank, '</h3>'), sep='\n', file=out)
   cat('<div data-tooltip data-tooltip-label="A = Excellent', sep='\n', file=out)
@@ -87,24 +87,24 @@ for (k in startCountry:endCountry) {
     if (is.na(value)) {
       value <- 'N/A'
     } else {
-      if (f == 'Growth_rate_pop_2020') {
+      if (f == 'Pop_Grow_Rate') {
         value = format(round(value, 2), nsmall = 2)
         value <- paste(as.character(value), '%')
       } 
-      else if (f == 'Modern_contraception_2020') {        
+      else if (f == 'Contraception') {        
         value = format(round(value, 1), nsmall = 1)
         value <- paste(as.character(value), '%')
       } 
-      else if (f == 'GDP_pp_2020') {        
+      else if (f == 'GDP_pp') {        
         value = format(round(value, 0), nsmall = 0)
         value <- paste('$', as.character(value))
         value <- prettyNum(value, big.mark = ",", scientific = FALSE)
       }
-      else if (f == 'Population_2018') {        
+      else if (f == 'Population') {        
         value = format(round(value, 0), nsmall = 0)
         value <- prettyNum(value, big.mark = ",", scientific = FALSE)
       } 
-      else if (f == 'SustainPop_2018') {        
+      else if (f == 'Max_Population') {        
         value = format(round(value, 0), nsmall = 0)
         value <- prettyNum(value, big.mark = ",", scientific = FALSE)
       } 
@@ -229,20 +229,5 @@ for (k in startCountry:endCountry) {
   close(out)
   file.append(page, 'fragment/end.htm')
 }
-
-
-
-# not here, was cleaned earlier when making imgdata
-# cleanCaption <- function(line) {
-#   caption <- sub('#', '', line)
-#   caption <- capitalize(caption)
-#   # remove trailing spaces
-#   caption <- trimws(caption, which = "right", whitespace = "[ \t\r\n]")
-#   # add final period if missing
-#   if (!str_sub(caption, -1) == '.') {
-#     caption <- paste0(caption, '.')
-#   }
-#   return(caption)
-# }
 
 #saveRDS(df9, 'data/df9.rds')
