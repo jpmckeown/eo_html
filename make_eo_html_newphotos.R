@@ -13,24 +13,24 @@
 library(tidyverse)
 library(stringi)
 
-source("helper.R")
-source("extra.R") # for indicators
+source("helper.R") # for indicators
+# source("extra.R") # are these ad hoc fixes to Photo captions?
 
 # eo_2022 <- eo
 eo_import <- readRDS('../eo_data/data/eo_2023_oldGrade.rds')
 eo_comment <- readRDS('data/eo_comment_Nov2022.rds')
 df9 <- readRDS('data/df9.rds')
 
-# rename columns generically, with a year
+# rename columns generically, with a year # Rank_sustain_2020
 eo <- eo_import %>% 
-  rename("Grade" = "Rank_sustain_2020") %>%
-  rename("Pop_Grow_Rate" = "PopGrowRate_UN_2021") %>% 
+  rename("Grade" = "Grade") %>%
+  rename("Grow_Rate_Pop" = "PopGrowRate_UN_2021") %>% 
   rename("Max_Population" = "Sustainable_pop") %>% 
   rename("Population" = "Population_UN_2021") %>% 
   rename("Contraception" = "Contraception") %>% 
   rename("GDP_pp" = "GDP") %>% 
   rename("Species" = "Species_2022_2") %>% 
-  select("iso3c", "Country", "Max_Population", "Pop_Grow_Rate", "Population", "Contraception", "Species", "GDP_pp", "iso2c", "Continent")
+  select("iso3c", "Country", "Maximum_Pop", "Grow_Rate_Pop", "Population", "Contraception", "Species", "GDP_pp", "iso2c", "Continent")
 
 startCountry <- 1 
 endCountry <- nrow(eo)
@@ -87,7 +87,7 @@ for (k in startCountry:endCountry) {
     if (is.na(value)) {
       value <- 'N/A'
     } else {
-      if (f == 'Pop_Grow_Rate') {
+      if (f == 'Grow_Rate_Pop') {
         value = format(round(value, 2), nsmall = 2)
         value <- paste(as.character(value), '%')
       } 
@@ -104,7 +104,7 @@ for (k in startCountry:endCountry) {
         value = format(round(value, 0), nsmall = 0)
         value <- prettyNum(value, big.mark = ",", scientific = FALSE)
       } 
-      else if (f == 'Max_Population') {        
+      else if (f == 'Maximum_Pop') {        
         value = format(round(value, 0), nsmall = 0)
         value <- prettyNum(value, big.mark = ",", scientific = FALSE)
       } 
