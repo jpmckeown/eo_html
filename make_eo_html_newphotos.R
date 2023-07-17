@@ -16,7 +16,7 @@ library(stringi)
 source("helper.R")
 source("extra.R") # for indicators
 
-eo <- readRDS('../eo_data/data/eo_2023_order.rds')
+eo <- readRDS('../eo_data/data/eo_2023_oldGrade.rds')
 eo_comment <- readRDS('data/eo_comment_Nov2022.rds')
 df9 <- readRDS('data/df9.rds')
 
