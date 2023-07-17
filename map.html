@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html prefix="og: https://ogp.me/ns#">
+
 <head>
   <meta charset="UTF-8">
   <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://8billionangels.org/earthovershoot/map.html" />
-<meta property="og:image" content="https://8billionangels.org/earthovershoot/img/blue_MVP_logo.png" />
-<meta property="og:image:alt" content="MVP Sustainability Map" />
-<meta property="og:title" content="MVP Sustainability Map" />
-<meta property="og:description"
-  content="Shows relationship between a country’s population, its consumption of valuable natural resources and the amount of damage and waste it inflicts upon itself and the rest of the world." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://8billionangels.org/earthovershoot/map.html" />
+  <meta property="og:image" content="https://8billionangels.org/earthovershoot/img/blue_MVP_logo.png" />
+  <meta property="og:image:alt" content="MVP Sustainability Map" />
+  <meta property="og:title" content="MVP Sustainability Map" />
+  <meta property="og:description"
+    content="Shows relationship between a country’s population, its consumption of valuable natural resources and the amount of damage and waste it inflicts upon itself and the rest of the world." />
 
-<meta name="twitter:image" content="https://8billionangels.org/earthovershoot/img/blue_MVP_logo.png" />
-<meta name="twitter:title" content="MVP Sustainability Map" />
-<meta name="twitter:description"
-  content="Shows relationship between a country’s population, its consumption of valuable natural resources and the amount of damage and waste it inflicts upon itself and the rest of the world." />
+  <meta name="twitter:image" content="https://8billionangels.org/earthovershoot/img/blue_MVP_logo.png" />
+  <meta name="twitter:title" content="MVP Sustainability Map" />
+  <meta name="twitter:description"
+    content="Shows relationship between a country’s population, its consumption of valuable natural resources and the amount of damage and waste it inflicts upon itself and the rest of the world." />
 
   <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.34.0/mapbox-gl.js'></script>
   <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.34.0/mapbox-gl.css' rel='stylesheet' />
@@ -27,361 +28,387 @@
   <link rel="stylesheet" href="css/header.css?version=3">
   <link rel="stylesheet" href="css/nav_links.css">
   <style>
-    html, body, main { 
-      height: 100%; 
-      width: 100%; 
-      margin:0; padding:0; 
-      position: relative; }
-    #map { position: relative; 
-      height: 100%; 
-      order: 8; 
-      margin: 0; padding: 0; }
-    footer { margin: 0px;  
-      position: relative; 
-      top: -40px; }
-    footer p { max-width: 100%; }
-    .lowline {padding-bottom: 8px; } 
-    header { background-color: #012943;}
-    header img { padding-top: 1px; padding-bottom: 1px; }
-</style>
-<!-- Adapted from https://stackoverflow.com/questions/42919381/world-map-that-links-to-url-when-click-on-country-specific-layer -->
+    html,
+    body,
+    main {
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      position: relative;
+    }
+
+    #map {
+      position: relative;
+      height: 100%;
+      order: 8;
+      margin: 0;
+      padding: 0;
+    }
+
+    footer {
+      margin: 0px;
+      position: relative;
+      top: -40px;
+    }
+
+    footer p {
+      max-width: 100%;
+    }
+
+    .lowline {
+      padding-bottom: 8px;
+    }
+
+    header {
+      background-color: #012943;
+    }
+
+    header img {
+      padding-top: 1px;
+      padding-bottom: 1px;
+    }
+  </style>
+  <!-- Adapted from https://stackoverflow.com/questions/42919381/world-map-that-links-to-url-when-click-on-country-specific-layer -->
 </head>
+
 <body>
-<main class="flex-container world">
+  <main class="flex-container world">
 
-<header>
-  <h1>MVP Sustainability Map</h1>
-  <!-- <img src="img/Map_Logo.svg" alt="Logo MVP Sustainability Map" class="center" width="237" height="195"> -->
-</header>
+    <header>
+      <h1>MVP Sustainability Map</h1>
+      <!-- <img src="img/Map_Logo.svg" alt="Logo MVP Sustainability Map" class="center" width="237" height="195"> -->
+    </header>
 
-<nav>
-  <div class="continent">
-    <div class="dropdown">
-    <button class="dropbtn">Africa</button>
-      <div class="dropdown-content">
-        <a href='country/DZA.html'>Algeria</a>
-        <a href='country/AGO.html'>Angola</a>
-        <a href='country/BEN.html'>Benin</a>
-        <a href='country/BWA.html'>Botswana</a>
-        <a href='country/BFA.html'>Burkina Faso</a>
-        <a href='country/BDI.html'>Burundi</a>
-        <a href='country/CPV.html'>Cabo Verde</a>
-        <a href='country/CMR.html'>Cameroon</a>
-        <a href='country/CAF.html'>Central African Republic</a>
-        <a href='country/TCD.html'>Chad</a>
-        <a href='country/COM.html'>Comoros</a>
-        <a href='country/COD.html'>Democratic Republic of The Congo</a>
-        <a href='country/DJI.html'>Djibouti</a>
-        <a href='country/EGY.html'>Egypt</a>
-        <a href='country/GNQ.html'>Equatorial Guinea</a>
-        <a href='country/ERI.html'>Eritrea</a>
-        <a href='country/SWZ.html'>Eswatini</a>
-        <a href='country/ETH.html'>Ethiopia</a>
-        <a href='country/GAB.html'>Gabon</a>
-        <a href='country/GMB.html'>Gambia</a>
-        <a href='country/GHA.html'>Ghana</a>
-        <a href='country/GIN.html'>Guinea</a>
-        <a href='country/GNB.html'>Guinea Bissau</a>
-        <a href='country/CIV.html'>Ivory Coast</a>
-        <a href='country/KEN.html'>Kenya</a>
-        <a href='country/LSO.html'>Lesotho</a>
-        <a href='country/LBR.html'>Liberia</a>
-        <a href='country/LBY.html'>Libya</a>
-        <a href='country/MDG.html'>Madagascar</a>
-        <a href='country/MWI.html'>Malawi</a>
-        <a href='country/MLI.html'>Mali</a>
-        <a href='country/MRT.html'>Mauritania</a>
-        <a href='country/MUS.html'>Mauritius</a>
-        <a href='country/MAR.html'>Morocco</a>
-        <a href='country/MOZ.html'>Mozambique</a>
-        <a href='country/NAM.html'>Namibia</a>
-        <a href='country/NER.html'>Niger</a>
-        <a href='country/NGA.html'>Nigeria</a>
-        <a href='country/COG.html'>Republic of the Congo</a>
-        <a href='country/RWA.html'>Rwanda</a>
-        <a href='country/STP.html'>Sao Tome and Principe</a>
-        <a href='country/SEN.html'>Senegal</a>
-        <a href='country/SYC.html'>Seychelles</a>
-        <a href='country/SLE.html'>Sierra Leone</a>
-        <a href='country/SOM.html'>Somalia</a>
-        <a href='country/ZAF.html'>South Africa</a>
-        <a href='country/SSD.html'>South Sudan</a>
-        <a href='country/SDN.html'>Sudan</a>
-        <a href='country/TZA.html'>Tanzania</a>
-        <a href='country/TGO.html'>Togo</a>
-        <a href='country/TUN.html'>Tunisia</a>
-        <a href='country/UGA.html'>Uganda</a>
-        <a href='country/ZMB.html'>Zambia</a>
-        <a href='country/ZWE.html'>Zimbabwe</a>
-      </div>
-    </div>
-    <div class="dropdown">
-    <button class="dropbtn">Americas</button>
-      <div class="dropdown-content">
-        <a href='country/ATG.html'>Antigua & Barbuda</a>
-        <a href='country/ARG.html'>Argentina</a>
-        <a href='country/BHS.html'>Bahamas</a>
-        <a href='country/BRB.html'>Barbados</a>
-        <a href='country/BLZ.html'>Belize</a>
-        <a href='country/BOL.html'>Bolivia</a>
-        <a href='country/BRA.html'>Brazil</a>
-        <a href='country/CAN.html'>Canada</a>
-        <a href='country/CHL.html'>Chile</a>
-        <a href='country/COL.html'>Colombia</a>
-        <a href='country/CRI.html'>Costa Rica</a>
-        <a href='country/CUB.html'>Cuba</a>
-        <a href='country/CUW.html'>Curacao</a>
-        <a href='country/DMA.html'>Dominica</a>
-        <a href='country/DOM.html'>Dominican Republic</a>
-        <a href='country/ECU.html'>Ecuador</a>
-        <a href='country/SLV.html'>El Salvador</a>
-        <a href='country/GUF.html'>French Guiana</a>
-        <a href='country/GRD.html'>Grenada</a>
-        <a href='country/GLP.html'>Guadeloupe</a>
-        <a href='country/GTM.html'>Guatemala</a>
-        <a href='country/GUY.html'>Guyana</a>
-        <a href='country/HTI.html'>Haiti</a>
-        <a href='country/HND.html'>Honduras</a>
-        <a href='country/JAM.html'>Jamaica</a>
-        <a href='country/MEX.html'>Mexico</a>
-        <a href='country/NIC.html'>Nicaragua</a>
-        <a href='country/PAN.html'>Panama</a>
-        <a href='country/PRY.html'>Paraguay</a>
-        <a href='country/PER.html'>Peru</a>
-        <a href='country/VCT.html'>St Vincent and the Grenadines</a>
-        <a href='country/KNA.html'>St. Kitts and Nevis</a>
-        <a href='country/LCA.html'>St. Lucia</a>
-        <a href='country/SUR.html'>Suriname</a>
-        <a href='country/TTO.html'>Trinidad & Tobago</a>
-        <a href='country/URY.html'>Uruguay</a>
-        <a href='country/USA.html'>USA</a>
-        <a href='country/VEN.html'>Venezuela</a>
-      </div>
-    </div>
-    <div class="dropdown">
-    <button class="dropbtn">Asia</button>
-      <div class="dropdown-content">
-        <a href='country/AFG.html'>Afghanistan</a>
-        <a href='country/ARM.html'>Armenia</a>
-        <a href='country/AZE.html'>Azerbaijan</a>
-        <a href='country/BHR.html'>Bahrain</a>
-        <a href='country/BGD.html'>Bangladesh</a>
-        <a href='country/BTN.html'>Bhutan</a>
-        <a href='country/BRN.html'>Brunei</a>
-        <a href='country/KHM.html'>Cambodia</a>
-        <a href='country/CHN.html'>China</a>
-        <a href='country/CYP.html'>Cyprus</a>
-        <a href='country/TLS.html'>East Timor</a>
-        <a href='country/GEO.html'>Georgia</a>
-        <a href='country/IND.html'>India</a>
-        <a href='country/IDN.html'>Indonesia</a>
-        <a href='country/IRN.html'>Iran</a>
-        <a href='country/IRQ.html'>Iraq</a>
-        <a href='country/ISR.html'>Israel</a>
-        <a href='country/JPN.html'>Japan</a>
-        <a href='country/JOR.html'>Jordan</a>
-        <a href='country/KAZ.html'>Kazakhstan</a>
-        <a href='country/KWT.html'>Kuwait</a>
-        <a href='country/KGZ.html'>Kyrgyzstan</a>
-        <a href='country/LAO.html'>Laos</a>
-        <a href='country/LBN.html'>Lebanon</a>
-        <a href='country/MYS.html'>Malaysia</a>
-        <a href='country/MDV.html'>Maldives</a>
-        <a href='country/MNG.html'>Mongolia</a>
-        <a href='country/MMR.html'>Myanmar</a>
-        <a href='country/NPL.html'>Nepal</a>
-        <a href='country/PRK.html'>North Korea</a>
-        <a href='country/OMN.html'>Oman</a>
-        <a href='country/PAK.html'>Pakistan</a>
-        <a href='country/PHL.html'>Philippines</a>
-        <a href='country/QAT.html'>Qatar</a>
-        <a href='country/SAU.html'>Saudi Arabia</a>
-        <a href='country/SGP.html'>Singapore</a>
-        <a href='country/KOR.html'>South Korea</a>
-        <a href='country/LKA.html'>Sri Lanka</a>
-        <a href='country/SYR.html'>Syria</a>
-        <a href='country/TWN.html'>Taiwan</a>
-        <a href='country/TJK.html'>Tajikistan</a>
-        <a href='country/THA.html'>Thailand</a>
-        <a href='country/TUR.html'>Turkey</a>
-        <a href='country/TKM.html'>Turkmenistan</a>
-        <a href='country/ARE.html'>United Arab Emirates</a>
-        <a href='country/UZB.html'>Uzbekistan</a>
-        <a href='country/VNM.html'>Vietnam</a>
-        <a href='country/YEM.html'>Yemen</a>
-      </div>
-    </div>
-    <div class="dropdown">
-    <button class="dropbtn">Europe</button>
-      <div class="dropdown-content">
-        <a href='country/ALB.html'>Albania</a>
-        <a href='country/AUT.html'>Austria</a>
-        <a href='country/BLR.html'>Belarus</a>
-        <a href='country/BEL.html'>Belgium</a>
-        <a href='country/BIH.html'>Bosnia & Herzegovina</a>
-        <a href='country/BGR.html'>Bulgaria</a>
-        <a href='country/HRV.html'>Croatia</a>
-        <a href='country/CZE.html'>Czech Republic / Czechia</a>
-        <a href='country/DNK.html'>Denmark</a>
-        <a href='country/EST.html'>Estonia</a>
-        <a href='country/FIN.html'>Finland</a>
-        <a href='country/FRA.html'>France</a>
-        <a href='country/DEU.html'>Germany</a>
-        <a href='country/GRC.html'>Greece</a>
-        <a href='country/HUN.html'>Hungary</a>
-        <a href='country/ISL.html'>Iceland</a>
-        <a href='country/IRL.html'>Ireland</a>
-        <a href='country/ITA.html'>Italy</a>
-        <a href='country/LVA.html'>Latvia</a>
-        <a href='country/LIE.html'>Liechtenstein</a>
-        <a href='country/LTU.html'>Lithuania</a>
-        <a href='country/LUX.html'>Luxemborg</a>
-        <a href='country/MLT.html'>Malta</a>
-        <a href='country/MDA.html'>Moldova</a>
-        <a href='country/MCO.html'>Monaco</a>
-        <a href='country/MNE.html'>Montenegro</a>
-        <a href='country/NLD.html'>Netherlands</a>
-        <a href='country/MKD.html'>North Macedonia</a>
-        <a href='country/NOR.html'>Norway</a>
-        <a href='country/POL.html'>Poland</a>
-        <a href='country/PRT.html'>Portugal</a>
-        <a href='country/ROU.html'>Romania</a>
-        <a href='country/RUS.html'>Russia</a>
-        <a href='country/SRB.html'>Serbia</a>
-        <a href='country/SVK.html'>Slovakia</a>
-        <a href='country/SVN.html'>Slovenia</a>
-        <a href='country/ESP.html'>Spain</a>
-        <a href='country/SWE.html'>Sweden</a>
-        <a href='country/CHE.html'>Switzerland</a>
-        <a href='country/UKR.html'>Ukraine</a>
-        <a href='country/GBR.html'>United Kingdom</a>
-      </div>
-    </div>
-    <div class="dropdown">
-    <button class="dropbtn">Oceania</button>
-      <div class="dropdown-content">
-        <a href='country/AUS.html'>Australia</a>
-        <a href='country/FJI.html'>Fiji</a>
-        <a href='country/NZL.html'>New Zealand</a>
-        <a href='country/PNG.html'>Papua New Guinea</a>
-        <a href='country/SLB.html'>Solomon Islands</a>
-      </div>
-    </div>
-  </div> <!-- class = continent -->
+    <nav>
+      <div class="continent">
+        <div class="dropdown">
+          <button class="dropbtn">Africa</button>
+          <div class="dropdown-content">
+            <a href='country/DZA.html'>Algeria</a>
+            <a href='country/AGO.html'>Angola</a>
+            <a href='country/BEN.html'>Benin</a>
+            <a href='country/BWA.html'>Botswana</a>
+            <a href='country/BFA.html'>Burkina Faso</a>
+            <a href='country/BDI.html'>Burundi</a>
+            <a href='country/CPV.html'>Cabo Verde</a>
+            <a href='country/CMR.html'>Cameroon</a>
+            <a href='country/CAF.html'>Central African Republic</a>
+            <a href='country/TCD.html'>Chad</a>
+            <a href='country/COM.html'>Comoros</a>
+            <a href='country/COD.html'>Democratic Republic of The Congo</a>
+            <a href='country/DJI.html'>Djibouti</a>
+            <a href='country/EGY.html'>Egypt</a>
+            <a href='country/GNQ.html'>Equatorial Guinea</a>
+            <a href='country/ERI.html'>Eritrea</a>
+            <a href='country/SWZ.html'>Eswatini</a>
+            <a href='country/ETH.html'>Ethiopia</a>
+            <a href='country/GAB.html'>Gabon</a>
+            <a href='country/GMB.html'>Gambia</a>
+            <a href='country/GHA.html'>Ghana</a>
+            <a href='country/GIN.html'>Guinea</a>
+            <a href='country/GNB.html'>Guinea Bissau</a>
+            <a href='country/CIV.html'>Ivory Coast</a>
+            <a href='country/KEN.html'>Kenya</a>
+            <a href='country/LSO.html'>Lesotho</a>
+            <a href='country/LBR.html'>Liberia</a>
+            <a href='country/LBY.html'>Libya</a>
+            <a href='country/MDG.html'>Madagascar</a>
+            <a href='country/MWI.html'>Malawi</a>
+            <a href='country/MLI.html'>Mali</a>
+            <a href='country/MRT.html'>Mauritania</a>
+            <a href='country/MUS.html'>Mauritius</a>
+            <a href='country/MAR.html'>Morocco</a>
+            <a href='country/MOZ.html'>Mozambique</a>
+            <a href='country/NAM.html'>Namibia</a>
+            <a href='country/NER.html'>Niger</a>
+            <a href='country/NGA.html'>Nigeria</a>
+            <a href='country/COG.html'>Republic of the Congo</a>
+            <a href='country/RWA.html'>Rwanda</a>
+            <a href='country/STP.html'>Sao Tome and Principe</a>
+            <a href='country/SEN.html'>Senegal</a>
+            <a href='country/SYC.html'>Seychelles</a>
+            <a href='country/SLE.html'>Sierra Leone</a>
+            <a href='country/SOM.html'>Somalia</a>
+            <a href='country/ZAF.html'>South Africa</a>
+            <a href='country/SSD.html'>South Sudan</a>
+            <a href='country/SDN.html'>Sudan</a>
+            <a href='country/TZA.html'>Tanzania</a>
+            <a href='country/TGO.html'>Togo</a>
+            <a href='country/TUN.html'>Tunisia</a>
+            <a href='country/UGA.html'>Uganda</a>
+            <a href='country/ZMB.html'>Zambia</a>
+            <a href='country/ZWE.html'>Zimbabwe</a>
+          </div>
+        </div>
+        <div class="dropdown">
+          <button class="dropbtn">Americas</button>
+          <div class="dropdown-content">
+            <a href='country/ATG.html'>Antigua & Barbuda</a>
+            <a href='country/ARG.html'>Argentina</a>
+            <a href='country/BHS.html'>Bahamas</a>
+            <a href='country/BRB.html'>Barbados</a>
+            <a href='country/BLZ.html'>Belize</a>
+            <a href='country/BOL.html'>Bolivia</a>
+            <a href='country/BRA.html'>Brazil</a>
+            <a href='country/CAN.html'>Canada</a>
+            <a href='country/CHL.html'>Chile</a>
+            <a href='country/COL.html'>Colombia</a>
+            <a href='country/CRI.html'>Costa Rica</a>
+            <a href='country/CUB.html'>Cuba</a>
+            <a href='country/CUW.html'>Curacao</a>
+            <a href='country/DMA.html'>Dominica</a>
+            <a href='country/DOM.html'>Dominican Republic</a>
+            <a href='country/ECU.html'>Ecuador</a>
+            <a href='country/SLV.html'>El Salvador</a>
+            <a href='country/GUF.html'>French Guiana</a>
+            <a href='country/GRD.html'>Grenada</a>
+            <a href='country/GLP.html'>Guadeloupe</a>
+            <a href='country/GTM.html'>Guatemala</a>
+            <a href='country/GUY.html'>Guyana</a>
+            <a href='country/HTI.html'>Haiti</a>
+            <a href='country/HND.html'>Honduras</a>
+            <a href='country/JAM.html'>Jamaica</a>
+            <a href='country/MEX.html'>Mexico</a>
+            <a href='country/NIC.html'>Nicaragua</a>
+            <a href='country/PAN.html'>Panama</a>
+            <a href='country/PRY.html'>Paraguay</a>
+            <a href='country/PER.html'>Peru</a>
+            <a href='country/VCT.html'>St Vincent and the Grenadines</a>
+            <a href='country/KNA.html'>St. Kitts and Nevis</a>
+            <a href='country/LCA.html'>St. Lucia</a>
+            <a href='country/SUR.html'>Suriname</a>
+            <a href='country/TTO.html'>Trinidad & Tobago</a>
+            <a href='country/URY.html'>Uruguay</a>
+            <a href='country/USA.html'>USA</a>
+            <a href='country/VEN.html'>Venezuela</a>
+          </div>
+        </div>
+        <div class="dropdown">
+          <button class="dropbtn">Asia</button>
+          <div class="dropdown-content">
+            <a href='country/AFG.html'>Afghanistan</a>
+            <a href='country/ARM.html'>Armenia</a>
+            <a href='country/AZE.html'>Azerbaijan</a>
+            <a href='country/BHR.html'>Bahrain</a>
+            <a href='country/BGD.html'>Bangladesh</a>
+            <a href='country/BTN.html'>Bhutan</a>
+            <a href='country/BRN.html'>Brunei</a>
+            <a href='country/KHM.html'>Cambodia</a>
+            <a href='country/CHN.html'>China</a>
+            <a href='country/CYP.html'>Cyprus</a>
+            <a href='country/TLS.html'>East Timor</a>
+            <a href='country/GEO.html'>Georgia</a>
+            <a href='country/IND.html'>India</a>
+            <a href='country/IDN.html'>Indonesia</a>
+            <a href='country/IRN.html'>Iran</a>
+            <a href='country/IRQ.html'>Iraq</a>
+            <a href='country/ISR.html'>Israel</a>
+            <a href='country/JPN.html'>Japan</a>
+            <a href='country/JOR.html'>Jordan</a>
+            <a href='country/KAZ.html'>Kazakhstan</a>
+            <a href='country/KWT.html'>Kuwait</a>
+            <a href='country/KGZ.html'>Kyrgyzstan</a>
+            <a href='country/LAO.html'>Laos</a>
+            <a href='country/LBN.html'>Lebanon</a>
+            <a href='country/MYS.html'>Malaysia</a>
+            <a href='country/MDV.html'>Maldives</a>
+            <a href='country/MNG.html'>Mongolia</a>
+            <a href='country/MMR.html'>Myanmar</a>
+            <a href='country/NPL.html'>Nepal</a>
+            <a href='country/PRK.html'>North Korea</a>
+            <a href='country/OMN.html'>Oman</a>
+            <a href='country/PAK.html'>Pakistan</a>
+            <a href='country/PHL.html'>Philippines</a>
+            <a href='country/QAT.html'>Qatar</a>
+            <a href='country/SAU.html'>Saudi Arabia</a>
+            <a href='country/SGP.html'>Singapore</a>
+            <a href='country/KOR.html'>South Korea</a>
+            <a href='country/LKA.html'>Sri Lanka</a>
+            <a href='country/SYR.html'>Syria</a>
+            <a href='country/TWN.html'>Taiwan</a>
+            <a href='country/TJK.html'>Tajikistan</a>
+            <a href='country/THA.html'>Thailand</a>
+            <a href='country/TUR.html'>Turkiye</a>
+            <a href='country/TKM.html'>Turkmenistan</a>
+            <a href='country/ARE.html'>United Arab Emirates</a>
+            <a href='country/UZB.html'>Uzbekistan</a>
+            <a href='country/VNM.html'>Vietnam</a>
+            <a href='country/YEM.html'>Yemen</a>
+          </div>
+        </div>
+        <div class="dropdown">
+          <button class="dropbtn">Europe</button>
+          <div class="dropdown-content">
+            <a href='country/ALB.html'>Albania</a>
+            <a href='country/AUT.html'>Austria</a>
+            <a href='country/BLR.html'>Belarus</a>
+            <a href='country/BEL.html'>Belgium</a>
+            <a href='country/BIH.html'>Bosnia & Herzegovina</a>
+            <a href='country/BGR.html'>Bulgaria</a>
+            <a href='country/HRV.html'>Croatia</a>
+            <a href='country/CZE.html'>Czech Republic / Czechia</a>
+            <a href='country/DNK.html'>Denmark</a>
+            <a href='country/EST.html'>Estonia</a>
+            <a href='country/FIN.html'>Finland</a>
+            <a href='country/FRA.html'>France</a>
+            <a href='country/DEU.html'>Germany</a>
+            <a href='country/GRC.html'>Greece</a>
+            <a href='country/HUN.html'>Hungary</a>
+            <a href='country/ISL.html'>Iceland</a>
+            <a href='country/IRL.html'>Ireland</a>
+            <a href='country/ITA.html'>Italy</a>
+            <a href='country/LVA.html'>Latvia</a>
+            <a href='country/LIE.html'>Liechtenstein</a>
+            <a href='country/LTU.html'>Lithuania</a>
+            <a href='country/LUX.html'>Luxemborg</a>
+            <a href='country/MLT.html'>Malta</a>
+            <a href='country/MDA.html'>Moldova</a>
+            <a href='country/MCO.html'>Monaco</a>
+            <a href='country/MNE.html'>Montenegro</a>
+            <a href='country/NLD.html'>Netherlands</a>
+            <a href='country/MKD.html'>North Macedonia</a>
+            <a href='country/NOR.html'>Norway</a>
+            <a href='country/POL.html'>Poland</a>
+            <a href='country/PRT.html'>Portugal</a>
+            <a href='country/ROU.html'>Romania</a>
+            <a href='country/RUS.html'>Russia</a>
+            <a href='country/SRB.html'>Serbia</a>
+            <a href='country/SVK.html'>Slovakia</a>
+            <a href='country/SVN.html'>Slovenia</a>
+            <a href='country/ESP.html'>Spain</a>
+            <a href='country/SWE.html'>Sweden</a>
+            <a href='country/CHE.html'>Switzerland</a>
+            <a href='country/UKR.html'>Ukraine</a>
+            <a href='country/GBR.html'>United Kingdom</a>
+          </div>
+        </div>
+        <div class="dropdown">
+          <button class="dropbtn">Oceania</button>
+          <div class="dropdown-content">
+            <a href='country/AUS.html'>Australia</a>
+            <a href='country/FJI.html'>Fiji</a>
+            <a href='country/NZL.html'>New Zealand</a>
+            <a href='country/PNG.html'>Papua New Guinea</a>
+            <a href='country/SLB.html'>Solomon Islands</a>
+          </div>
+        </div>
+      </div> <!-- class = continent -->
 
-  <div class='menu'>
-    <ul>
-      <li><a id='mapLink' href='about.html'>About</a></li>
-      <li>Back to Map</li>
-      <li><a href='https://earthovershoot.org'>Home</a></li>
-    </ul>
-  </div>
-</nav>
+      <div class='menu'>
+        <ul>
+          <li><a id='mapLink' href='about.html'>About</a></li>
+          <li>Back to Map</li>
+          <li><a href='https://earthovershoot.org'>Home</a></li>
+        </ul>
+      </div>
+    </nav>
 
-<div id='map'></div>
+    <div id='map'></div>
 
-<footer>
-  <a href='https://earthovershoot.org'><img src='img/EarthOvershoot-Logo.png' alt='Logo'></a><br />
-  <!-- <p>P.O. Box 202<br />
+    <footer>
+      <a href='https://earthovershoot.org'><img src='img/EarthOvershoot-Logo.png' alt='Logo'></a><br />
+      <!-- <p>P.O. Box 202<br />
   Ardmore, PA 19003<br />
   (610) 420-5989  Phone -->
-  <p class="lowline">&copy; EarthOvershoot 2021
-  &nbsp;&nbsp;
-  <a href="https://www.earthovershoot.org/#privacy-policy">Privacy Policy</a>
-  &nbsp;&nbsp;
-  <a href="https://www.earthovershoot.org/#terms-conditions">Terms &amp; Conditions</a>
-  &nbsp;&nbsp;
-  <a href="mailto:info@earthovershoot.org">Contact</a></p>
-</footer>
+      <p class="lowline">&copy; EarthOvershoot 2021
+        &nbsp;&nbsp;
+        <a href="https://www.earthovershoot.org/#privacy-policy">Privacy Policy</a>
+        &nbsp;&nbsp;
+        <a href="https://www.earthovershoot.org/#terms-conditions">Terms &amp; Conditions</a>
+        &nbsp;&nbsp;
+        <a href="mailto:info@earthovershoot.org">Contact</a>
+      </p>
+    </footer>
 
-</main>
-<script src="../js/carousel_kan.js"></script>
-<script>
-mapboxgl.accessToken = 'pk.eyJ1IjoianBtNDIiLCJhIjoiY2t3cDdlMHk2MDZ2MDJvcnRmYW0wZGV2NiJ9.gF4Ox8k8U9DGYTnL5E5zQQ';
-//mapboxgl.accessToken = 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw';
-var map = new mapboxgl.Map({
-    container: 'map',
-    style: 'mapbox://styles/mapbox/outdoors-v9',
-    center: [10, 11],
-    zoom: 1.8, 
-    minZoom: 1.8,
-    maxZoom: 9
-    ,
-    // maxBounds: [[-50, -100],[60, 100]],
-    // maxBoundsViscosity: 1
-});
+  </main>
+  <script src="../js/carousel_kan.js"></script>
+  <script>
+    mapboxgl.accessToken = 'pk.eyJ1IjoianBtNDIiLCJhIjoiY2t3cDdlMHk2MDZ2MDJvcnRmYW0wZGV2NiJ9.gF4Ox8k8U9DGYTnL5E5zQQ';
+    //mapboxgl.accessToken = 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw';
+    var map = new mapboxgl.Map({
+      container: 'map',
+      style: 'mapbox://styles/mapbox/outdoors-v9',
+      center: [10, 11],
+      zoom: 1.8,
+      minZoom: 1.8,
+      maxZoom: 9
+      ,
+      // maxBounds: [[-50, -100],[60, 100]],
+      // maxBoundsViscosity: 1
+    });
 
-// bnd = map.latLngBounds = ([
-//   [-50, -100], [60, 100]
-// ]);
-// map.fitBounds(bnd);
+    // bnd = map.latLngBounds = ([
+    //   [-50, -100], [60, 100]
+    // ]);
+    // map.fitBounds(bnd);
 
-map.on('load', function () {
-    map.addSource("states", {
+    map.on('load', function () {
+      map.addSource("states", {
         "type": "geojson",
         // "data": "data/ne_custom_geo.json" // lo-res, missing islands
         "data": "data/country.geojson"
-    });
+      });
 
-    map.addLayer({
+      map.addLayer({
         "id": "state-fills",
         "type": "fill",
         "source": "states",
         "layout": {},
         "paint": {
-            "fill-color": "#627BC1",
-            "fill-opacity": 0
+          "fill-color": "#627BC1",
+          "fill-opacity": 0
         }
-    });
+      });
 
-    map.addLayer({
+      map.addLayer({
         "id": "state-fills-hover",
         "type": "fill",
         "source": "states",
         "layout": {},
         "paint": {
-            "fill-color": "#fff",
-            "fill-opacity": 1
+          "fill-color": "#fff",
+          "fill-opacity": 1
         },
         "filter": ["==", "ADMIN", ""]
-    });
+      });
 
-    // When the user moves their mouse over the page, we look for features
-    // at the mouse position (e.point) and within the states layer (states-fill).
-    // If a feature is found, then we'll update the filter in the state-fills-hover
-    // layer to only show that state, thus making a hover effect.
-    map.on("mousemove", function(e) {
+      // When the user moves their mouse over the page, we look for features
+      // at the mouse position (e.point) and within the states layer (states-fill).
+      // If a feature is found, then we'll update the filter in the state-fills-hover
+      // layer to only show that state, thus making a hover effect.
+      map.on("mousemove", function (e) {
         var features = map.queryRenderedFeatures(e.point, { layers: ["state-fills"] });
         if (features.length) {
-            map.getCanvas().style.cursor = 'pointer';
-            map.setFilter("state-fills-hover", ["==", "ADMIN", features[0].properties.ADMIN]);
+          map.getCanvas().style.cursor = 'pointer';
+          map.setFilter("state-fills-hover", ["==", "ADMIN", features[0].properties.ADMIN]);
         } else {
-            map.setFilter("state-fills-hover", ["==", "ADMIN", ""]);
-            map.getCanvas().style.cursor = '';
+          map.setFilter("state-fills-hover", ["==", "ADMIN", ""]);
+          map.getCanvas().style.cursor = '';
         }
-    });
+      });
 
-    // Reset the state-fills-hover layer's filter when the mouse leaves the map
-    map.on("mouseout", function() {
+      // Reset the state-fills-hover layer's filter when the mouse leaves the map
+      map.on("mouseout", function () {
         map.getCanvas().style.cursor = 'auto';
         map.setFilter("state-fills-hover", ["==", "ADMIN", ""]);
-    });
-  
-    map.on("click", function(e) {
+      });
+
+      map.on("click", function (e) {
         var features = map.queryRenderedFeatures(e.point, { layers: ["state-fills"] });
-        
+
         if (features.length) {
           // iso3c = features[0].properties.adm0_a3_is;
           iso3c = features[0].properties.ISO_A3;
 
           if (iso3c == 'GRL' || iso3c == 'FRO') {
-           iso3c = 'DNK';
+            iso3c = 'DNK';
           }
           // Australian Indian Ocean Territories lack official iso3c code? AIO
           if (iso3c == 'HRD' || iso3c == 'NFK' || iso3c == 'AIO') {
             iso3c = 'AUS';
           }
-          if (iso3c == 'GUM' || iso3c == 'MNP'  || iso3c == 'PRI' || iso3c == 'ASM' || iso3c == 'UMI' || iso3c == 'VIR') {
+          if (iso3c == 'GUM' || iso3c == 'MNP' || iso3c == 'PRI' || iso3c == 'ASM' || iso3c == 'UMI' || iso3c == 'VIR') {
             iso3c = 'USA';
           }
           if (iso3c == 'HKG' || iso3c == 'MAC') {
@@ -396,23 +423,24 @@ map.on('load', function () {
           if (iso3c == 'ALA') {
             iso3c = 'FIN';
           }
-          if (iso3c == 'GGY' || iso3c == 'JEY' || iso3c == 'IOM' || iso3c == 'AIA' || iso3c == 'GIB' || iso3c == 'CYM'  || iso3c == 'FLK' || iso3c == 'SGS' || iso3c == 'IOT' || iso3c == 'MSR' || iso3c == 'PCN' || iso3c == 'SHN' || iso3c == 'TCA' || iso3c == 'VGB') {
+          if (iso3c == 'GGY' || iso3c == 'JEY' || iso3c == 'IOM' || iso3c == 'AIA' || iso3c == 'GIB' || iso3c == 'CYM' || iso3c == 'FLK' || iso3c == 'SGS' || iso3c == 'IOT' || iso3c == 'MSR' || iso3c == 'PCN' || iso3c == 'SHN' || iso3c == 'TCA' || iso3c == 'VGB') {
             iso3c = 'GBR';
           }
           if (iso3c == 'COK' || iso3c == 'NIU') {
             iso3c = 'NZL';
           }
           // Kosovo doesnt have an official iso3c code
-          if (iso3c == 'KSV') {  
+          if (iso3c == 'KSV') {
             iso3c = 'SRB';
           }
-          if (iso3c != 'PSE' && iso3c != 'VUT' && iso3c != 'WSM' && iso3c != 'FSM' && iso3c != 'KIR'  && iso3c != 'TON' && iso3c != 'MHL' && iso3c != 'NRU' && iso3c != 'TUV' && iso3c != 'PLW' && iso3c != 'ATA' && iso3c != 'SPR' && iso3c != 'AND' && iso3c != 'SMR' && iso3c != 'VAT' && iso3c != 'ESH') {
-            window.location = 'country/' + iso3c + '.html'          
+          if (iso3c != 'PSE' && iso3c != 'VUT' && iso3c != 'WSM' && iso3c != 'FSM' && iso3c != 'KIR' && iso3c != 'TON' && iso3c != 'MHL' && iso3c != 'NRU' && iso3c != 'TUV' && iso3c != 'PLW' && iso3c != 'ATA' && iso3c != 'SPR' && iso3c != 'AND' && iso3c != 'SMR' && iso3c != 'VAT' && iso3c != 'ESH') {
+            window.location = 'country/' + iso3c + '.html';
           }
         }
+      });
     });
-});
-</script>
-<!-- window.location = 'https://mckeown.me/eo/knit_footer_menu.html#' + features[0].properties.name -->
+  </script>
+  <!-- window.location = 'https://mckeown.me/eo/knit_footer_menu.html#' + features[0].properties.name -->
 </body>
+
 </html>
