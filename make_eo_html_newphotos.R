@@ -1,7 +1,3 @@
-# remove column subtitles
-# reduce decinal places on GDP
-
-
 # Photos: if change update Freq/Photos column in eo... from df9
 
 # Comments: freshen from googlesheet using read_comments.R
@@ -23,7 +19,7 @@ source("helper.R") # for indicators
 # eo_2022 <- eo
 eo_import <- readRDS('../eo_data/data/eo_2023_oldGrade.rds')
 eo_comment <- readRDS('data/eo_comment_Nov2022.rds')
-df9 <- readRDS('data/df9.rds')
+df9 <- readRDS('data/df9_July2023.rds')
 
 # rename columns generically, with a year # Rank_sustain_2020
 eo <- eo_import %>% 
@@ -36,10 +32,14 @@ eo <- eo_import %>%
   rename("Species" = "Species_2022_2") %>% 
   mutate(Grow_Rate_Pop = round(Grow_Rate_Pop, 2)) %>% 
   mutate(GDP_pp = round(GDP_pp, 0)) %>% 
-  select("iso3c", "Country", "Maximum_Pop", "Grow_Rate_Pop", "Population", "Contraception", "Species", "GDP_pp", "iso2c", "Continent")
+  select("iso3c", "Country", "Photos", "Maximum_Pop", "Grow_Rate_Pop", "Population", "Contraception", "Species", "GDP_pp", "iso2c", "Grade", "Continent")
 
 attr(eo$GDP_pp, "label") <- NULL
 attr(eo$Contraception, "label") <- NULL
+
+if(!dir.exists("country")) {
+  dir.create("country")
+}
 
 startCountry <- 1 
 endCountry <- nrow(eo)
@@ -69,9 +69,9 @@ for (k in startCountry:endCountry) {
   cat('<section class="flag">', sep='', file=out)
   cat(paste0('<img src="../flag/', lowiso2c, '.svg" height="120">'), sep='\n', file=out)
   
-  rank <- eo[k, "Grade"]
-  cat(paste0('<div class="rating-', rank, '">'), sep='\n', file=out)
-  cat(paste0('<h3>', rank, '</h3>'), sep='\n', file=out)
+  grade <- eo[k, "Grade"]
+  cat(paste0('<div class="rating-', grade, '">'), sep='\n', file=out)
+  cat(paste0('<h3>', grade, '</h3>'), sep='\n', file=out)
   cat('<div data-tooltip data-tooltip-label="A = Excellent', sep='\n', file=out)
   cat('B = Above Average', sep='\n', file=out)
   cat('C = Average', sep='\n', file=out)
@@ -172,7 +172,7 @@ for (k in startCountry:endCountry) {
   
   # Photo gallery: title, caption, and carousel
   # identify number of images for each country
-  numPhotos <- eo$Freq[k]
+  numPhotos <- eo$Photos[k]
  
   if (numPhotos>0) {
     captions <- df9[df9$iso3c == iso3c,]$Caption
