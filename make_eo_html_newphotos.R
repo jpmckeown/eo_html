@@ -1,73 +1,22 @@
-# need make new eo with updated Freq column, from df9
-# freshen Comments from googlesheet works with read_comments.R
-# must run extra.R (for indicators)
-# refresh from Country_data xlsx using eo_data/read_data.R
+# Photos: if change update Freq/Photos column in eo... from df9
 
-# folder Comments with text files exists, but not relevant
+# Comments: freshen from googlesheet using read_comments.R
+#     folder /Comments with text files is not relevant
 
-symbol_to_HTML <- function(txt) {
-  if (grepl("’", txt)) {
-    txt <- gsub("’", "&rsquo;", txt)        
-  }
-  if (grepl('“', txt)) {
-    txt <- gsub("“", "&ldquo;", txt)        
-  }
-  if (grepl('”', txt)) {
-    txt <- gsub("”", "&rdquo;", txt)        
-  }
-  if (grepl('½', txt)) {
-    txt <- gsub("½", "&frac12;", txt)        
-  }
-  if (grepl('–', txt)) {
-    txt <- gsub("–", "&ndash;", txt)        
-  }
-  if (grepl('—', txt)) {
-    txt <- gsub("—", "&mdash;", txt)        
-  }
-  if (grepl('‘', txt)) {
-    txt <- gsub("‘", "&lsquo;", txt)        
-  }
-  if (grepl('ô', txt)) {
-    txt <- gsub("ô", "&ocirc;", txt)        
-  }
-  if (grepl('ê', txt)) {
-    txt <- gsub("ê", "&ecirc;", txt)        
-  }
-  if (grepl('é', txt)) {
-    txt <- gsub("é", "&eacute;", txt)        
-  }
-  if (grepl('è', txt)) {
-    txt <- gsub("è", "&egrave;", txt)        
-  }
-  if (grepl('í', txt)) {
-    txt <- gsub("í", "&iacute;", txt)        
-  }
-  if (grepl('ã', txt)) {
-    txt <- gsub("ã", "&atilde;", txt)        
-  }
-  if (grepl('ç', txt)) {
-    txt <- gsub("ç", "&ccedil;", txt)      
-  }
-  if (grepl('á', txt)) {
-    txt <- gsub("á", "&aacute;", txt)        
-  }
-  if (grepl('à', txt)) {
-    txt <- gsub("à", "&agrave;", txt)        
-  }
-  if (grepl('©', txt)) {
-    txt <- gsub("©", "&copy;", txt)        
-  }
-  return(txt)
-}
+# Data: refresh from Country_data.xlsx using eo_data/EO_data_2023.R
 
 # HTML country page construction
-# menu will be made from country list
+# menu is made from country list
 # file.append doesnt add newline between files 
 # so fragments after last line need extra newline.
+
 library(tidyverse)
 library(stringi)
 
-eo <- readRDS('../eo_data/data/eop_26April2022.rds')
+source("helper.R")
+source("extra.R") # for indicators
+
+eo <- readRDS('../eo_data/data/eo_2023_order.rds')
 eo_comment <- readRDS('data/eo_comment_Nov2022.rds')
 df9 <- readRDS('data/df9.rds')
 

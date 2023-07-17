@@ -2,6 +2,7 @@
 .Rhistory
 .RData
 .vscode
+.DS_Store
 country/
 comment/
 img/
