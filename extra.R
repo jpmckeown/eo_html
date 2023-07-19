@@ -47,16 +47,16 @@ xph <-  slice(df9, xtra)
 # xph[2, 'Artist'] <- 'Lovecharles2004'
 # xph[2, 'ArtistExtra'] <- NA
 
-xph[3, 'ID'] <- 3
-xph[3, 'Caption'] <- 'Rwanda is 50% Catholic and their health centers are many citizens only health care option.'
-xph[3, 'folder'] <- '5/5e/'
-xph[3, 'FileURL'] <- 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Catholic_Cathedral_of_Butare.jpg/640pxxpha3hedral_of_Butare.jpg'
-xph[3, 'InfoURL'] <- 'https://commons.wikimedia.org/wiki/File:Catholic_Cathedral_of_Butare.jpg'
-xph[3, 'Artist'] <- 'Claude Nizeyimana'
-xph[3, 'ArtistExtra'] <- NA
-xph[3, 'ArtistHTML'] <- NA
-xph[3, 'License'] <- 'CC BY-SA 4.0'
-xph[3, 'LicenseURL'] <- 'https://creativecommons.org/licenses/by-sa/4.0'
+# xph[3, 'ID'] <- 3
+# xph[3, 'Caption'] <- 'Rwanda is 50% Catholic and their health centers are many citizens only health care option.'
+# xph[3, 'folder'] <- '5/5e/'
+# xph[3, 'FileURL'] <- 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Catholic_Cathedral_of_Butare.jpg/640pxxpha3hedral_of_Butare.jpg'
+# xph[3, 'InfoURL'] <- 'https://commons.wikimedia.org/wiki/File:Catholic_Cathedral_of_Butare.jpg'
+# xph[3, 'Artist'] <- 'Claude Nizeyimana'
+# xph[3, 'ArtistExtra'] <- NA
+# xph[3, 'ArtistHTML'] <- NA
+# xph[3, 'License'] <- 'CC BY-SA 4.0'
+# xph[3, 'LicenseURL'] <- 'https://creativecommons.org/licenses/by-sa/4.0'
 
 df9backup <- df9
 df9 <- rbind(df9, xph)

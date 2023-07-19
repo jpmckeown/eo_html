@@ -1,9 +1,9 @@
 indicators <- read_csv("data/indicators.csv")
 description <- c(
-  "Population total.", 
+  "Population total in 2021.", 
   "Estimated prevalence of contraception (modern methods) among women 15-49 years old.\nPoor 0-20%\nBelow Average 20-40%\nAverage 40-60%\nAbove Average 60-80%\nExcellent 80-100%", 
   "Number of species critically endangered, endangered, or vulnerable. IUCN Red List of Threatened Species.", 
-  "Maximum sustainable population based on the country's 2019 natural resource availability and economic activity.", 
+  "Maximum sustainable population based on the country's natural resource availability, economic activity, and population in 2019.", 
   "Annual rate: a positive % means population is increasing; negative means population is decreasing.", 
   "Annual Per Capita GDP in U.S. Dollars. A high figure indicates high consumption of resources per person. A low figure indicates low consumption of resources per person.", 
   "A = Excellent\nB = Above Average\nC = Average\nD = Below Average\nF = Poor", 
