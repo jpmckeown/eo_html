@@ -17,21 +17,23 @@ source("helper.R") # for indicators
 # source("extra.R") # are these ad hoc fixes to Photo captions?
 
 # eo_2022 <- eo
-eo_import <- readRDS('../eo_data/data/eo_2023_oldGrade.rds')
+eo_import <- readRDS('../eo_data/data/eo_WB_2023.rds')
 eo_comment <- readRDS('data/eo_comment_Nov2022.rds')
 df9 <- readRDS('data/df9_July2023.rds')
 
 # rename columns generically, with a year # Rank_sustain_2020
 eo <- eo_import %>% 
   rename("Grade" = "Grade") %>%
-  rename("Grow_Rate_Pop" = "PopGrowRate_UN_2021") %>% 
+  rename("Grow_Rate_Pop" = "PopGrowRate_WB_2022") %>% # was _UN_2021
   rename("Maximum_Pop" = "Sustainable_pop") %>% 
-  rename("Population" = "Population_UN_2021") %>% 
+  rename("Population" = "Population_WB_2022") %>% # was _UN_2021
   rename("Contraception" = "Contraception") %>% 
   rename("GDP_pp" = "GDP") %>% 
   rename("Species" = "Species_2022_2") %>% 
+  mutate(GDP_pp = round(GDP_pp, -1)) %>% 
+  mutate(Maximum_Pop = round(Maximum_Pop, -3)) %>% 
+  mutate(Population = round(Population, -1)) %>% 
   mutate(Grow_Rate_Pop = round(Grow_Rate_Pop, 2)) %>% 
-  mutate(GDP_pp = round(GDP_pp, 0)) %>% 
   select("iso3c", "Country", "Photos", "Maximum_Pop", "Grow_Rate_Pop", "Population", "Contraception", "Species", "GDP_pp", "iso2c", "Grade", "Continent")
 
 attr(eo$GDP_pp, "label") <- NULL
