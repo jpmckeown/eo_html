@@ -22,7 +22,7 @@ df9 <- readRDS('data/df9_July2023.rds')
 
 # rename columns generically, with a year # Rank_sustain_2020
 eo <- eo_import %>% 
-  rename("Grade" = "Grade") %>%
+  rename("Grade" = "Grade_2021") %>%
   rename("Grow_Rate_Pop" = "SP.POP.GROW") %>%         # was "PopGrowRate_WB_2022"
   rename("Maximum_Pop" = "Sustainable_pop") %>% 
   rename("Population" = "SP.POP.TOTL") %>%            # was "Population_WB_2022" 
@@ -39,7 +39,7 @@ attr(eo$GDP_pp, "label") <- NULL
 attr(eo$Contraception, "label") <- NULL
 
 eo$Country[172] = "Turkiye"
-saveRDS(eo, '../eo_data/data/eo_2023_oldGrade_Turkiye.rds')
+# saveRDS(eo, '../eo_data/data/eo_2024_Turkiye.rds')
 
 if(!dir.exists("country")) {
   dir.create("country")
@@ -243,4 +243,3 @@ for (k in startCountry:endCountry) {
   file.append(page, 'fragment/end.htm')
 }
 
-#saveRDS(df9, 'data/df9.rds')
